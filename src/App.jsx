@@ -1,10 +1,11 @@
 import './App.css'
+import { Dielectric } from './labs/dielectric/Dielectric.jsx'
 
 function App() {
 
   return (
     <>
-      <h1>Brayan el mas gay</h1>
+      <Dielectric />
     </>
   )
 }

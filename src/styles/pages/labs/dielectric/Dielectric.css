@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+body {
+    background-color: #7DCFB6;
+    background-size: cover;
+}
+
+.bateria {
+    width: 150px;
+    position: fixed;
+    left: 150px;
+    top: 200px; 
+}
+
+.linea-horizontal-superior {
+    width: 300px;
+    position: fixed;
+    left: 195px;
+    top: -60px;
+}
+
+.linea-horizontal-inferior {
+    width: 300px;
+    position: fixed;
+    left: 195px;
+    top: 440px;
+}
+
+.linea-vertical-superior {
+    height: 200px;
+    position: fixed;
+    left: 135px;
+    top: 50px;
+}
+
+.linea-vertical-inferior {
+    height: 200px;
+    position: fixed;
+    left: 135px;
+    top: 380px;
+}
+
+.linea-vertical-superior2 {
+    height: 200px;
+    position: fixed;
+    left: 355px;
+    top: 50px;
+}
+
+.linea-vertical-inferior2 {
+    height: 200px;
+    position: fixed;
+    left: 355px;
+    top: 380px;
+}
+
+.baldosa-superior {
+    width: 250px;
+    position: fixed;
+    left: 310px;
+    top: 130px;
+}
+
+.baldosa-inferior {
+    width: 250px;
+    position: fixed;
+    left: 310px;
+    top: 250px;
+}
+
+.dielectrico-demo {
+    width: 250px;
+    height: 200px;
+    position: fixed;
+    /* Cambiar el left para dar la perspectiva de movimiento  */
+    /* left: 310px; */
+    left: 400px;
+    top: 210px;
+}
+
+.voltaje-bateria {
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+    position: fixed;
+    margin-left: 130px;
+    margin-top: 320px;
+    width: 125px;
+    height: 10px;
+    writing-mode: bt-lr; 
+    transform: rotate(-90deg);
+  }
+  
+.voltaje-bateria::-webkit-slider-thumb {
+    appearance: none;
+    height: 0.5rem;
+    background-color: gray;
+    border: solid 2px black;
+    width: 20px;
+    height: 15px;
+}
+
+.slider-prueba {
+    position: fixed;
+    margin-left: 450px;
+    margin-top: 125px;
+    width: 100px;
+    height: 10px;
+    writing-mode: bt-lr; 
+    transform: rotate(-90deg);
+}
+
+.separacion {
+    position: fixed;
+    width: 65px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 120px;
+    margin-left: 520px;
+    padding-left: 5px;
+    font-weight: 600;
+  }
+
+.label-container {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    margin-left: 10px;
+    /* margin-top: 650px; */
+    margin-top: 1000px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.capacitancia-individual {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-top: 10px;
+    gap: 10px;
+}
+  
+.capacitancia-individual input {
+    border-radius: 8px;
+    border: none;
+    height: 20px;
+    padding-left: 5px;
+    font-weight: 600;
+}
+  
+.capacitancia-individual span {
+    color: white;
+}
+  
+.capacitancia-total {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-top: 10px;
+    gap: 10px;
+}
+  
+.capacitancia-total input {
+    border-radius: 8px;
+    border: none;
+    height: 20px;
+    padding-left: 5px;
+    font-weight: 600;
+}
+  
+.capacitancia-total span {
+    color: white;
+}
+  
+.boton {
+    margin-top: 10px;
+    gap: 10px;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+}
+  
+.boton:hover {
+    cursor: pointer;
+    background-color: crimson;
+}
+
+.material-dielectrico {
+    position: fixed;
+    display: flex;
+    width: 200px;
+    height: 300px;
+    margin-left: 1130px;
+    /* margin-top: 650px; */
+    top: 150px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.material-dielectrico span {
+    color: white;
+}
+
+
+
