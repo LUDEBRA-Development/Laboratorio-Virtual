@@ -1,13 +1,11 @@
 import './App.css'
-import { Dielectric } from './labs/dielectric/Dielectric.jsx'
-import { Prueba } from './pages/overview/Prueba.jsx'
+import { IndexPage } from './pages/overview/IndexPage.jsx'
 
 function App() {
 
   return (
     <>
-      <Prueba />
-      {/* <Dielectric /> */}
+      <IndexPage /> 
     </>
   )
 }
