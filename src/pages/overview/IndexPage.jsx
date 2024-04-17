@@ -12,6 +12,7 @@ export function IndexPage() {
         <main>This is the main</main>
       </section>
       
+      sdafkjsakdlfjlkadslfjaskdjfklasdlfjdaskljfldsajflkasjlfjdasljfjkadsjfka
       <Footer />
     </div>
   )
