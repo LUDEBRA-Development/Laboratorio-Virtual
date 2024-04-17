@@ -1,11 +1,11 @@
 import './App.css'
-import { IndexPage } from './pages/overview/IndexPage.jsx'
+import { Dielectric } from './labs/dielectric/Dielectric'
 
 function App() {
 
   return (
     <>
-      <IndexPage /> 
+      <Dielectric />
     </>
   )
 }

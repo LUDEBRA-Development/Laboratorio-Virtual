@@ -37,23 +37,30 @@ export function Dielectric() {
 
       <input
         type='range'
-        class='voltaje-bateria'
-        min='0'
-        max='100'
-        value='50'
+        className='voltaje-bateria'
+        min={0}
+        max={100}
+        // value={'50'} <--- Esto da error
       />
 
-      <input type='range' class='slider-prueba' min='0' max='100' value='50' />
+      <input
+        type='range'
+        className='slider-prueba'
+        min={0}
+        max={100}
+        // value={'50'} <--- Esto da error
+      />
+
       <input
         id='separacion'
         type='text'
-        class='separacion'
+        className='separacion'
         value='7.5 mm'
-        readonly
+        readOnly
       />
 
       <label for=''>
-        <div class='material-dielectrico'>
+        <div className='material-dielectrico'>
           <span>Material Dielectrico: </span>
           <select name='dielectrico-selector' id='materialDielectricoSelector'>
             <option value='1'>Papel</option>
