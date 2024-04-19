@@ -4,6 +4,7 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { HomeSlider } from '../../components/HomeSlider'
 import { Selectors } from '../../components/Selectors'
+import { InformationImage } from '../../components/InformationImage'
 
 export function IndexPage() {
   return (
@@ -14,6 +15,7 @@ export function IndexPage() {
         <main>
           <HomeSlider />
           <Selectors />
+          <InformationImage />
         </main>
       </section>
 
