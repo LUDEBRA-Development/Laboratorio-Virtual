@@ -1,11 +1,11 @@
 import './App.css'
-import { Dielectric } from './labs/dielectric/Dielectric'
+import { IndexPage } from './pages/overview/IndexPage'
 
 function App() {
 
   return (
     <>
-      <Dielectric />
+      <IndexPage />
     </>
   )
 }

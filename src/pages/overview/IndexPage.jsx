@@ -2,6 +2,8 @@ import React from 'react'
 import './IndexPage.css'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
+import { HomeSlider } from '../../components/HomeSlider'
+import { Selectors } from '../../components/Selectors'
 
 export function IndexPage() {
   return (
@@ -9,10 +11,12 @@ export function IndexPage() {
       <Header />
 
       <section>
-        <main>This is the main</main>
+        <main>
+          <HomeSlider />
+          <Selectors />
+        </main>
       </section>
-      
-      this is a test
+
       <Footer />
     </div>
   )
