@@ -1,5 +1,5 @@
-import './styles/Footer.css'
-import logoludebra from '../assets/LUDEBRA LOGO.png'
+import '../styles/overview/Footer.css'
+import logoludebra from '../../assets/LUDEBRA LOGO.png'
 
 export function Footer() {
   return (

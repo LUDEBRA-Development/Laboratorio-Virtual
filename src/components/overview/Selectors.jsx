@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/Selector.css'
+import '../styles/overview/Selector.css'
 
 export function Selectors() {
   return (

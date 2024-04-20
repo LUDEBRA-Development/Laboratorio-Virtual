@@ -1,6 +1,6 @@
 import React from 'react'
-import information from '../assets/img2.jpg'
-import './styles/InformationImage.css'
+import information from '../../assets/img2.jpg'
+import '../styles/overview/InformationImage.css'
 
 export function InformationImage() {
   return (

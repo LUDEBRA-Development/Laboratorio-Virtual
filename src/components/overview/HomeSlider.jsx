@@ -1,6 +1,6 @@
 import React from 'react'
-import homeImage from '../assets/Pnk_m1_blur_darked.jpg'
-import './styles/HomeSlider.css'
+import homeImage from '../../assets/Pnk_m1_blur_darked.jpg'
+import '../styles/overview/HomeSlider.css'
 
 export function HomeSlider() {
   return (

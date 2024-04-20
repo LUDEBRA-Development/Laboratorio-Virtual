@@ -1,5 +1,5 @@
-import './styles/Header.css'
-import logolabs from '../assets/LABS LOGO.png' 
+import '../styles/overview/Header.css'
+import logolabs from '../../assets/LABS LOGO.png' 
 
 export function Header() {
   return (

@@ -1,6 +1,6 @@
 //* Props Imports
 import React from 'react'
-import '../../styles/pages/labs/dielectric/Dielectric.css'
+import '../../components/styles/dielectric/Dielectric.css'
 
 //! Image Imports
 import vertical from '../../assets/pages/labs/dielectrico/Linea-Vertical.png'
