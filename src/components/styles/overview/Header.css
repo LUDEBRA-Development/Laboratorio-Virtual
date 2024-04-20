@@ -25,3 +25,10 @@ header {
     height: 80px;
     margin-left: 40px;
 }
+
+.ludebra-title {
+    font-weight: bold;
+    position: absolute;
+    margin-left: 120px;
+}
+
