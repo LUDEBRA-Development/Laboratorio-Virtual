@@ -1,11 +1,11 @@
 import './App.css'
-import { IndexPage } from './pages/overview/IndexPage'
+import { Login } from './pages/login/Login'
 
 function App() {
 
   return (
     <>
-      <IndexPage />
+      <Login />
     </>
   )
 }
