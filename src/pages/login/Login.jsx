@@ -4,6 +4,35 @@ import { FooterLogin } from '../../components/login/FooterLogin'
 import logo from '../../assets/logo without background.png'
 
 export function Login() {
+  class user {
+    constructor(user, email, password) {
+      this.user = user
+      this.email = email
+      this.password = password
+    }
+    set setEmail(email) {
+      this.email = email
+    }
+    set setPassword(password) {
+      this.password = password
+    }
+    set setUser(user) {
+      this.user = user
+    }
+    get getEmail() {
+      return this.email
+    }
+    get getPassword() {
+      return this.password
+    }
+    get getUser() {
+      return this.user
+    }
+  }
+
+
+  
+
   return (
     <div>
       <header>
