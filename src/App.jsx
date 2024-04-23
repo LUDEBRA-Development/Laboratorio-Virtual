@@ -1,8 +1,7 @@
 import './App.css'
-import { Dielectric } from './labs/dielectric/Dielectric.jsx'
+import { Dielectric } from './labs/dielectric/Dielectric'
 
 function App() {
-
   return (
     <>
       <Dielectric />

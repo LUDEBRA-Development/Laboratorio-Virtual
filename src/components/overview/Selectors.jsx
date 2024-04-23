@@ -14,7 +14,7 @@ export function Selectors() {
         <p>Ingenieria</p>
       </div>
       <div className='selector'>
-        <p>Nojoda</p>
+        <p>Quimica</p>
       </div>
     </div>
   )

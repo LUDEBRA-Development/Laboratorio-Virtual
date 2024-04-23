@@ -9,7 +9,6 @@ import baldoza from '../../assets/pages/labs/dielectrico/BaldosaOG.png'
 import bateria from '../../assets/pages/labs/dielectrico/Bateria2-Positivo.png'
 import dielectrico from '../../assets/pages/labs/dielectrico/Dielectrico-demo.png'
 
-
 import dielectricoPapel from '../../assets/pages/labs/dielectrico/Dielectricopapel-demo.png'
 import dielectricoVidrio1 from '../../assets/pages/labs/dielectrico/Dielectrico-demo1.png'
 import dielectricoVidrio2 from '../../assets/pages/labs/dielectrico/Dielectrico-demo2.png'
