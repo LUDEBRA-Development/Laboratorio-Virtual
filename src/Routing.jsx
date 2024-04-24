@@ -1,30 +1,20 @@
-import React from 'react'
-import {
-    BrowserRouter as Router,
-    Link,
-    Outlet,
-} from 'react-router-dom'
-
-import './Routing.css'
+import React from "react";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
+import { IndexPage } from "./pages/overview/IndexPage";
+import { Dielectric } from "./labs/dielectric/Dielectric";
+import { Login } from "./pages/login/Login";
+import "./Routing.css";
 
 export function Routing() {
-
   return (
     <div>
-      <nav className='brayan'>
-        <ul>
-            <li>
-                <Link to="/">Overview</Link>
-            </li>
-            <li>
-                <Link to="/dielectric">Dielectric</Link>
-            </li>
-            <li>
-                <Link to="/login">Login</Link>
-            </li>
-        </ul>
-      </nav>
+      <Routes>
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/dielectric" element={<Dielectric />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+
       <Outlet />
     </div>
-  )
+  );
 }
