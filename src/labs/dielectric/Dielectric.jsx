@@ -1,5 +1,6 @@
 //* Props Imports
 import React from 'react'
+import { useState } from 'react'
 import '../../components/styles/dielectric/Dielectric.css'
 
 //! Image Imports
@@ -9,14 +10,42 @@ import baldoza from '../../assets/pages/labs/dielectrico/BaldosaOG.png'
 import bateria from '../../assets/pages/labs/dielectrico/Bateria2-Positivo.png'
 import dielectrico from '../../assets/pages/labs/dielectrico/Dielectrico-demo.png'
 
-import dielectricoPapel from '../../assets/pages/labs/dielectrico/Dielectricopapel-demo.png'
-import dielectricoVidrio1 from '../../assets/pages/labs/dielectrico/Dielectrico-demo1.png'
-import dielectricoVidrio2 from '../../assets/pages/labs/dielectrico/Dielectrico-demo2.png'
-
-//? Models Imports
-// import { dielectricModel } from '../../models/pages/labs/dielectric/dielectricModel.js'
-
 export function Dielectric() {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+
+  const handleMouseDown = (event) => {
+    const { clientX, clientY } = event
+    const offsetX = clientX - position.x
+    const offsetY = clientY - position.y
+
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event
+      setPosition({
+        x: clientX - offsetX,
+        y: clientY - offsetY,
+      })
+    }
+
+    const handleMouseUp = () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
+    }
+
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseup', handleMouseUp)
+  }
+
+  function resultados() {
+    let controlcheckbox = document.getElementById('controles')
+    let checkboxcontainer = document.getElementById('capTotal')
+
+    if (controlcheckbox.checked) {
+      checkboxcontainer.style.display = 'block'
+    } else {
+      checkboxcontainer.style.display = 'none'
+    }
+  }
+
   return (
     <div className='container'>
       <section>
@@ -39,21 +68,9 @@ export function Dielectric() {
         <img src={vertical} alt='#' className='linea-vertical-superior2' />
       </section>
 
-      <input
-        type='range'
-        className='voltaje-bateria'
-        min={0}
-        max={100}
-        // value={'50'} <--- Esto da error
-      />
+      <input type='range' className='voltaje-bateria' min={0} max={100} />
 
-      <input
-        type='range'
-        className='slider-prueba'
-        min={0}
-        max={100}
-        // value={'50'} <--- Esto da error
-      />
+      <input type='range' className='slider-prueba' min={0} max={100} />
 
       <input
         id='separacion'
@@ -63,7 +80,7 @@ export function Dielectric() {
         readOnly
       />
 
-      <label for=''>
+      <label>
         <div className='material-dielectrico'>
           <span>Material Dielectrico: </span>
           <select name='dielectrico-selector' id='materialDielectricoSelector'>
@@ -73,6 +90,38 @@ export function Dielectric() {
           </select>
         </div>
       </label>
+
+      <label
+        style={{
+          position: 'absolute',
+          display: 'none',
+          top: position.y,
+          left: position.x,
+          border: '1px solid #000',
+          padding: '10px',
+          cursor: 'move',
+        }}
+        onMouseDown={handleMouseDown}
+        id='capTotal'
+      >
+        <div className='label-container'>
+          <div className='capacitancia-total'>
+            <span>Capacitancia Total: </span>
+            <input id='capacitanciaTotal' type='text' />
+          </div>
+        </div>
+      </label>
+
+      <section>
+        <div class='check-controles'>
+          <label>
+            <div>
+              <input type='checkbox' id='controles' onChange={resultados} />{' '}
+              Resultados
+            </div>
+          </label>
+        </div>
+      </section>
     </div>
   )
 }
