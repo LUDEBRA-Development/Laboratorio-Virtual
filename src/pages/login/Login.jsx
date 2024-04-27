@@ -2,6 +2,7 @@ import React from 'react'
 import './Login.css'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import logo from '../../assets/logo without background.png'
+import { Link } from 'react-router-dom'
 
 export function Login() {
   class user {
@@ -30,9 +31,6 @@ export function Login() {
     }
   }
 
-
-  
-
   return (
     <div>
       <header>
@@ -56,7 +54,9 @@ export function Login() {
               name='password_be'
               required
             />
-            <button className='btn-iniciar-sesion'>Iniciar sesión</button>
+            <Link to='/'>
+              <button className='btn-iniciar-sesion'>Iniciar sesión</button>
+            </Link>
             <a href='#'>¿Olvidaste la contraseña?</a>
           </div>
 

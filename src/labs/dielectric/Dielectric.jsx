@@ -113,7 +113,7 @@ export function Dielectric() {
       </label>
 
       <section>
-        <div class='check-controles'>
+        <div className='check-controles'>
           <label>
             <div>
               <input type='checkbox' id='controles' onChange={resultados} />{' '}
