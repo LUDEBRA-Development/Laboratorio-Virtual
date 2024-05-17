@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/overview/Selector.css'
+import { Link } from 'react-router-dom'
 
 export function Selectors() {
   return (

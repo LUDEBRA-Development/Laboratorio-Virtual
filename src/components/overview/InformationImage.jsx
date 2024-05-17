@@ -1,25 +1,24 @@
-import React from "react";
-import information from "../../assets/img2.jpg";
-import "../styles/overview/InformationImage.css";
-import { Link } from "react-router-dom";
+import React from 'react'
+import information from '../../assets/img2.jpg'
+import '../styles/overview/InformationImage.css'
+import { useNavigate } from 'react-router-dom'
 
 export function InformationImage() {
+  const navigate = useNavigate()
   return (
     <div>
-      <div className="infoimg-container">
-        <h1 className="infoimg-title">
+      <div className='infoimg-container'>
+        <h1 className='infoimg-title'>
           Recursos para docentes, actividades y comunidad
         </h1>
-        <span className="infoimg-text">
+        <span className='infoimg-text'>
           Los maestros tienen acceso a consejos específicos sobre simulaciones,
           incluyendo videos, recursos para enseñar con simulaciones y
           actividades compartidas por nuestra comunidad de maestros.
         </span>
-        <Link to="/dielectric">
-          <button className="infoimg-boton">Explora Los Simuladores</button>
-        </Link>
+        <button className='infoimg-boton' onClick={() => navigate('login')}>Explora Los Simuladores</button>
       </div>
-      <img className="infoimg-image" src={information} alt="#" />
+      <img className='infoimg-image' src={information} alt='#' />
     </div>
-  );
+  )
 }

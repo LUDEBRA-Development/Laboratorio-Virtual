@@ -6,25 +6,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.footer-login {
-    width: 100%;
-    height: 200px;
-    color: white;
-    background-color: black;
-    text-align: center;
+.notfound-body {
+    background-image: url('../../assets/Pnk_m1_blur_darked.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.notfound-container {
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.copyright {
+    flex-direction: column;
     color: white;
-    font-size: 13px;
-    margin: 20px;
-}
-
-.logo2 {
-    width: 120px;
-    height: 120px;
 }

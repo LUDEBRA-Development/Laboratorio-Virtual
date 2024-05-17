@@ -94,7 +94,7 @@ body {
     width: 125px;
     height: 10px;
     writing-mode: bt-lr; 
-    transform: rotate(-90deg);
+    transform: rotate(-90deg);  
   }
   
 .voltaje-bateria::-webkit-slider-thumb {
@@ -129,10 +129,10 @@ body {
 .label-container {
     position: absolute;
     width: 300px;
-    height: 200px;
-    margin-left: 700px;
+    height: 400px;
+    margin-left: 10px;
     /* margin-top: 650px; */
-    margin-top: 100px;
+    margin-top: 1000px;
     background-color: rgba(0, 0, 0, 0.7);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -143,6 +143,26 @@ body {
     flex-direction: column;
 }
 
+.capacitancia-individual {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-top: 10px;
+    gap: 10px;
+}
+  
+.capacitancia-individual input {
+    border-radius: 8px;
+    border: none;
+    height: 20px;
+    padding-left: 5px;
+    font-weight: 600;
+}
+  
+.capacitancia-individual span {
+    color: white;
+}
+  
 .capacitancia-total {
     display: flex;
     flex-direction: column;
@@ -184,7 +204,7 @@ body {
     display: flex;
     width: 200px;
     height: 300px;
-    /* margin-left: 1130px; <- verificar porque da error */
+    margin-left: 1130px;
     /* margin-top: 650px; */
     top: 150px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -200,15 +220,3 @@ body {
 .material-dielectrico span {
     color: white;
 }
-
-.check-controles {
-    position: fixed;
-    display: flex;
-    color: white;
-    margin: 120px 0 0 1180px;
-}
-
-
-
-
-

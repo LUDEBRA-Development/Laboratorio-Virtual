@@ -2,61 +2,73 @@ import React from 'react'
 import './Login.css'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import logo from '../../assets/logo without background.png'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useAuth } from './AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 export function Login() {
-  class user {
-    constructor(user, email, password) {
-      this.user = user
-      this.email = email
-      this.password = password
+  const navigate = useNavigate()
+
+  const [input, setInput] = useState({
+    username: '',
+    password: '',
+  })
+
+  const [mensaje, setMensaje] = useState('')
+
+  const auth = useAuth()
+  const handleSubmitEvent = (e) => {
+    e.preventDefault()
+    if (input.username !== '' && input.password !== '') {
+      try {
+        auth.loginAction(input)
+      } catch (error) {
+        setMensaje(error.message)
+        // alert('Oops! Credenciales Invalidas')
+      }
+      return
     }
-    set setEmail(email) {
-      this.email = email
-    }
-    set setPassword(password) {
-      this.password = password
-    }
-    set setUser(user) {
-      this.user = user
-    }
-    get getEmail() {
-      return this.email
-    }
-    get getPassword() {
-      return this.password
-    }
-    get getUser() {
-      return this.user
-    }
+    alert('Todos los campos son obligatorios')
+  }
+
+  const handleInput = (e) => {
+    const { name, value } = e.target
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   return (
-    <div>
-      <header>
-        <img src={logo} alt='#' className='login-logo' />
+    <div className='body-login'>
+      <header className='header-login'>
+        <img onClick={() => navigate('/') } src={logo} alt='#' className='login-logo' />
       </header>
-      <main>
+      <form className='main-login' onSubmit={handleSubmitEvent}>
         <div className='login-container'>
           <h2>Inicia sesión</h2>
           <div className='login-inputs'>
             <input
               type='text'
               placeholder='Email'
-              id='email-user'
-              name='email-user_be'
+              id='user-name'
+              name='username'
+              onChange={handleInput}
+              aria-describedby='user-name'
+              aria-invalid='false'
               required
             />
             <input
               type='password'
               placeholder='Contraseña'
-              id='password-user'
-              name='password_be'
+              id='password'
+              name='password'
+              aria-describedby='user-password'
+              aria-invalid='false'
+              onChange={handleInput}
               required
             />
-            <Link to='/'>
-              <button className='btn-iniciar-sesion'>Iniciar sesión</button>
-            </Link>
+            <button className='btn-iniciar-sesion'>Iniciar sesión</button>
             <a href='#'>¿Olvidaste la contraseña?</a>
           </div>
 
@@ -65,7 +77,7 @@ export function Login() {
             <p>Recuérdame</p>
           </div>
         </div>
-      </main>
+      </form>
 
       <FooterLogin />
     </div>

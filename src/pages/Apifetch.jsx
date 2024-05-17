@@ -2,45 +2,45 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 export function Apifetch() {
-  const [articulos, setArticulos] = useState([])
-  let varFetch = "http://181.58.153.88:3000/api/users/augusto"
-  function scrap() {
-    fetch(varFetch, {
-      method: 'GET',
-      mode: 'no-cors',
-      cache: 'default'
-    })
-      .then((response) => {
-        return response.json()
-      })
-      .then((articulos) => {
-        console.log(articulos)
-      })
-  }
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    scrap()
+    let url = 'https://laboratorio-virtual-backend.onrender.com/api/users'
+
+    fetch(url, {
+      method: 'GET',
+      mode: 'no-cors',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error al realizar la solicitud')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        setError(error)
+        setLoading(false)
+      })
   }, [])
+
+  if (loading) {
+    return <div>Cargando...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
 
   return (
     <div>
-      <table border='1'>
-        <thead>
-          <tr>
-            <th>Identificacion</th>
-            <th>Primer Nombre</th>
-          </tr>
-        </thead>
-        <tbody>
-          {articulos.map((art) => {
-            return (
-              <tr key={art.Identification}>
-                <td>{art.First_name}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      <h1>Datos de la API</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   )
 }
