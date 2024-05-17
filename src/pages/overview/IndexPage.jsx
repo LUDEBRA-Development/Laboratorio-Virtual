@@ -8,7 +8,7 @@ import { InformationImage } from '../../components/overview/InformationImage'
 
 export function IndexPage() {
   return (
-    <div>
+    <div className='body-index'>
       <Header />
 
       <section>

@@ -25,7 +25,7 @@
 .header-login {
     height: 100px;
     width: 100%;
-    background-color: black; 
+    background-color: rgba(0, 0, 0, 0.9); 
     margin-bottom: 80px;
     display: flex;
     justify-content: center;
@@ -90,6 +90,10 @@
    font-size: 16px;
    background: none;
    color: white;
+}
+
+.login-inputs input::placeholder {
+    color: white;
 }
 
 .login-inputs input:focus {
