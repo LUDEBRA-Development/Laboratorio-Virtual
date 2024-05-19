@@ -10,7 +10,7 @@
     width: 100%;
     height: 30vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: row;
 }
@@ -19,17 +19,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border: none;
     border-radius: 100%;
     background-color: gray;
     color: black;
+    font-weight: bold;
     width: 150px;
     height: 150px;
     margin-left: 20px;
     transition: all ease-in-out 0.3s;
+    gap: 5px;
 }
 
 .selector:hover {
     cursor: pointer;
     transform: scale(1.1);
 } 
+
+.selector-icon {
+    width: 50px;
+    height: 50px;
+}

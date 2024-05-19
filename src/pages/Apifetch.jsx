@@ -9,10 +9,7 @@ export function Apifetch() {
   useEffect(() => {
     let url = 'https://laboratorio-virtual-backend.onrender.com/api/users'
 
-    fetch(url, {
-      method: 'GET',
-      mode: 'no-cors',
-    })
+    fetch(url)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error al realizar la solicitud')

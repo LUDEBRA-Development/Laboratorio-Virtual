@@ -9,7 +9,7 @@ export function Header() {
   return (
     <div>
       <section>
-        <header>
+        <header className='header-index'>
           <img src={logolabs} className='logo' />
           <h2 className='ludebra-title'>LUDEBRA LABS</h2>
           <button className='boton' onClick={() => navigate('login')}>Iniciar Sesion</button>

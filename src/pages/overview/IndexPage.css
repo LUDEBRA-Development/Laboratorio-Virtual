@@ -21,6 +21,7 @@
 }
 
 .boton:hover {
+    cursor: pointer;
     background-color: #0b97b6;
     transform: scale(1.1);
     transition: all ease-in-out 0.2s;

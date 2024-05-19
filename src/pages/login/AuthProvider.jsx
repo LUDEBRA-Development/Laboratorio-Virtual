@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
       setUser(data.username)
       setToken(data.password)
       localStorage.setItem('site', data.password)
-      navigate('/catalogo')
+      navigate('/materias')
     }
     throw Error('Credenciales Invalidas')
   }

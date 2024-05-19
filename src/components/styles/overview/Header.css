@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-header {
+.header-index {
     width: 100%;
     height: 80px;
     position: relative;
@@ -15,7 +15,6 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    /* background-color: blue; <---- Esto es para la prueba del header */
     border-bottom: solid 5px blue;
     background-color: white;
 }

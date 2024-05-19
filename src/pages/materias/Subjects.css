@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.body-subjects {
+    background-color: white;
+}
+
+.header-subject {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    border-top: solid 5px #23CAEE;
+    background-color: white;
+}
+
+.logo-subject {
+    width: 80px;
+    height: 80px;
+    margin-left: 40px;
+}
+
+.subject-title {
+    font-weight: bold;
+    position: absolute;
+    margin-left: 120px;
+}
+
+.ul-container-subjects {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-left: 600px;
+    width: 400px;
+    height: 100%;
+}
+
+.ul-container-subjects li {
+    list-style: none;
+}
+
+.ul-container-subjects li a {
+    text-decoration: none;
+}
+
+.ul-container-subjects li a:hover {
+    text-decoration: underline;
+}
+
+.profile-subject {
+    border-radius: 100%;
+    background-image: url('../../assets/admin-profile.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.profile-username-subject {
+    color: gray;
+}
+
+.boton-subject {
+    margin-right: 40px;
+    width: 120px;
+    height: 40px;
+    color: white;
+    background-color: #23CAEE;
+    border: none;
+    border-radius: 10px;
+}
+
+.boton-subject:hover {
+    cursor: pointer;
+    background-color: #0b97b6;
+    transform: scale(1.1);
+    transition: all ease-in-out 0.2s;
+}
+
+.body-title-subject {
+    width: 100%;
+    height: 70px;
+    background-color: #A1B0C0;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.body-title-subject h3 {
+    margin-left: 40px;
+}
+
+.main-subject {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+
+.section-subject {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 20px;
+    min-height: 100vh;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.materia-subject {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    border: solid 1px gray;
+    border-radius: 20px;
+    background-color: rgb(243, 235, 235);
+}
+
+.materia-subject:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all ease-in-out 0.2s;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.7);
+}
+
+.materia-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-left: 10px;
+}
+
+.materia-image img {
+    width: 50px;
+    height: 50px;
+}
+
+.materia-text {
+    width: 70%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.materia-hr {
+    height: 80%;
+    color: black;
+}
+
+.aside-subject {
+    height: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: solid 1px black;
+}
+
+.aside-title {
+    width: 100%;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+}
+
+.aside-activity {
+    background-color: #23CAEE;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: solid 1px #0b97b6;
+    border-radius: 10px;
+}
+
+.aside-activity:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all ease-in-out 0.2s;
+}
+
+.activity-description {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-title {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+}
+
+.activity-text {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-image {
+    width: 40px;
+    height: 40px;
+}
