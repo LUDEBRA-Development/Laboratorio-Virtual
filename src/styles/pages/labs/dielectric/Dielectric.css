@@ -199,13 +199,11 @@ body {
     background-color: crimson;
 }
 
-.material-dielectrico {
+.material-dielectrico-simulador {
     position: fixed;
     display: flex;
     width: 200px;
     height: 300px;
-    margin-left: 400px;
-    /* margin-top: 650px; */
     top: 150px;
     background-color: rgba(0, 0, 0, 0.7);
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -217,6 +215,6 @@ body {
     gap: 5px;
 }
 
-.material-dielectrico span {
+.material-dielectrico-simulador span {
     color: white;
 }

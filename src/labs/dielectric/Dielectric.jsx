@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import '../../styles/pages/labs/dielectric/Dielectric.css'
+import '../../components/styles/dielectric/Dielectric.css'
 
 //! Image Imports
 import vertical from '../../assets/pages/labs/dielectrico/Linea-Vertical.png'
@@ -329,7 +329,7 @@ export function Dielectric() {
       />
 
       <label htmlFor='materialDielectricoSelector'>
-        <div className='material-dielectrico'>
+        <div className='material-dielectrico-simulador'>
           <span>Material Dielectrico: </span>
           <select
             name='dielectrico-selector'

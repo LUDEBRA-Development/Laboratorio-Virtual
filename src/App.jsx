@@ -27,7 +27,6 @@ function App() {
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
         </Route>
-        {/* <Route path='/dielectric' element={<Dielectric />} /> */}
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </AuthProvider>

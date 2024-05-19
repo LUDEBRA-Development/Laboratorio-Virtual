@@ -7,7 +7,7 @@ export function FooterLogin() {
     <div>
       <section>
         <footer className='footer-login'>
-          <p class='copyright'>© Copyright LUDEBRA DEVELOPMENT - 2024</p>
+          <p className='copyright'>© Copyright LUDEBRA DEVELOPMENT - 2024</p>
           <img src={logoludebra} className='logo2' />
         </footer>
       </section>
