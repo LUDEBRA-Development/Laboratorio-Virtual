@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(localStorage.getItem('site') || '')
   const navigate = useNavigate()
-  const loginPost = async (data) => {
+  const loginPost = (data) => {
     try {
       const validacion = {
         Email: data.email,
