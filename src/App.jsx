@@ -5,7 +5,7 @@ import { Dielectric } from './labs/dielectric/Dielectric'
 import { Login } from './pages/login/Login'
 import { PageNotFound } from './pages/pagenotfound/PageNotFound'
 import { IndexPage } from './pages/overview/IndexPage'
-import AuthProvider from './pages/login/AuthProvider'
+import { AuthProvider } from './pages/login/AuthProvider'
 import PrivateRoute from './pages/login/PrivateRoute'
 //? CSS Imports
 import './App.css'
@@ -13,6 +13,8 @@ import { Catalogo } from './pages/catalogo/Catalogo'
 import { Apifetch } from './pages/Apifetch'
 import { Subjects } from './pages/materias/Subjects'
 import { Activities } from './pages/actividades/Activities'
+import { PruebaFetch } from './pages/fetch/PruebaFetch'
+import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 
 function App() {
   return (
@@ -21,11 +23,13 @@ function App() {
         <Route path='/' element={<IndexPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/fetch' element={<Apifetch />} />
+        <Route path='/pruebafetch' element={<PruebaFetch />} />
         <Route element={<PrivateRoute />}>
           <Route path='/materias' element={<Subjects />} />
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
+          <Route path='/ingreso' element={<Ingreso />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

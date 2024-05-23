@@ -10,7 +10,7 @@ export function Login() {
   const navigate = useNavigate()
 
   const [input, setInput] = useState({
-    username: '',
+    email: '',
     password: '',
   })
 
@@ -19,9 +19,9 @@ export function Login() {
   const auth = useAuth()
   const handleSubmitEvent = (e) => {
     e.preventDefault()
-    if (input.username !== '' && input.password !== '') {
+    if (input.email !== '' && input.password !== '') {
       try {
-        auth.loginAction(input)
+        auth.loginPost(input)
       } catch (error) {
         setMensaje(error.message)
         // alert('Oops! Credenciales Invalidas')
@@ -49,10 +49,10 @@ export function Login() {
           <h2>Inicia sesión</h2>
           <div className='login-inputs'>
             <input
-              type='text'
+              type='email'
               placeholder='Email'
               id='user-name'
-              name='username'
+              name='email'
               onChange={handleInput}
               aria-describedby='user-name'
               aria-invalid='false'

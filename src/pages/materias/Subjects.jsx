@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Subjects.css'
 import { useNavigate } from 'react-router-dom'
 import logolabs from '../../assets/logo without background.png'
@@ -10,6 +10,7 @@ import { useAuth } from '../login/AuthProvider'
 export function Subjects() {
   const navigate = useNavigate()
   const auth = useAuth()
+
   return (
     <div className='body-subjects'>
       <header className='header-subject'>
@@ -23,7 +24,9 @@ export function Subjects() {
           </ul>
           <ul>
             <li>
-              <a href='' onClick={() => navigate('/catalogo')}>Simuladores</a>
+              <a href='' onClick={() => navigate('/catalogo')}>
+                Simuladores
+              </a>
             </li>
           </ul>
           <div className='profile-subject'></div>
@@ -39,27 +42,31 @@ export function Subjects() {
       <main className='main-subject'>
         <section className='section-subject'>
           <div className='materia-subject'>
-            <div className='materia-image'>
-              <img src={electromagnetismo} />
-            </div>
-            <hr className='materia-hr' />
-            <div className='materia-text'>
-              <p>Electromagnetismo</p>
+            <div className='materia-subject'>
+              <div className='materia-image'>
+                <img src={electromagnetismo} />
+              </div>
+              <hr className='materia-hr' />
+              <div className='materia-text'>Electromagnetismo</div>
             </div>
           </div>
+
           <div className='materia-subject'>
-            <div className='materia-image'>
-              <img src={ondas} />
-            </div>
-            <hr className='materia-hr' />
-            <div className='materia-text'>
-              <p>Ondas</p>
+            <div className='materia-subject'>
+              <div className='materia-image'>
+                <img src={ondas} />
+              </div>
+              <hr className='materia-hr' />
+              <div className='materia-text'>Ondas</div>
             </div>
           </div>
         </section>
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
-          <div className='aside-activity' onClick={() => navigate('/actividades')}>
+          <div
+            className='aside-activity'
+            onClick={() => navigate('/actividades')}
+          >
             <img src={electromagnetismo} className='activity-image' />
             <div className='activity-description'>
               <h4 className='activity-title'>Actividad Simulador 1</h4>
