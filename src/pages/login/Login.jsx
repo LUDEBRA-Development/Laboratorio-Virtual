@@ -44,7 +44,12 @@ export function Login() {
   return (
     <div className='body-login'>
       <header className='header-login'>
-        <img onClick={() => navigate('/') } src={logo} alt='#' className='login-logo' />
+        <img
+          onClick={() => navigate('/')}
+          src={logo}
+          alt='#'
+          className='login-logo'
+        />
       </header>
       <form className='main-login' onSubmit={handleSubmitEvent}>
         <div className='login-container'>

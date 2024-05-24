@@ -54,7 +54,6 @@ export const AuthProvider = ({ children }) => {
   }
 
   function loginAction(payload) {
-    
     // Aqui se podria hacer un switch
 
     if (usuarioValido && payload.rol == 1) {

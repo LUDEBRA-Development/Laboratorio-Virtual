@@ -134,6 +134,7 @@
     flex-direction: column;
     align-items: center;
     border-left: solid 1px black;
+    gap: 10px;
 }
 
 .aside-title {
@@ -148,46 +149,3 @@
     display: flex;
 }
 
-.aside-activity {
-    background-color: #23CAEE;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    border: solid 1px #0b97b6;
-    border-radius: 10px;
-}
-
-.aside-activity:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: all ease-in-out 0.2s;
-}
-
-.activity-description {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.activity-title {
-    display: flex;
-    flex-direction: column;    
-    justify-content: center;
-}
-
-.activity-text {
-    display: flex;
-    flex-direction: column;    
-    justify-content: center;
-    align-items: center;
-}
-
-.activity-image {
-    width: 40px;
-    height: 40px;
-}

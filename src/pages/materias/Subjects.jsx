@@ -7,6 +7,7 @@ import { FooterLogin } from '../../components/login/FooterLogin'
 import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
 import { receivedEmail, receivedToken } from './GetCoursesInfo'
+import { NuevaActividad } from '../../components/materias/NuevaActividad'
 
 export function Subjects() {
   const navigate = useNavigate()
@@ -83,24 +84,15 @@ export function Subjects() {
       <main className='main-subject'>
         <section className='section-subject'>
           {dataSuccess.map((course, index) => (
-            <NuevaMateria
-              key={index}
-              name={course.Name}
-            />
-          ))}          
+            <NuevaMateria key={index} name={course.Name} />
+          ))}
         </section>
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
-          <div
-            className='aside-activity'
-            onClick={() => navigate('/actividades')}
-          >
-            <img src={electromagnetismo} className='activity-image' />
-            <div className='activity-description'>
-              <h4 className='activity-title'>Actividad Simulador 1</h4>
-              <p className='activity-text'>Electromagnetismo</p>
-            </div>
-          </div>
+          <NuevaActividad
+            titulo='Electromagnetismo'
+            materia='Electromagnetismo'
+          />
         </aside>
       </main>
       <FooterLogin />
