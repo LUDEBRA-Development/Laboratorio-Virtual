@@ -3,9 +3,9 @@ import './Subjects.css'
 import { useNavigate } from 'react-router-dom'
 import logolabs from '../../assets/logo without background.png'
 import electromagnetismo from '../../assets/electromagnetismo.png'
-import ondas from '../../assets/ondas.png'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import { useAuth } from '../login/AuthProvider'
+import { NuevaMateria } from '../../components/materias/NuevaMateria'
 
 export function Subjects() {
   const navigate = useNavigate()
@@ -41,25 +41,9 @@ export function Subjects() {
       </div>
       <main className='main-subject'>
         <section className='section-subject'>
-          <div className='materia-subject'>
-            <div className='materia-subject'>
-              <div className='materia-image'>
-                <img src={electromagnetismo} />
-              </div>
-              <hr className='materia-hr' />
-              <div className='materia-text'>Electromagnetismo</div>
-            </div>
-          </div>
-
-          <div className='materia-subject'>
-            <div className='materia-subject'>
-              <div className='materia-image'>
-                <img src={ondas} />
-              </div>
-              <hr className='materia-hr' />
-              <div className='materia-text'>Ondas</div>
-            </div>
-          </div>
+          
+          <NuevaMateria materiaImage={electromagnetismo} materiaName={'Electromagnetismo'} />
+          
         </section>
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>

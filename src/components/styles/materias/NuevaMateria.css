@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.materia-subject {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    border: solid 1px gray;
+    border-radius: 20px;
+    background-color: rgb(243, 235, 235);
+}
+
+.materia-subject:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all ease-in-out 0.2s;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.7);
+}
+
+.materia-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-left: 10px;
+}
+
+.materia-image img {
+    width: 50px;
+    height: 50px;
+}
+
+.materia-text {
+    width: 70%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.materia-hr {
+    height: 80%;
+    color: black;
+}
