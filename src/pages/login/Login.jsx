@@ -5,6 +5,7 @@ import logo from '../../assets/logo without background.png'
 import { useState } from 'react'
 import { useAuth } from './AuthProvider'
 import { useNavigate } from 'react-router-dom'
+import { getEmailMapper } from '../materias/GetCoursesInfo'
 
 export function Login() {
   const navigate = useNavigate()
@@ -21,6 +22,7 @@ export function Login() {
     e.preventDefault()
     if (input.email !== '' && input.password !== '') {
       try {
+        getEmailMapper(input.email)
         auth.loginPost(input)
       } catch (error) {
         setMensaje(error.message)

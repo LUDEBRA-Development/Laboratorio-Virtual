@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { getCoursesMapper } from '../materias/GetCoursesInfo'
 
 const AuthContext = createContext()
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
         })
 
         .then((responseData) => {
-          // console.log('Success:', responseData)
+          console.log('Success:', responseData)
           tokenDecodified(responseData.body)
           setUsuarioValido(true)
         })
@@ -45,14 +45,18 @@ export const AuthProvider = ({ children }) => {
   }
 
   function tokenDecodified(token) {
+    getCoursesMapper(token)
     const arrayToken = token.split('.')
     const tokenPayload = JSON.parse(atob(arrayToken[1]))
-    // console.log(tokenPayload.rol)
+    console.log(tokenPayload)
     loginAction(tokenPayload)
     return tokenPayload
   }
 
   function loginAction(payload) {
+    
+    // Aqui se podria hacer un switch
+
     if (usuarioValido && payload.rol == 1) {
       setUser(payload.email_User)
       setToken(payload)
