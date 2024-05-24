@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import '../../components/styles/dielectric/Dielectric.css'
+import './Dielectric.css'
 
 //! Image Imports
 import vertical from '../../assets/pages/labs/dielectrico/Linea-Vertical.png'
