@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Subjects.css'
 import { useNavigate } from 'react-router-dom'
 import logolabs from '../../assets/logo without background.png'
@@ -6,10 +6,51 @@ import electromagnetismo from '../../assets/electromagnetismo.png'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
+import { receivedEmail, receivedToken } from './GetCoursesInfo'
 
 export function Subjects() {
   const navigate = useNavigate()
   const auth = useAuth()
+
+  const [dataSuccess, setDataSuccess] = useState([])
+
+  const emailInfo = receivedEmail
+  const tokenInfo = receivedToken
+
+  const fetchData = async () => {
+    try {
+      fetch(
+        `https://laboratorio-virtual-backend.onrender.com/api/users/info/courses/${emailInfo}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${tokenInfo}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(console.log('La respuesta no fue satisfactoria'))
+          }
+          return response.json()
+        })
+        .then((responseData) => {
+          console.log('Esto es pal mapeo de las materias:', responseData)
+          setDataSuccess(responseData.body)
+        })
+        .catch((error) => {
+          alert('Oops! Credenciales Invalidas')
+          console.error('Error:', error)
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div className='body-subjects'>
@@ -41,9 +82,12 @@ export function Subjects() {
       </div>
       <main className='main-subject'>
         <section className='section-subject'>
-          
-          <NuevaMateria materiaImage={electromagnetismo} materiaName={'Electromagnetismo'} />
-          
+          {dataSuccess.map((course, index) => (
+            <NuevaMateria
+              key={index}
+              name={course.Name}
+            />
+          ))}          
         </section>
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
