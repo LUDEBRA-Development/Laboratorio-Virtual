@@ -6,7 +6,7 @@ import electromagnetismo from '../../assets/electromagnetismo.png'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
-import { receivedEmail, receivedToken } from './GetCoursesInfo'
+import { receivedEmail, receivedToken, defaultUrlPath } from './GetInfoUser'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
 
 export function Subjects() {
@@ -28,7 +28,7 @@ export function Subjects() {
   const fetchData = async () => {
     try {
       fetch(
-        `https://laboratorio-virtual-backend.onrender.com/api/users/info/courses/${localStorage.getItem(
+        `${defaultUrlPath}/users/info/courses/${localStorage.getItem(
           'emailvalue'
         )}`,
         {

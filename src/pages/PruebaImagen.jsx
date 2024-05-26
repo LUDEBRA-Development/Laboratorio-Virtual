@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { defaultUrlPath } from './materias/GetInfoUser'
 
 export function PruebaImagen() {
   const [image, setImage] = useState(null);
@@ -20,7 +21,7 @@ export function PruebaImagen() {
     formData.append('image', image);
 
     try {
-      const response = await fetch('https://laboratorio-virtual-backend.onrender.com/api/file', {
+      const response = await fetch(`${defaultUrlPath}/api/file`, {
         method: 'POST',
         body: formData,
       });

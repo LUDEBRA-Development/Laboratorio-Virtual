@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCoursesMapper, getFirstNameMapper, getProfilePictureMapper } from '../materias/GetCoursesInfo'
+import { getCoursesMapper, getFirstNameMapper, getProfilePictureMapper, defaultUrlPath } from '../materias/GetInfoUser'
 
 const AuthContext = createContext()
 
@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         Password: data.password,
       }
 
-      fetch('https://laboratorio-virtual-backend.onrender.com/api/auth/login', {
+      fetch(`${defaultUrlPath}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Tipo de contenido

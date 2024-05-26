@@ -5,7 +5,7 @@ import logo from '../../assets/logo without background.png'
 import { useState } from 'react'
 import { useAuth } from './AuthProvider'
 import { useNavigate } from 'react-router-dom'
-import { getEmailMapper } from '../materias/GetCoursesInfo'
+import { getEmailMapper } from '../materias/GetInfoUser'
 
 export function Login() {
   const navigate = useNavigate()

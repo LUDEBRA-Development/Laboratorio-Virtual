@@ -4,6 +4,12 @@ export let receivedEmail = ''
 export let receivedProfilePicture = ''
 export let receivedFirstName = ''
 
+export const defaultUrlPath = 'https://laboratorio-virtual-backend.onrender.com/api'
+
+
+
+
+
 export function getCoursesMapper(token) {
   // receivedToken = token
   receivedToken = localStorage.setItem('tokenvalue', token)

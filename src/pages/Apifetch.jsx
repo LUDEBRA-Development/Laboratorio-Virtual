@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { defaultUrlPath } from './materias/GetInfoUser'
 
 export function Apifetch() {
   const [data, setData] = useState(null)
@@ -7,7 +8,7 @@ export function Apifetch() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    let url = 'https://laboratorio-virtual-backend.onrender.com/api/users'
+    let url = `${defaultUrlPath}/users`
 
     fetch(url)
       .then((response) => {
