@@ -85,6 +85,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('site')
     localStorage.removeItem('tokenvalue')
     localStorage.removeItem('emailvalue')
+    localStorage.removeItem('cookiesconfirmation')
     navigate('/login')
   }
 
