@@ -12,6 +12,9 @@ export function NuevaActividad(props) {
       case 'Electromagnetismo':
         setImagen(Electromagnetismo)
         break
+      case 'Ondas':
+        setImagen(Ondas)
+        break
       default:
         setImagen(Ondas)
     }

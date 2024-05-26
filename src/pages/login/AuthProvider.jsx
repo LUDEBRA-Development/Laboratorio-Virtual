@@ -83,6 +83,8 @@ export const AuthProvider = ({ children }) => {
     setUser(null)
     setToken('')
     localStorage.removeItem('site')
+    localStorage.removeItem('tokenvalue')
+    localStorage.removeItem('emailvalue')
     navigate('/login')
   }
 

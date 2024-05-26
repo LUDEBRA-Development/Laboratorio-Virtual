@@ -13,20 +13,26 @@ export function Subjects() {
   const navigate = useNavigate()
   const auth = useAuth()
 
-  const [dataSuccess, setDataSuccess] = useState([])
-
   const emailInfo = receivedEmail
   const tokenInfo = receivedToken
+
+  const [dataSuccess, setDataSuccess] = useState([])
+
+  // esto por si acaso
+  // const [dataEmail, setDataEmail] = useState(emailInfo)
+  // const [dataToken, setDataToken] = useState(tokenInfo)
+
+  
 
   const fetchData = async () => {
     try {
       fetch(
-        `https://laboratorio-virtual-backend.onrender.com/api/users/info/courses/${emailInfo}`,
+        `https://laboratorio-virtual-backend.onrender.com/api/users/info/courses/${localStorage.getItem('emailvalue')}`,
         {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${tokenInfo}`,
+            Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
           },
         }
       )

@@ -12,6 +12,9 @@ export function NuevaMateria(props) {
       case 'Electromagnetismo':
         setImagen(Electromagnetismo)
         break
+      case 'Ondas':
+        setImagen(Ondas)
+        break
       default:
         setImagen(Ondas)
     }
