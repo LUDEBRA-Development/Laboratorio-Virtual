@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCoursesMapper } from '../materias/GetCoursesInfo'
+import { getCoursesMapper, getFirstNameMapper, getProfilePictureMapper } from '../materias/GetCoursesInfo'
 
 const AuthContext = createContext()
 
@@ -48,7 +48,11 @@ export const AuthProvider = ({ children }) => {
     getCoursesMapper(token)
     const arrayToken = token.split('.')
     const tokenPayload = JSON.parse(atob(arrayToken[1]))
-    console.log(tokenPayload)
+    
+    getProfilePictureMapper(tokenPayload.Imagen)
+    getFirstNameMapper(tokenPayload.First_Name)
+
+    console.log('ajsdfkjaskfjaksjfd: ', tokenPayload)
     loginAction(tokenPayload)
     return tokenPayload
   }
@@ -86,6 +90,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('tokenvalue')
     localStorage.removeItem('emailvalue')
     localStorage.removeItem('cookiesconfirmation')
+    localStorage.removeItem('profilepicturevalue')
+    localStorage.removeItem('firstnamevalue')
     navigate('/login')
   }
 

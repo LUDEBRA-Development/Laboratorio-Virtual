@@ -60,12 +60,8 @@
 
 .profile-subject {
     border-radius: 100%;
-    background-image: url('../../assets/admin-profile.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 50px;
-    height: 50px;
+    max-width: 70px;
+    max-height: 70px;
 }
 
 .profile-username-subject {

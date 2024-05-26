@@ -18,16 +18,19 @@ export function Subjects() {
 
   const [dataSuccess, setDataSuccess] = useState([])
 
+  let usernameData = localStorage.getItem('firstnamevalue')
+  let userProfilePic = localStorage.getItem('profilepicturevalue')
+
   // esto por si acaso
   // const [dataEmail, setDataEmail] = useState(emailInfo)
   // const [dataToken, setDataToken] = useState(tokenInfo)
 
-  
-
   const fetchData = async () => {
     try {
       fetch(
-        `https://laboratorio-virtual-backend.onrender.com/api/users/info/courses/${localStorage.getItem('emailvalue')}`,
+        `https://laboratorio-virtual-backend.onrender.com/api/users/info/courses/${localStorage.getItem(
+          'emailvalue'
+        )}`,
         {
           method: 'GET',
           headers: {
@@ -47,7 +50,6 @@ export function Subjects() {
           setDataSuccess(responseData.body)
         })
         .catch((error) => {
-          alert('Oops! Credenciales Invalidas')
           console.error('Error:', error)
         })
     } catch (error) {
@@ -77,8 +79,8 @@ export function Subjects() {
               </a>
             </li>
           </ul>
-          <div className='profile-subject'></div>
-          <p className='profile-username-subject'>Admin</p>
+          <img src={userProfilePic} className='profile-subject' />
+          <p className='profile-username-subject'>{usernameData}</p>
         </div>
         <button className='boton-subject' onClick={() => auth.logOut()}>
           Logout

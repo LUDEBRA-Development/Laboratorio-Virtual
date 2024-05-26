@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './CookiesPopUp.css'
 
 export function CookiesPopUp() {
@@ -7,7 +6,6 @@ export function CookiesPopUp() {
     document.getElementById('cookiesBody').style.display = 'none'
     console.log('Se oculto esa monda')
   }
-
   return (
     <div
       className='cookies-body'

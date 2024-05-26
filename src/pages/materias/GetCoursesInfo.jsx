@@ -1,6 +1,8 @@
 
 export let receivedToken = ''
 export let receivedEmail = ''
+export let receivedProfilePicture = ''
+export let receivedFirstName = ''
 
 export function getCoursesMapper(token) {
   // receivedToken = token
@@ -13,3 +15,17 @@ export function getEmailMapper(email) {
   receivedEmail = localStorage.setItem('emailvalue', email)
   return console.log(receivedEmail)
 }
+
+export function getProfilePictureMapper(profilepic) {
+  // receivedProfilePicture = profilepic
+  receivedProfilePicture = localStorage.setItem('profilepicturevalue', profilepic)
+  return console.log(receivedProfilePicture)
+}
+
+export function getFirstNameMapper(firstname) {
+  // receivedFirstName = firtname
+  receivedFirstName = localStorage.setItem('firstnamevalue', firstname)
+  return console.log(receivedFirstName)
+}
+
+
