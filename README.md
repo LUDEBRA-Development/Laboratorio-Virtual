@@ -12,5 +12,4 @@ Para solucionar este problema, ejecute en la terminal la siguiente linea de coma
 ```
 
 
-
-esta es una prueba del pull
+esta es otra prueba del git pull
