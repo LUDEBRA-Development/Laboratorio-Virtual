@@ -247,127 +247,129 @@ export function Dielectric() {
   }
 
   return (
-    <div className='container'>
-      <section>
-        <img src={flipBatery} alt='#' className='bateria' id='bateria' />
-      </section>
-      <section>
-        <img src={horizontal} alt='#' className='linea-horizontal-superior' />
-        <img src={horizontal} alt='#' className='linea-horizontal-inferior' />
-        <img src={vertical} alt='#' className='linea-vertical-superior' />
-        <img src={vertical} alt='#' className='linea-vertical-inferior' />
-        <img
-          src={vertical}
-          alt='#'
-          className='linea-vertical-inferior2'
-          style={{
-            top: `${toplineaVerticalInferior2}px`,
-            left: `${leftLineaVerticalInferior2}px`,
-            height: `${heightLineaVerticalInferior2}px`,
-            position: 'fixed',
-            width: '210px',
-          }}
+    <div className='body-dielectric'>
+      <div className='container'>
+        <section>
+          <img src={flipBatery} alt='#' className='bateria' id='bateria' />
+        </section>
+        <section>
+          <img src={horizontal} alt='#' className='linea-horizontal-superior' />
+          <img src={horizontal} alt='#' className='linea-horizontal-inferior' />
+          <img src={vertical} alt='#' className='linea-vertical-superior' />
+          <img src={vertical} alt='#' className='linea-vertical-inferior' />
+          <img
+            src={vertical}
+            alt='#'
+            className='linea-vertical-inferior2'
+            style={{
+              top: `${toplineaVerticalInferior2}px`,
+              left: `${leftLineaVerticalInferior2}px`,
+              height: `${heightLineaVerticalInferior2}px`,
+              position: 'fixed',
+              width: '210px',
+            }}
+          />
+          <img
+            src={baldoza}
+            alt='#'
+            className='baldosa-inferior'
+            id='baldosa-inferior'
+            style={{ top: `${baldosaInferior}px` }}
+          />
+          <img
+            src={dielectricSelection}
+            alt='#'
+            className='dielectrico-demo wrapper'
+          />{' '}
+          {/* Prueba del draggable en el dielectrico */}
+          <img
+            src={baldoza}
+            alt='#'
+            className='baldosa-superior'
+            id='baldosa-superior'
+            style={{ top: `${baldosaSuperior}px` }}
+          />
+          <img
+            src={vertical}
+            alt='#'
+            className='linea-vertical-superior2'
+            style={{
+              top: `${topLineaVerticalSuperior2}px`,
+              left: `${leftLineaVerticalSuperior2}px`,
+              height: `${heightLineaVerticalSuperior2}px`,
+              position: 'fixed',
+              width: '210px',
+            }}
+          />
+        </section>
+
+        <input
+          type='range'
+          className='voltaje-bateria'
+          min={0}
+          max={100}
+          value={sliderVoltage}
+          onChange={handleSliderBatery}
         />
-        <img
-          src={baldoza}
-          alt='#'
-          className='baldosa-inferior'
-          id='baldosa-inferior'
-          style={{ top: `${baldosaInferior}px` }}
+
+        <input
+          type='range'
+          className='slider-prueba'
+          min={0}
+          max={100}
+          value={sliderValue}
+          onChange={handleSliderChange}
         />
-        <img
-          src={dielectricSelection}
-          alt='#'
-          className='dielectrico-demo wrapper'
-        />{' '}
-        {/* Prueba del draggable en el dielectrico */}
-        <img
-          src={baldoza}
-          alt='#'
-          className='baldosa-superior'
-          id='baldosa-superior'
-          style={{ top: `${baldosaSuperior}px` }}
+
+        <input
+          id='separacion'
+          type='text'
+          className='separacion'
+          value={Distancia}
+          readOnly
         />
-        <img
-          src={vertical}
-          alt='#'
-          className='linea-vertical-superior2'
-          style={{
-            top: `${topLineaVerticalSuperior2}px`,
-            left: `${leftLineaVerticalSuperior2}px`,
-            height: `${heightLineaVerticalSuperior2}px`,
-            position: 'fixed',
-            width: '210px',
-          }}
-        />
-      </section>
 
-      <input
-        type='range'
-        className='voltaje-bateria'
-        min={0}
-        max={100}
-        value={sliderVoltage}
-        onChange={handleSliderBatery}
-      />
-
-      <input
-        type='range'
-        className='slider-prueba'
-        min={0}
-        max={100}
-        value={sliderValue}
-        onChange={handleSliderChange}
-      />
-
-      <input
-        id='separacion'
-        type='text'
-        className='separacion'
-        value={Distancia}
-        readOnly
-      />
-
-      <label htmlFor='materialDielectricoSelector'>
-        <div className='material-dielectrico-simulador'>
-          <span>Material Dielectrico: </span>
-          <select
-            name='dielectrico-selector'
-            id='materialDielectricoSelector'
-            onChange={handleDielectricoChange}
-          >
-            <option value='1'>Papel</option>
-            <option value='2'>Vidrio</option>
-            <option value='3'>Vacio</option>
-            <option value='4'>Agua</option>
-          </select>
-        </div>
-      </label>
-
-      <label
-        style={{
-          position: 'fixed',
-          display: 'block',
-          top: position.y,
-          left: position.x,
-          padding: '10px',
-          cursor: 'move',
-        }}
-        onMouseDown={handleMouseDown}
-        id='capTotal'
-      >
-        <div className='label-container'>
-          <div className='capacitancia-total'>
-            <span>Capacitancia Total: </span>
-            <input
-              id='capacitanciaTotal'
-              type='text'
-              ref={capacitanceRef}
-              readOnly
-            />
+        <label htmlFor='materialDielectricoSelector'>
+          <div className='material-dielectrico-simulador'>
+            <span>Material Dielectrico: </span>
+            <select
+              name='dielectrico-selector'
+              id='materialDielectricoSelector'
+              onChange={handleDielectricoChange}
+            >
+              <option value='1'>Papel</option>
+              <option value='2'>Vidrio</option>
+              <option value='3'>Vacio</option>
+              <option value='4'>Agua</option>
+            </select>
           </div>
-        </div>
-      </label>
+        </label>
+
+        <label
+          style={{
+            position: 'fixed',
+            display: 'block',
+            top: position.y,
+            left: position.x,
+            padding: '10px',
+            cursor: 'move',
+          }}
+          onMouseDown={handleMouseDown}
+          id='capTotal'
+        >
+          <div className='label-container'>
+            <div className='capacitancia-total'>
+              <span>Capacitancia Total: </span>
+              <input
+                id='capacitanciaTotal'
+                type='text'
+                ref={capacitanceRef}
+                readOnly
+              />
+            </div>
+          </div>
+        </label>
+      </div>
     </div>
   )
 }
