@@ -10,5 +10,3 @@ Para solucionar este problema, ejecute en la terminal la siguiente linea de coma
 ```
     npm i vite@latest -D
 ```
-
-Este es un test para brayan
