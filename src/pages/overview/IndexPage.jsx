@@ -15,7 +15,7 @@ export function IndexPage() {
     // Configura el tiempo que quieres que el loader se muestre (en milisegundos)
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2000) // Ejemplo: 3 segundos
+    }, 1200) // Ejemplo: 3 segundos
 
     // Limpiar el timer si el componente se desmonta antes de que el timer termine
     return () => clearTimeout(timer)

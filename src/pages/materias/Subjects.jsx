@@ -98,7 +98,9 @@ export function Subjects() {
               </a>
             </li>
           </ul>
-          <img src={userProfilePic} className='profile-subject' />
+          <div className='profile-subject' style={{ backgroundImage: `url(${userProfilePic})` }}>
+            {/* <img src={userProfilePic} className='profile-subject' /> */}
+          </div>
           <p className='profile-username-subject'>{usernameData}</p>
         </div>
         <button className='boton-subject' onClick={() => auth.logOut()}>
