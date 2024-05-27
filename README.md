@@ -1,8 +1,14 @@
 # Laboratorio Web
 
 
-# Solucion de Errores
-1. Puede presentar el siguiente error al hacer `npm run dev`:
+### Solucion de Errores
+1. Antes de abrir el proyecto, asegurese de que todas las dependencias del proyecto esten instaladas en su computadora.
+Para instalar las dependencias de node, ejecute en la terminal la siguiente linea de comandos:
+```
+    npm install 
+```
+
+2. Puede presentar el siguiente error al hacer `npm run dev`:
 ```
     'vite' is not recognized as an internal or external command, operable program or batch file.
 ```
