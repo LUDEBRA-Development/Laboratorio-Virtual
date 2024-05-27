@@ -52,8 +52,8 @@ export const AuthProvider = ({ children }) => {
   }
 
   function loginAction(payload) {
+    console.log('Usuario validado correctamente')
     if (usuarioValido) {
-      console.log('Usuario validado correctamente')
       switch (payload.rol) {
         case '1':
           setUser(payload.email_User)

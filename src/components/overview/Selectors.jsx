@@ -6,7 +6,7 @@ import quimicaIcon from '../../assets/icons/quimica-icon.png'
 
 export function Selectors() {
   return (
-    <div className='container'>
+    <div className='container-selectors'>
       <div className='selector' style={{ backgroundColor: '#F7CDDD' }}>
         <p>Fisica</p>
         <i>

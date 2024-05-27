@@ -7,10 +7,14 @@ import horizontal from '../../assets/pages/labs/dielectrico/Linea-Horizontal.png
 import baldoza from '../../assets/pages/labs/dielectrico/BaldosaOG.png'
 import bateria from '../../assets/pages/labs/dielectrico/Bateria2-Positivo.png'
 import bateriaNegativo from '../../assets/pages/labs/dielectrico/Bateria2-Negativo.png'
-import dielectrico from '../../assets/pages/labs/dielectrico/Dielectrico-demo.png'
+
+//? Demo Dielectrics
+import dielectricoPersonalizado from '../../assets/pages/labs/dielectrico/Dielectrico-demo.png'
 import dielectricoPapel from '../../assets/pages/labs/dielectrico/Dielectricopapel-demo.png'
-import dielectricoAgua from '../../assets/pages/labs/dielectrico/Dielectrico-demo1.png'
-import dielectricoVidrio from '../../assets/pages/labs/dielectrico/Dielectrico-demo2.png'
+import dielectricoCarton from '../../assets/pages/labs/dielectrico/Dielectrico-demo carton2.0.png'
+import dielectricoAgua from '../../assets/pages/labs/dielectrico/Dielectrico-demo Agua.png'
+import dielectricoVidrio from '../../assets/pages/labs/dielectrico/Dielectrico-demo1.png'
+import dielectricoVacio from '../../assets/pages/labs/dielectrico/Dielectrico-demo-Transparente.png'
 
 export function Dielectric() {
   // Estado para manejar el valor del slider
@@ -135,10 +139,16 @@ export function Dielectric() {
         setDielectricSelection(dielectricoVidrio)
         break
       case '3':
-        setDielectricSelection(dielectrico)
+        setDielectricSelection(dielectricoCarton)
         break
       case '4':
-        setDielectricSelection(dielectrico)
+        setDielectricSelection(dielectricoAgua)
+        break
+      case '5':
+        setDielectricSelection(dielectricoVacio)
+        break
+      case '6':
+        setDielectricSelection(dielectricoPersonalizado)
         break
       default:
         setDielectricSelection(dielectricoPapel)
@@ -225,7 +235,7 @@ export function Dielectric() {
 
   return (
     <div className='body-dielectric'>
-      <div className='container'>
+      <div className='container-dielectric'>
         <section>
           <img src={flipBatery} alt='#' className='bateria' id='bateria' />
         </section>
@@ -302,8 +312,10 @@ export function Dielectric() {
             <select name='dielectrico-selector' id='materialDielectricoSelector' onChange={handleDielectricoChange}>
               <option value='1'>Papel</option>
               <option value='2'>Vidrio</option>
-              <option value='3'>Vacio</option>
+              <option value='3'>Carton</option>
               <option value='4'>Agua</option>
+              <option value='5'>Vacio</option>
+              <option value='6'>Personalizado</option>
             </select>
           </div>
         </label>
