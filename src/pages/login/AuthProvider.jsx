@@ -10,34 +10,32 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('site') || '')
   const navigate = useNavigate()
   const loginPost = data => {
-    try {
-      const validacion = {
-        Email: data.email,
-        Password: data.password,
-      }
+    const validacion = {
+      Email: data.email,
+      Password: data.password,
+    }
 
-      fetch(`${defaultUrlPath}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Tipo de contenido
-        },
-        body: JSON.stringify(validacion),
+    fetch(`${defaultUrlPath}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Tipo de contenido
+      },
+      body: JSON.stringify(validacion),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(console.log('La respuesta no fue satisfactoria'))
+        }
+        return response.json()
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(console.log('La respuesta no fue satisfactoria'))
-          }
-          return response.json()
-        })
 
-        .then(responseData => {
-          tokenDecodified(responseData.body)
-          setUsuarioValido(true)
-        })
-        .catch(error => {
-          alert('Oops! Credenciales Invalidas', error)
-        })
-    } catch (error) {}
+      .then(responseData => {
+        tokenDecodified(responseData.body)
+        setUsuarioValido(true)
+      })
+      .catch(error => {
+        alert('Oops! Credenciales Invalidas', error)
+      })
   }
 
   function tokenDecodified(token) {

@@ -1,4 +1,3 @@
-import React from 'react'
 import logoludebra from '../../assets/LUDEBRA LOGO.png'
 import '../styles/login/FooterLogin.css'
 

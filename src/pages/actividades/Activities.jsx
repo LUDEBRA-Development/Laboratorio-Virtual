@@ -1,4 +1,3 @@
-import React from 'react'
 import './Activities.css'
 
 export function Activities() {

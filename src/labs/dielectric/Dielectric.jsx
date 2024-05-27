@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Dielectric.css'
 
 //! Image Imports
@@ -21,20 +21,15 @@ export function Dielectric() {
   const [baldosaSuperior, setBaldosaSuperior] = useState(130)
   const [baldosaInferior, setBaldosaInferior] = useState(250)
   const [topLineaVerticalSuperior2, setTopLineaVerticalSuperior2] = useState(50)
-  const [toplineaVerticalInferior2, setTopLineaVerticalInferior2] =
-    useState(380)
-  const [leftLineaVerticalSuperior2, setLetLineaVerticalSuperior2] =
-    useState(350)
-  const [leftLineaVerticalInferior2, setLetLineaVerticalInferior2] =
-    useState(350)
-  const [heightLineaVerticalSuperior2, setHeightLineaVerticalSuperior2] =
-    useState(200)
-  const [heightLineaVerticalInferior2, setHeightLineaVerticalInferior2] =
-    useState(200)
+  const [toplineaVerticalInferior2, setTopLineaVerticalInferior2] = useState(380)
+  const [leftLineaVerticalSuperior2, setLetLineaVerticalSuperior2] = useState(350)
+  const [leftLineaVerticalInferior2, setLetLineaVerticalInferior2] = useState(350)
+  const [heightLineaVerticalSuperior2, setHeightLineaVerticalSuperior2] = useState(200)
+  const [heightLineaVerticalInferior2, setHeightLineaVerticalInferior2] = useState(200)
 
   const [flipBatery, setFlipBatery] = useState(bateria)
 
-  const handleSliderChange = (event) => {
+  const handleSliderChange = event => {
     const newValue = event.target.value
     setSliderValue(newValue)
     changePositionBaldosaSuperior(newValue)
@@ -43,13 +38,13 @@ export function Dielectric() {
     changePositionBaldosaLineaVerticalInferior2(newValue)
   }
 
-  const handleSliderBatery = (event) => {
+  const handleSliderBatery = event => {
     const newValue = event.target.value
     setSliderVoltage(newValue)
     changeBaterryPosition(newValue)
   }
 
-  const convertDistance = (valorSlider) => {
+  const convertDistance = valorSlider => {
     const slider = 100
     const milimeters = 5
     let distance = (valorSlider * milimeters) / slider
@@ -58,7 +53,7 @@ export function Dielectric() {
 
   const bateriaEstilo = document.getElementById('bateria')
 
-  const changeBaterryPosition = (value) => {
+  const changeBaterryPosition = value => {
     if (value < 50) {
       setFlipBatery(bateriaNegativo)
       bateriaEstilo.style.width = '150px'
@@ -96,7 +91,7 @@ export function Dielectric() {
     }
   }
 
-  const changePositionLineaVerticalSuperior2 = (value) => {
+  const changePositionLineaVerticalSuperior2 = value => {
     if (value <= 49) {
       setTopLineaVerticalSuperior2(50)
       setLetLineaVerticalSuperior2(350)
@@ -112,7 +107,7 @@ export function Dielectric() {
     }
   }
 
-  const changePositionBaldosaLineaVerticalInferior2 = (value) => {
+  const changePositionBaldosaLineaVerticalInferior2 = value => {
     if (value <= 49) {
       setTopLineaVerticalInferior2(380)
       setLetLineaVerticalInferior2(355)
@@ -129,9 +124,8 @@ export function Dielectric() {
   }
 
   // Estado para manejar el tipo de dieléctrico
-  const [dielectricSelection, setDielectricSelection] =
-    useState(dielectricoPapel)
-  const handleDielectricoChange = (event) => {
+  const [dielectricSelection, setDielectricSelection] = useState(dielectricoPapel)
+  const handleDielectricoChange = event => {
     const selection = event.target.value
     switch (selection) {
       case '1':
@@ -151,40 +145,28 @@ export function Dielectric() {
     }
   }
 
-  // Funciones para los cálculos
-  // function VoltageCalculate(valorRango) {
-  //   const voltageMin = -1.5
-  //   const voltageMax = 1.5
-  //   const voltageRange = voltageMax - voltageMin
-  //   const valorPorPaso = voltageRange / 100
-  //   const voltage = voltageMin + valorRango * valorPorPaso
-  //   return voltage
-  // }
-
-  const subindexNotationFormat = (capacitance) => {
+  const subindexNotationFormat = capacitance => {
     const [coeficiente, exponente] = capacitance
       .toExponential(2)
       .split(/e|E/)
-      .map((str) => parseFloat(str))
-    const exponenteUnicode = exponente
-      .toString()
-      .replace(/(\d)/g, (_, digit) => {
-        const unicodeMap = {
-          0: '⁰',
-          1: '¹',
-          2: '²',
-          3: '³',
-          4: '⁴',
-          5: '⁵',
-          6: '⁶',
-          7: '⁷',
-          8: '⁸',
-          9: '⁹',
-          '-': '⁻',
-          '+': '⁺',
-        }
-        return unicodeMap[digit]
-      })
+      .map(str => parseFloat(str))
+    const exponenteUnicode = exponente.toString().replace(/(\d)/g, (_, digit) => {
+      const unicodeMap = {
+        0: '⁰',
+        1: '¹',
+        2: '²',
+        3: '³',
+        4: '⁴',
+        5: '⁵',
+        6: '⁶',
+        7: '⁷',
+        8: '⁸',
+        9: '⁹',
+        '-': '⁻',
+        '+': '⁺',
+      }
+      return unicodeMap[digit]
+    })
     return `${coeficiente.toFixed(2)}×10${exponenteUnicode}`
   }
 
@@ -208,28 +190,23 @@ export function Dielectric() {
         : 1
 
     const distance = convertDistance(valorSlider1) / 1000 // convertir mm a metros
-    const calculatedCapacitance = CalculateCapacitance(
-      distance,
-      dielectricConstant
-    )
+    const calculatedCapacitance = CalculateCapacitance(distance, dielectricConstant)
     setCapacitance(calculatedCapacitance)
 
     if (capacitanceRef.current) {
-      capacitanceRef.current.value = subindexNotationFormat(
-        calculatedCapacitance
-      )
+      capacitanceRef.current.value = subindexNotationFormat(calculatedCapacitance)
     }
   }, [valorSlider1, dielectricSelection])
 
   // Esto es lo que hizo Deimis para que los resultados aparecieran con lo del mouse
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
-  const handleMouseDown = (event) => {
+  const handleMouseDown = event => {
     const { clientX, clientY } = event
     const offsetX = clientX - position.x
     const offsetY = clientY - position.y
 
-    const handleMouseMove = (event) => {
+    const handleMouseMove = event => {
       const { clientX, clientY } = event
       setPosition({
         x: clientX - offsetX,
@@ -276,11 +253,7 @@ export function Dielectric() {
             id='baldosa-inferior'
             style={{ top: `${baldosaInferior}px` }}
           />
-          <img
-            src={dielectricSelection}
-            alt='#'
-            className='dielectrico-demo wrapper'
-          />{' '}
+          <img src={dielectricSelection} alt='#' className='dielectrico-demo wrapper' />{' '}
           {/* Prueba del draggable en el dielectrico */}
           <img
             src={baldoza}
@@ -321,22 +294,12 @@ export function Dielectric() {
           onChange={handleSliderChange}
         />
 
-        <input
-          id='separacion'
-          type='text'
-          className='separacion'
-          value={Distancia}
-          readOnly
-        />
+        <input id='separacion' type='text' className='separacion' value={Distancia} readOnly />
 
         <label htmlFor='materialDielectricoSelector'>
           <div className='material-dielectrico-simulador'>
             <span>Material Dielectrico: </span>
-            <select
-              name='dielectrico-selector'
-              id='materialDielectricoSelector'
-              onChange={handleDielectricoChange}
-            >
+            <select name='dielectrico-selector' id='materialDielectricoSelector' onChange={handleDielectricoChange}>
               <option value='1'>Papel</option>
               <option value='2'>Vidrio</option>
               <option value='3'>Vacio</option>
@@ -360,12 +323,7 @@ export function Dielectric() {
           <div className='label-container'>
             <div className='capacitancia-total'>
               <span>Capacitancia Total: </span>
-              <input
-                id='capacitanciaTotal'
-                type='text'
-                ref={capacitanceRef}
-                readOnly
-              />
+              <input id='capacitanciaTotal' type='text' ref={capacitanceRef} readOnly />
             </div>
           </div>
         </label>

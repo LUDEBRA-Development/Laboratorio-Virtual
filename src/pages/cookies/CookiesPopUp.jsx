@@ -7,11 +7,7 @@ export function CookiesPopUp() {
     console.log('Se oculto esa monda')
   }
   return (
-    <div
-      className='cookies-body'
-      id='cookiesBody'
-      style={{ display: localStorage.getItem('cookiesconfirmation') }}
-    >
+    <div className='cookies-body' id='cookiesBody' style={{ display: localStorage.getItem('cookiesconfirmation') }}>
       <div className='cookies-container'>
         <h3>Este sitio utiliza cookies</h3>
         <div className='selector-cookies'>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import { defaultUrlPath } from './materias/GetInfoUser'
 
@@ -11,17 +10,17 @@ export function Apifetch() {
     let url = `${defaultUrlPath}/users`
 
     fetch(url)
-      .then((response) => {
+      .then(response => {
         if (!response.ok) {
           throw new Error('Error al realizar la solicitud')
         }
         return response.json()
       })
-      .then((data) => {
+      .then(data => {
         setData(data)
         setLoading(false)
       })
-      .catch((error) => {
+      .catch(error => {
         setError(error)
         setLoading(false)
       })

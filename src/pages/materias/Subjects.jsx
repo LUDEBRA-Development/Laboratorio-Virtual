@@ -1,76 +1,55 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Subjects.css'
 import { useNavigate } from 'react-router-dom'
 import logolabs from '../../assets/logo without background.png'
-import electromagnetismo from '../../assets/electromagnetismo.png'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
-import { receivedEmail, receivedToken, defaultUrlPath } from './GetInfoUser'
+import { defaultUrlPath } from './GetInfoUser'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
 
 export function Subjects() {
   const navigate = useNavigate()
   const auth = useAuth()
-
-  const emailInfo = receivedEmail
-  const tokenInfo = receivedToken
-
   const [dataSuccess, setDataSuccess] = useState([])
   const [taskCourse, setTaskCourse] = useState([])
-
   let usernameData = localStorage.getItem('firstnamevalue')
   let userProfilePic = localStorage.getItem('profilepicturevalue')
 
-  // esto por si acaso
-  // const [dataEmail, setDataEmail] = useState(emailInfo)
-  // const [dataToken, setDataToken] = useState(tokenInfo)
-
   const fetchData = () => {
-    try {
-      fetch(
-        `${defaultUrlPath}/users/info/courses/${localStorage.getItem(
-          'emailvalue'
-        )}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
-          },
+    fetch(`${defaultUrlPath}/users/info/courses/${localStorage.getItem('emailvalue')}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(console.log('La respuesta no fue satisfactoria'))
         }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(console.log('La respuesta no fue satisfactoria'))
-          }
-          return response.json()
-        })
-        .then((responseData) => {
-          setDataSuccess(responseData.body)
-        })
-        .catch((error) => {
-          console.error('Error:', error)
-        })
-    } catch (error) {}
+        return response.json()
+      })
+      .then(responseData => {
+        setDataSuccess(responseData.body)
+      })
+      .catch(error => {
+        console.error('Error:', error)
+      })
   }
 
-  const fetchActividades = async () => {
-    fetch(
-      `${defaultUrlPath}/users/info/task/${localStorage.getItem('emailvalue')}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((responseData) => {
+  const fetchActividades = () => {
+    fetch(`${defaultUrlPath}/users/info/task/${localStorage.getItem('emailvalue')}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
+      },
+    })
+      .then(response => response.json())
+      .then(responseData => {
         setTaskCourse(responseData.body)
       })
-      .then((error) => {})
   }
 
   useEffect(() => {
@@ -96,11 +75,7 @@ export function Subjects() {
               </a>
             </li>
           </ul>
-          <div
-            className='profile-subject'
-            style={{ backgroundImage: `url(${userProfilePic})` }}
-          >
-            {/* <img src={userProfilePic} className='profile-subject' /> */}
+          <div className='profile-subject' style={{ backgroundImage: `url(${userProfilePic})` }}>
           </div>
           <p className='profile-username-subject'>{usernameData}</p>
         </div>
@@ -120,11 +95,7 @@ export function Subjects() {
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
           {taskCourse.map((task, index) => (
-            <NuevaActividad
-              key={index}
-              titulo={task.Task}
-              materia={task.Course}
-            />
+            <NuevaActividad key={index} titulo={task.Task} materia={task.Course} />
           ))}
         </aside>
       </main>

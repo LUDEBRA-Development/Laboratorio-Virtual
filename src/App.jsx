@@ -22,9 +22,7 @@ function App() {
         <Route path='/' element={<IndexPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/fetch' element={<Apifetch />} />
-
         <Route path='/imagen' element={<PruebaImagen />} />
-
         <Route element={<PrivateRoute />}>
           <Route path='/materias' element={<Subjects />} />
           <Route path='/catalogo' element={<Catalogo />} />

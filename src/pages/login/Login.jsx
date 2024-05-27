@@ -1,4 +1,3 @@
-import React from 'react'
 import './Login.css'
 import { FooterLogin } from '../../components/login/FooterLogin'
 import logo from '../../assets/logo without background.png'
@@ -18,7 +17,7 @@ export function Login() {
   const [mensaje, setMensaje] = useState('')
 
   const auth = useAuth()
-  const handleSubmitEvent = (e) => {
+  const handleSubmitEvent = e => {
     e.preventDefault()
     if (input.email !== '' && input.password !== '') {
       try {
@@ -26,16 +25,15 @@ export function Login() {
         auth.loginPost(input)
       } catch (error) {
         setMensaje(error.message)
-        // alert('Oops! Credenciales Invalidas')
       }
       return
     }
     alert('Todos los campos son obligatorios')
   }
 
-  const handleInput = (e) => {
+  const handleInput = e => {
     const { name, value } = e.target
-    setInput((prev) => ({
+    setInput(prev => ({
       ...prev,
       [name]: value,
     }))
@@ -44,12 +42,7 @@ export function Login() {
   return (
     <div className='body-login'>
       <header className='header-login'>
-        <img
-          onClick={() => navigate('/')}
-          src={logo}
-          alt='#'
-          className='login-logo'
-        />
+        <img onClick={() => navigate('/')} src={logo} alt='#' className='login-logo' />
       </header>
       <form className='main-login' onSubmit={handleSubmitEvent}>
         <div className='login-container'>
