@@ -52,8 +52,7 @@ export function Subjects() {
         .catch((error) => {
           console.error('Error:', error)
         })
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 
   const fetchActividades = async () => {
@@ -71,8 +70,7 @@ export function Subjects() {
       .then((responseData) => {
         setTaskCourse(responseData.body)
       })
-      .then((error) => {
-      })
+      .then((error) => {})
   }
 
   useEffect(() => {
@@ -98,7 +96,10 @@ export function Subjects() {
               </a>
             </li>
           </ul>
-          <div className='profile-subject' style={{ backgroundImage: `url(${userProfilePic})` }}>
+          <div
+            className='profile-subject'
+            style={{ backgroundImage: `url(${userProfilePic})` }}
+          >
             {/* <img src={userProfilePic} className='profile-subject' /> */}
           </div>
           <p className='profile-username-subject'>{usernameData}</p>
