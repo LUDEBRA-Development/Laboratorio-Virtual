@@ -5,7 +5,9 @@ module.exports = {
     },
     'extends': [
         'eslint:recommended',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'eslint-config-prettier',
     ],
     'overrides': [
         {
@@ -25,24 +27,8 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': [
-        'react'
+        'react',
     ],
     'rules': {
-        'indent': [
-            'error',
-            4
-        ],
-        'linebreak-style': [
-            'error',
-            'windows'
-        ],
-        'quotes': [
-            'error',
-            'single'
-        ],
-        'semi': [
-            'error',
-            'never'
-        ]
     }
 }

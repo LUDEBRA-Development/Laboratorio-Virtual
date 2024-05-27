@@ -15,7 +15,6 @@ import { Subjects } from './pages/materias/Subjects'
 import { Activities } from './pages/actividades/Activities'
 import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/PruebaImagen'
-
 function App() {
   return (
     <AuthProvider>
