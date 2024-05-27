@@ -7,7 +7,10 @@
 }
 
 .preloader {
-    background-color: white;
+    background-image: url('../../assets/background-false2.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -30,7 +33,7 @@
 .kabobloader > div {
     width: 18px;
     height: 18px;
-    background-color: #0D1117;
+    background-color: #23CAEE;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

@@ -26,9 +26,6 @@ function App() {
 
         <Route path='/imagen' element={<PruebaImagen />} />
 
-
-
-
         <Route element={<PrivateRoute />}>
           <Route path='/materias' element={<Subjects />} />
           <Route path='/catalogo' element={<Catalogo />} />
