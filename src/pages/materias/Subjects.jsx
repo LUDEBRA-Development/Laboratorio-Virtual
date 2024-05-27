@@ -17,6 +17,7 @@ export function Subjects() {
   const tokenInfo = receivedToken
 
   const [dataSuccess, setDataSuccess] = useState([])
+  const [taskCourse, setTaskCourse] = useState([])
 
   let usernameData = localStorage.getItem('firstnamevalue')
   let userProfilePic = localStorage.getItem('profilepicturevalue')
@@ -25,7 +26,7 @@ export function Subjects() {
   // const [dataEmail, setDataEmail] = useState(emailInfo)
   // const [dataToken, setDataToken] = useState(tokenInfo)
 
-  const fetchData = async () => {
+  const fetchData = () => {
     try {
       fetch(
         `${defaultUrlPath}/users/info/courses/${localStorage.getItem(
@@ -46,19 +47,38 @@ export function Subjects() {
           return response.json()
         })
         .then((responseData) => {
-          console.log('Esto es pal mapeo de las materias:', responseData)
           setDataSuccess(responseData.body)
         })
         .catch((error) => {
           console.error('Error:', error)
         })
     } catch (error) {
-      console.log(error)
     }
+  }
+
+  const fetchActividades = async () => {
+    fetch(
+      `${defaultUrlPath}/users/info/task/${localStorage.getItem('emailvalue')}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        setTaskCourse(responseData.body)
+      })
+      .then((error) => {
+        console.error('Error:', error)
+      })
   }
 
   useEffect(() => {
     fetchData()
+    fetchActividades()
   }, [])
 
   return (
@@ -97,10 +117,13 @@ export function Subjects() {
         </section>
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
-          <NuevaActividad
-            titulo='Electromagnetismo'
-            materia='Electromagnetismo'
-          />
+          {taskCourse.map((task, index) => (
+            <NuevaActividad
+              key={index}
+              titulo={task.Task}
+              materia={task.Course}
+            />
+          ))}
         </aside>
       </main>
       <FooterLogin />
