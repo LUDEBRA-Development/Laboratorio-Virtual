@@ -11,5 +11,3 @@ Para solucionar este problema, ejecute en la terminal la siguiente linea de coma
     npm i vite@latest -D
 ```
 
-
-esta es otra prueba del git pull
