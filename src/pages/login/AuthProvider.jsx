@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useEffect } from 'react'
+import { useContext, createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getCoursesMapper, getFirstNameMapper, getProfilePictureMapper, defaultUrlPath } from '../materias/GetInfoUser'
 
@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(localStorage.getItem('site') || '')
   const navigate = useNavigate()
-  const loginPost = (data) => {
+  const loginPost = data => {
     try {
       const validacion = {
         Email: data.email,
@@ -23,60 +23,65 @@ export const AuthProvider = ({ children }) => {
         },
         body: JSON.stringify(validacion),
       })
-        .then((response) => {
+        .then(response => {
           if (!response.ok) {
             throw new Error(console.log('La respuesta no fue satisfactoria'))
           }
           return response.json()
         })
 
-        .then((responseData) => {
+        .then(responseData => {
           tokenDecodified(responseData.body)
           setUsuarioValido(true)
         })
-        .catch((error) => {
+        .catch(error => {
           alert('Oops! Credenciales Invalidas', error)
         })
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 
   function tokenDecodified(token) {
     getCoursesMapper(token)
     const arrayToken = token.split('.')
     const tokenPayload = JSON.parse(atob(arrayToken[1]))
-    
+
     getProfilePictureMapper(tokenPayload.Imagen)
     getFirstNameMapper(tokenPayload.First_Name)
 
-    console.log('Loading User')
+    console.log('Cargando Credenciales de Usuario')
     loginAction(tokenPayload)
     return tokenPayload
   }
 
   function loginAction(payload) {
-    // Aqui se podria hacer un switch
-
-    if (usuarioValido && payload.rol == 1) {
-      setUser(payload.email_User)
-      setToken(payload)
-      localStorage.setItem('site', payload.rol)
-      navigate('/ingreso')
-    } else if (usuarioValido && payload.rol == 2) {
-      setUser(payload.email_User)
-      setToken(payload)
-      localStorage.setItem('site', payload.rol)
-      navigate('/materias')
-    } else if (usuarioValido && payload.rol == 3) {
-      setUser(payload.email_User)
-      setToken(payload)
-      localStorage.setItem('site', payload.rol)
-      navigate('/materias')
-    } else if (usuarioValido && payload.rol == 4) {
-      setUser(payload.email_User)
-      setToken(payload)
-      localStorage.setItem('site', payload.rol)
-      navigate('/catalogo')
+    if (usuarioValido) {
+      console.log('Usuario validado correctamente')
+      switch (payload.rol) {
+        case '1':
+          setUser(payload.email_User)
+          setToken(payload)
+          localStorage.setItem('site', payload.rol)
+          navigate('/ingreso')
+          break
+        case '2':
+          setUser(payload.email_User)
+          setToken(payload)
+          localStorage.setItem('site', payload.rol)
+          navigate('/materias')
+          break
+        case '3':
+          setUser(payload.email_User)
+          setToken(payload)
+          localStorage.setItem('site', payload.rol)
+          navigate('/materias')
+          break
+        case '4':
+          setUser(payload.email_User)
+          setToken(payload)
+          localStorage.setItem('site', payload.rol)
+          navigate('/catalogo')
+          break
+      }
     }
   }
 
@@ -92,11 +97,7 @@ export const AuthProvider = ({ children }) => {
     navigate('/login')
   }
 
-  return (
-    <AuthContext.Provider value={{ token, user, loginPost, logOut }}>
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={{ token, user, loginPost, logOut }}>{children}</AuthContext.Provider>
 }
 // Hook Personalizado
 export const useAuth = () => {
