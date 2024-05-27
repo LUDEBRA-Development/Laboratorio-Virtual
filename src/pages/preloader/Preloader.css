@@ -7,10 +7,7 @@
 }
 
 .preloader {
-    background-image: url('../../assets/background-false2.jpg'); 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #ffffffc3; 
     width: 100%;
     min-height: 100vh;
     display: flex;

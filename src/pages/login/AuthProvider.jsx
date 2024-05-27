@@ -31,16 +31,13 @@ export const AuthProvider = ({ children }) => {
         })
 
         .then((responseData) => {
-          console.log('Success:', responseData)
           tokenDecodified(responseData.body)
           setUsuarioValido(true)
         })
         .catch((error) => {
-          alert('Oops! Credenciales Invalidas')
-          console.error('Error:', error)
+          alert('Oops! Credenciales Invalidas', error)
         })
     } catch (error) {
-      console.log(error)
     }
   }
 
@@ -52,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     getProfilePictureMapper(tokenPayload.Imagen)
     getFirstNameMapper(tokenPayload.First_Name)
 
-    console.log('ajsdfkjaskfjaksjfd: ', tokenPayload)
+    console.log('Loading User')
     loginAction(tokenPayload)
     return tokenPayload
   }

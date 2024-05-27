@@ -72,7 +72,6 @@ export function Subjects() {
         setTaskCourse(responseData.body)
       })
       .then((error) => {
-        console.error('Error:', error)
       })
   }
 
