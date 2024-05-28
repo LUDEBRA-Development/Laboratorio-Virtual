@@ -1,0 +1,26 @@
+.info-activities {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-activities-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .info-activities-course,
+  .info-activities-description,
+  .info-activities-simulator {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  .info-activities-course strong,
+  .info-activities-description strong,
+  .info-activities-simulator strong {
+    color: #333;
+  }
+  

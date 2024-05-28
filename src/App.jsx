@@ -15,6 +15,8 @@ import { Subjects } from './pages/materias/Subjects'
 import { Activities } from './pages/actividades/Activities'
 import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/PruebaImagen'
+import { InfoActivities } from './pages/activitiesoverview/InfoActivities'
+
 function App() {
   return (
     <AuthProvider>
@@ -29,6 +31,8 @@ function App() {
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
           <Route path='/ingreso' element={<Ingreso />} />
+          {/* Brayan: añadi una ruta para acceder a la info de las actividades */}
+          <Route path='infoActividad/:taskId' element={< InfoActivities />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

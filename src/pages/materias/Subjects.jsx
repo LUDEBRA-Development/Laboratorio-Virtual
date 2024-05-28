@@ -7,7 +7,8 @@ import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
 import { defaultUrlPath } from './GetInfoUser'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
-import { GetActivities } from '../activitiesoverview/GetActivities'
+import { Link } from 'react-router-dom'
+// import { GetActivities } from '../activitiesoverview/GetActivities'
 
 export function Subjects() {
   const navigate = useNavigate()
@@ -50,8 +51,9 @@ export function Subjects() {
       .then(response => response.json())
       .then(responseData => {
         setTaskCourse(responseData.body)
-        // esto es un ejemplo
-        GetActivities(responseData.body)
+        console.log('Actividades:', responseData.body)
+        // uso del localStorage
+        localStorage.setItem('actividades', JSON.stringify(responseData.body))
       })
   }
 
@@ -95,10 +97,23 @@ export function Subjects() {
             <NuevaMateria key={index} name={course.Name} />
           ))}
         </section>
-        <aside className='aside-subject'>
+
+        {/* esto lo hizo Brayan, no borre, solo comente */}
+
+        {/* <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
           {taskCourse.map((task, index) => (
             <NuevaActividad key={index} titulo={task.Task} materia={task.Course} />
+          ))}
+        </aside> */}
+
+        {/* y añadi esto, e igual no sirve xd*/}
+        <aside className='aside-subject'>
+          <h2 className='aside-title'>Actividades</h2>
+          {taskCourse.map((task, index) => (
+            <Link to={`/actividad/${task.id}`} key={index}>
+              <NuevaActividad titulo={task.Task} materia={task.Course} />
+            </Link>
           ))}
         </aside>
       </main>
