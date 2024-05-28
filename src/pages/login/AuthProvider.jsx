@@ -1,6 +1,7 @@
 import { useContext, createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCoursesMapper, getFirstNameMapper, getProfilePictureMapper, defaultUrlPath } from '../materias/GetInfoUser'
+import { getCoursesMapper, defaultUrlPath } from '../materias/GetInfoUser'
+import { useInfoUsersStore } from '../../store/infoUsersStore'
 
 const AuthContext = createContext()
 
@@ -9,6 +10,11 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(localStorage.getItem('site') || '')
   const navigate = useNavigate()
+
+  const { getFirstNameValue, getProfilePicValue } = useInfoUsersStore()
+
+  const getTokenValue = useInfoUsersStore(state => state.getTokenValue)
+
   const loginPost = data => {
     const validacion = {
       Email: data.email,
@@ -39,12 +45,22 @@ export const AuthProvider = ({ children }) => {
   }
 
   function tokenDecodified(token) {
+    // Esto tambien es de la funcion global
     getCoursesMapper(token)
+
+    console.log('va por aca')
+    getTokenValue(tokenPayload.First_Name)
+    getFirstNameValue(tokenPayload.First_Name)
+    getProfilePicValue(tokenPayload.Imagen)
+
     const arrayToken = token.split('.')
     const tokenPayload = JSON.parse(atob(arrayToken[1]))
 
-    getProfilePictureMapper(tokenPayload.Imagen)
-    getFirstNameMapper(tokenPayload.First_Name)
+    // Esto es de Zustand
+
+    // Esto es de Funciones Globales
+    // getProfilePictureMapper(tokenPayload.Imagen)
+    // getFirstNameMapper(tokenPayload.First_Name)
 
     console.log('Cargando Credenciales de Usuario')
     loginAction(tokenPayload)
@@ -87,11 +103,11 @@ export const AuthProvider = ({ children }) => {
     setUser(null)
     setToken('')
     localStorage.removeItem('site')
-    localStorage.removeItem('tokenvalue')
-    localStorage.removeItem('emailvalue')
-    localStorage.removeItem('cookiesconfirmation')
-    localStorage.removeItem('profilepicturevalue')
-    localStorage.removeItem('firstnamevalue')
+    // localStorage.removeItem('tokenvalue')
+    // localStorage.removeItem('emailvalue')
+    // localStorage.removeItem('cookiesconfirmation')
+    // localStorage.removeItem('profilepicturevalue')
+    // localStorage.removeItem('firstnamevalue')
     navigate('/login')
   }
 
