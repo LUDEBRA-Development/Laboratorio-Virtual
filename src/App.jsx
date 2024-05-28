@@ -15,7 +15,6 @@ import { Subjects } from './pages/materias/Subjects'
 import { Activities } from './pages/actividades/Activities'
 import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/PruebaImagen'
-import { Eche } from './store/Eche'
 // import { InfoActivities } from './pages/activitiesOverview/InfoActivities'
 
 function App() {
@@ -27,17 +26,12 @@ function App() {
         <Route path='/fetch' element={<Apifetch />} />
         <Route path='/imagen' element={<PruebaImagen />} />
         {/* <Route path='infoActividad/:taskId' element={<InfoActivities />} /> */}
-
-        <Route path='/eche' element={<Eche />} />
-
-
         <Route element={<PrivateRoute />}>
           <Route path='/materias' element={<Subjects />} />
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
           <Route path='/ingreso' element={<Ingreso />} />
-          {/* Brayan: añadi una ruta para acceder a la info de las actividades */}
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

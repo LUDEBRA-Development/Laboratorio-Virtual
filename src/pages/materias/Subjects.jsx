@@ -7,6 +7,7 @@ import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
 import { defaultUrlPath } from './GetInfoUser'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
+import { useInfoUsersStore } from '../../store/infoUsersStore'
 // import { GetActivities } from '../activitiesoverview/GetActivities'
 
 export function Subjects() {
@@ -14,15 +15,19 @@ export function Subjects() {
   const auth = useAuth()
   const [dataSuccess, setDataSuccess] = useState([])
   const [taskCourse, setTaskCourse] = useState([])
-  let usernameData = localStorage.getItem('firstnamevalue')
-  let userProfilePic = localStorage.getItem('profilepicturevalue')
+
+  // Esto es del Zustand
+  const useEmailValue = useInfoUsersStore(state => state.email) // Esto se muestra
+  const profilePicValue = useInfoUsersStore(state => state.profilePic) // Esto se muestra
+  const userNameValue = useInfoUsersStore(state => state.userName) // Esto se muestra
+  const userToken = useInfoUsersStore(state => state.token) // Esto se muestra
 
   const fetchData = () => {
-    fetch(`${defaultUrlPath}/users/info/courses/${localStorage.getItem('emailvalue')}`, {
+    fetch(`${defaultUrlPath}/users/info/courses/${useEmailValue}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
+        Authorization: `Bearer ${userToken}`,
       },
     })
       .then(response => {
@@ -40,19 +45,19 @@ export function Subjects() {
   }
 
   const fetchActividades = () => {
-    fetch(`${defaultUrlPath}/users/info/task/${localStorage.getItem('emailvalue')}`, {
+    fetch(`${defaultUrlPath}/users/info/task/${useEmailValue}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('tokenvalue')}`,
+        Authorization: `Bearer ${userToken}`,
       },
     })
       .then(response => response.json())
       .then(responseData => {
         setTaskCourse(responseData.body)
-        console.log('Actividades:', responseData.body)
+        // console.log('Actividades:', responseData.body)
         // uso del localStorage
-        localStorage.setItem('actividades', JSON.stringify(responseData.body))
+        // localStorage.setItem('actividades', JSON.stringify(responseData.body))
       })
   }
 
@@ -79,9 +84,8 @@ export function Subjects() {
               </a>
             </li>
           </ul>
-          <div className='profile-subject' style={{ backgroundImage: `url(${userProfilePic})` }}>
-          </div>
-          <p className='profile-username-subject'>{usernameData}</p>
+          <div className='profile-subject' style={{ backgroundImage: `url(${profilePicValue})` }}></div>
+          <p className='profile-username-subject'>{userNameValue}</p>
         </div>
         <button className='boton-subject' onClick={() => auth.logOut()}>
           Logout
@@ -97,17 +101,12 @@ export function Subjects() {
           ))}
         </section>
 
-        {/* esto lo hizo Brayan, no borre, solo comente */}
-
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
           {taskCourse.map((task, index) => (
             <NuevaActividad key={index} titulo={task.Task} materia={task.Course} />
           ))}
         </aside>
-
-        {/* y añadi esto, e igual no sirve xd*/}
-        
       </main>
       <FooterLogin />
     </div>
