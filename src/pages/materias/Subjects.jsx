@@ -7,6 +7,7 @@ import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
 import { defaultUrlPath } from './GetInfoUser'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
+import { GetActivities } from '../activitiesoverview/GetActivities'
 
 export function Subjects() {
   const navigate = useNavigate()
@@ -49,6 +50,8 @@ export function Subjects() {
       .then(response => response.json())
       .then(responseData => {
         setTaskCourse(responseData.body)
+        // esto es un ejemplo
+        GetActivities(responseData.body)
       })
   }
 
