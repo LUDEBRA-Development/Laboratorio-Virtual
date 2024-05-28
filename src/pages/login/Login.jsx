@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useAuth } from './AuthProvider'
 import { useNavigate } from 'react-router-dom'
 // import { getEmailMapper } from '../materias/GetInfoUser'
-import { useInfoUsersStore } from '../../store/infoUsersStore'
+import { getEmailMapper } from '../materias/GetInfoUser'
 
 export function Login() {
   const navigate = useNavigate()
@@ -17,7 +17,6 @@ export function Login() {
 
   const [mensaje, setMensaje] = useState('')
 
-  const { getEmailValue } = useInfoUsersStore()
 
   const auth = useAuth()
   const handleSubmitEvent = e => {
@@ -25,9 +24,9 @@ export function Login() {
     if (input.email !== '' && input.password !== '') {
       try {
         // Esto es Zustand
-        getEmailValue(input.email)
+        // getEmailValue(input.email)
         // Esto es de la Funcion Global
-        // getEmailMapper(input.email)
+        getEmailMapper(input.email)
         auth.loginPost(input)
       } catch (error) {
         setMensaje(error.message)

@@ -7,7 +7,6 @@ import { useAuth } from '../login/AuthProvider'
 import { NuevaMateria } from '../../components/materias/NuevaMateria'
 import { defaultUrlPath } from './GetInfoUser'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
-import { Link } from 'react-router-dom'
 // import { GetActivities } from '../activitiesoverview/GetActivities'
 
 export function Subjects() {
@@ -100,22 +99,15 @@ export function Subjects() {
 
         {/* esto lo hizo Brayan, no borre, solo comente */}
 
-        {/* <aside className='aside-subject'>
+        <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
           {taskCourse.map((task, index) => (
             <NuevaActividad key={index} titulo={task.Task} materia={task.Course} />
           ))}
-        </aside> */}
+        </aside>
 
         {/* y añadi esto, e igual no sirve xd*/}
-        <aside className='aside-subject'>
-          <h2 className='aside-title'>Actividades</h2>
-          {taskCourse.map((task, index) => (
-            <Link to={`/actividad/${task.id}`} key={index}>
-              <NuevaActividad titulo={task.Task} materia={task.Course} />
-            </Link>
-          ))}
-        </aside>
+        
       </main>
       <FooterLogin />
     </div>
