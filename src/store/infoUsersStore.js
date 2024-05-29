@@ -13,7 +13,6 @@ export const useInfoUsersStore = create(set => ({
     set(state => ({
       profilePic: value,
     })),
-
   getEmailStore: value =>
     set(state => ({
       email: value,
