@@ -1,6 +1,6 @@
 import { useContext, createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { defaultUrlPath } from '../materias/GetInfoUser'
+import { defaultUrlPath } from '../../models/GlobalVars'
 import { useInfoUsersStore } from '../../store/infoUsersStore'
 const AuthContext = createContext()
 

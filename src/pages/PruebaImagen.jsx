@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { defaultUrlPath } from './materias/GetInfoUser'
+import { defaultUrlPath } from '../models/GlobalVars'
 
 export function PruebaImagen() {
   const [image, setImage] = useState(null)

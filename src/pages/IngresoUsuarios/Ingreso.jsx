@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { defaultUrlPath } from '../../pages/materias/GetInfoUser'
+import { defaultUrlPath } from '../../models/GlobalVars'
 
 export function Ingreso() {
   const [input, setInput] = useState({

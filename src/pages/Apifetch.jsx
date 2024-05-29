@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { defaultUrlPath } from './materias/GetInfoUser'
+import { defaultUrlPath } from '../models/GlobalVars'
 
 export function Apifetch() {
   const [data, setData] = useState(null)
