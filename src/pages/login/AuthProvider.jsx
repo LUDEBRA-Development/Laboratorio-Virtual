@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
           setUser(payload.email_User)
           setToken(payload)
           localStorage.setItem('site', payload.rol)
-          navigate('/ingreso')
+          navigate('/materias')
           break
         case '2':
           setUser(payload.email_User)
