@@ -197,6 +197,8 @@ export function Dielectric() {
         ? 2.5
         : dielectricSelection === dielectricoAgua
         ? 80
+        : dielectricSelection === dielectricoCarton
+        ? 3
         : 1
 
     const distance = convertDistance(valorSlider1) / 1000 // convertir mm a metros
