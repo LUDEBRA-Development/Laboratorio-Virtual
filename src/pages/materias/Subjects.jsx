@@ -23,12 +23,6 @@ export function Subjects() {
   const userNameValue = useInfoUsersStore(state => state.userName) // Esto se muestra
   const userToken = useInfoUsersStore(state => state.token) // Esto se muestra
 
-  // prueba de actividades. Zustand de actividades
-  // const setCourse = useInfoTasksStore(state => state.getCourse)
-  // const setDescriptions = useInfoTasksStore(state => state.getDescriptions)
-  // const setSimulator = useInfoTasksStore(state => state.getSimulator)
-  // const setTask = useInfoTasksStore(state => state.getTask)
-
   const { getStructure } = useInfoTasksStore()
 
   const fetchData = () => {
@@ -73,14 +67,6 @@ export function Subjects() {
     fetchData()
     fetchActividades()
   }, [])
-
-  // const handleActivityClick = (task) => {
-  //   setCourse(task.Course)
-  //   setDescriptions(task.Descriptions)
-  //   setSimulator(task.Simulator)
-  //   setTask(task.Task)
-  //   navigate('/info-activities')
-  // }
 
   return (
     <div className='body-subjects'>

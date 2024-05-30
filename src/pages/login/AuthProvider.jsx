@@ -94,6 +94,8 @@ export const AuthProvider = ({ children }) => {
     setUser(null)
     setToken('')
     localStorage.removeItem('site')
+    // Probar este user Storage
+    sessionStorage.removeItem('user-storage')
     localStorage.removeItem('cookiesconfirmation')
     navigate('/login')
   }

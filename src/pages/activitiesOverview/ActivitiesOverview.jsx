@@ -1,13 +1,9 @@
 import { useParams } from 'react-router-dom'
-import { useInfoTasksStore } from '../../store/infoTasksStore'
 
 export function ActivitiesOverview({ data }) {
   const { index } = useParams()
   const itemIndex = index
   const item = data[itemIndex]
-
-
-
 
   if (!item) {
     return (
