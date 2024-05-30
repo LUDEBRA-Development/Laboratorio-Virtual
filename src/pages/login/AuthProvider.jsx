@@ -50,7 +50,6 @@ export const AuthProvider = ({ children }) => {
     const arrayToken = token.split('.')
     const tokenPayload = JSON.parse(atob(arrayToken[1]))
     loginAction(tokenPayload)
-
     // Esta parte es de Zustand
     getProfilePicStore(tokenPayload.Imagen)
     getUserNameStore(tokenPayload.First_Name)
@@ -64,30 +63,28 @@ export const AuthProvider = ({ children }) => {
   function loginAction(payload) {
     if (usuarioValido) {
       console.log('Usuario validado correctamente')
-      switch (payload.rol) {
+      const { rol, email_User } = payload
+      const commonActions = () => {
+        setUser(email_User)
+        setToken(payload)
+        localStorage.setItem('site', rol)
+      }
+
+      switch (rol) {
         case '1':
-          setUser(payload.email_User)
-          setToken(payload)
-          localStorage.setItem('site', payload.rol)
-          navigate('/materias')
-          break
         case '2':
-          setUser(payload.email_User)
-          setToken(payload)
-          localStorage.setItem('site', payload.rol)
-          navigate('/materias')
-          break
         case '3':
-          setUser(payload.email_User)
-          setToken(payload)
-          localStorage.setItem('site', payload.rol)
+          console.log(rol)
+          commonActions()
           navigate('/materias')
           break
         case '4':
-          setUser(payload.email_User)
-          setToken(payload)
-          localStorage.setItem('site', payload.rol)
+          console.log(rol)
+          commonActions()
           navigate('/catalogo')
+          break
+        default:
+          console.error('Rol no reconocido')
           break
       }
     }
