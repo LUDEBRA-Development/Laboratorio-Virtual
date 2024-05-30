@@ -84,7 +84,6 @@ export function Subjects() {
 
   return (
     <div className='body-subjects'>
-    {console.log(useEmailValue)}
       <header className='header-subject'>
         <img src={logolabs} className='logo-subject' />
         <h2 className='subject-title'>LUDEBRA LABS</h2>

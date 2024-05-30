@@ -7,7 +7,6 @@ export function ActivitiesOverview({ data }) {
   const item = data[itemIndex]
 
 
-  const useStructure = useInfoTasksStore(state => state.structure)
 
 
   if (!item) {
@@ -22,7 +21,10 @@ export function ActivitiesOverview({ data }) {
     <div>
       <h2>Detalles del Item {itemIndex}</h2>
       <pre>{JSON.stringify(item, null, 2)}</pre>
-      <p>{console.log(useStructure)}</p>
+      <p>{item.Course}</p>
+      <p>{item.Task}</p>
+      <p>{item.Descriptions}</p>
+      <p>{item.Simulator}</p>
     </div>
   )
 }

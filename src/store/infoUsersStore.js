@@ -27,7 +27,7 @@ export const useInfoUsersStore = create(
     }),
     {
       name: 'user-storage', // Nombre clave en localStorage
-      getStorage: () => localStorage, // Especifica localStorage
+      getStorage: () => sessionStorage, // Especifica localStorage
     },
   ),
 )
