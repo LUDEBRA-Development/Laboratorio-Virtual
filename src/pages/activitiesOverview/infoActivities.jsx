@@ -1,7 +1,5 @@
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../login/AuthProvider'
 import { useInfoUsersStore } from '../../store/infoUsersStore'
-// import './InfoActivities.css'
+import './InfoActivities.css'
 
 /*
 Esto es lo que contiene la api en las actividades
@@ -13,10 +11,6 @@ Simulatoe
 */
 
 export function InfoActivities() {
-  const navigate = useNavigate()
-  const auth = useAuth()
-
-
   //Esto es del Zustand
   const taskCourseValue = useInfoUsersStore(state => state.Course)
   const taskDescriptionValue = useInfoUsersStore(state => state.Descriptions)

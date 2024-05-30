@@ -8,6 +8,7 @@ import { NuevaMateria } from '../../components/materias/NuevaMateria'
 import { defaultUrlPath } from '../../models/GlobalVars'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
 import { useInfoUsersStore } from '../../store/infoUsersStore'
+import { useInfoTasksStore } from '../../store/infoTasksStore'
 // import { GetActivities } from '../activitiesoverview/GetActivities'
 
 export function Subjects() {
@@ -21,6 +22,12 @@ export function Subjects() {
   const profilePicValue = useInfoUsersStore(state => state.profilePic) // Esto se muestra
   const userNameValue = useInfoUsersStore(state => state.userName) // Esto se muestra
   const userToken = useInfoUsersStore(state => state.token) // Esto se muestra
+
+  // prueba de actividades. Zustand de actividades
+  const setCourse = useInfoTasksStore(state => state.getCourse)
+  const setDescriptions = useInfoTasksStore(state => state.getDescriptions)
+  const setSimulator = useInfoTasksStore(state => state.getSimulator)
+  const setTask = useInfoTasksStore(state => state.getTask)
 
   const fetchData = () => {
     fetch(`${defaultUrlPath}/users/info/courses/${useEmailValue}`, {
@@ -66,6 +73,14 @@ export function Subjects() {
     fetchActividades()
   }, [])
 
+  const handleActivityClick = (task) => {
+    setCourse(task.Course)
+    setDescriptions(task.Descriptions)
+    setSimulator(task.Simulator)
+    setTask(task.Task)
+    navigate('/info-activities')
+  }
+
   return (
     <div className='body-subjects'>
       <header className='header-subject'>
@@ -104,7 +119,7 @@ export function Subjects() {
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
           {taskCourse.map((task, index) => (
-            <NuevaActividad key={index} titulo={task.Task} materia={task.Course} />
+            <NuevaActividad key={index} titulo={task.Task} materia={task.Course} onClick={handleActivityClick}/>
           ))}
         </aside>
       </main>

@@ -15,6 +15,7 @@ import { Subjects } from './pages/materias/Subjects'
 import { Activities } from './pages/actividades/Activities'
 import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/PruebaImagen'
+import { InfoActivities } from './pages/activitiesoverview/InfoActivities'
 // import { InfoActivities } from './pages/activitiesOverview/InfoActivities'
 
 function App() {
@@ -25,13 +26,13 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/fetch' element={<Apifetch />} />
         <Route path='/imagen' element={<PruebaImagen />} />
-        {/* <Route path='infoActividad/:taskId' element={<InfoActivities />} /> */}
         <Route element={<PrivateRoute />}>
           <Route path='/materias' element={<Subjects />} />
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
           <Route path='/ingreso' element={<Ingreso />} />
+          <Route path='/info-activities' element={<InfoActivities />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
