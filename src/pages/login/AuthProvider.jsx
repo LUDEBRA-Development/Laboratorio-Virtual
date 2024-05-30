@@ -46,6 +46,7 @@ export const AuthProvider = ({ children }) => {
   function tokenDecodified(token) {
     const arrayToken = token.split('.')
     const tokenPayload = JSON.parse(atob(arrayToken[1]))
+    loginAction(tokenPayload)
 
     // Esta parte es de Zustand
     getProfilePicStore(tokenPayload.Imagen)
@@ -53,8 +54,6 @@ export const AuthProvider = ({ children }) => {
     getUserToken(token)
 
     console.log('Cargando Credenciales de Usuario')
-    loginAction(tokenPayload)
-    return tokenPayload
   }
 
   function loginAction(payload) {
