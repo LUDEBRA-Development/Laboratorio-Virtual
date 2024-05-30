@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [usuarioValido, setUsuarioValido] = useState(false)
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(localStorage.getItem('site') || '')
+  // const [datosUsuario, setDatosUsuario] = useState(null)
   const navigate = useNavigate()
 
   const loginPost = data => {
@@ -33,6 +34,8 @@ export const AuthProvider = ({ children }) => {
       .then(responseData => {
         tokenDecodified(responseData.body)
         setUsuarioValido(true)
+        // setDatosUsuario(responseData.body)
+        // Probar esto <-- Se llama 2 veces la funcion
       })
       .catch(error => {
         alert('Oops! Credenciales Invalidas', error)
@@ -53,12 +56,14 @@ export const AuthProvider = ({ children }) => {
     getUserNameStore(tokenPayload.First_Name)
     getUserToken(token)
 
-    console.log('Cargando Credenciales de Usuario')
+    if (tokenPayload) {
+      console.log('Cargando Credenciales de Usuario')
+    }
   }
 
   function loginAction(payload) {
-    console.log('Usuario validado correctamente')
     if (usuarioValido) {
+      console.log('Usuario validado correctamente')
       switch (payload.rol) {
         case '1':
           setUser(payload.email_User)
