@@ -15,10 +15,14 @@ import { Subjects } from './pages/materias/Subjects'
 import { Activities } from './pages/actividades/Activities'
 import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/PruebaImagen'
-import { InfoActivities } from './pages/activitiesoverview/InfoActivities'
+import { ActivitiesOverview } from './pages/activitiesOverview/ActivitiesOverview'
+import { useInfoTasksStore } from './store/infoTasksStore'
 // import { InfoActivities } from './pages/activitiesOverview/InfoActivities'
 
 function App() {
+
+  const useStructure = useInfoTasksStore(state => state.structure)
+
   return (
     <AuthProvider>
       <Routes>
@@ -31,8 +35,8 @@ function App() {
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
-          <Route path='/ingreso' element={<Ingreso />} />
-          <Route path='/info-activities' element={<InfoActivities />} />
+          <Route path='/ingreso' element={<Ingreso />} /> 
+          <Route path='/Activitiesoverview/:index' element={<ActivitiesOverview data={useStructure} />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

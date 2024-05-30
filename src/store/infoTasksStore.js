@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export const useInfoTasksStore = create(set => ({
+    structure: [],
     course: '',
     descriptions: '',
     simulator: '',
@@ -21,5 +22,9 @@ export const useInfoTasksStore = create(set => ({
     getTask: value =>
         set(state => ({
             task: value,
+        })),
+    getStructure: value =>
+        set(state => ({
+            structure: value,
         })),
 }))

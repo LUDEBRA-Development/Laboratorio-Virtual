@@ -24,10 +24,12 @@ export function Subjects() {
   const userToken = useInfoUsersStore(state => state.token) // Esto se muestra
 
   // prueba de actividades. Zustand de actividades
-  const setCourse = useInfoTasksStore(state => state.getCourse)
-  const setDescriptions = useInfoTasksStore(state => state.getDescriptions)
-  const setSimulator = useInfoTasksStore(state => state.getSimulator)
-  const setTask = useInfoTasksStore(state => state.getTask)
+  // const setCourse = useInfoTasksStore(state => state.getCourse)
+  // const setDescriptions = useInfoTasksStore(state => state.getDescriptions)
+  // const setSimulator = useInfoTasksStore(state => state.getSimulator)
+  // const setTask = useInfoTasksStore(state => state.getTask)
+
+  const { getStructure } = useInfoTasksStore()
 
   const fetchData = () => {
     fetch(`${defaultUrlPath}/users/info/courses/${useEmailValue}`, {
@@ -62,9 +64,8 @@ export function Subjects() {
       .then(response => response.json())
       .then(responseData => {
         setTaskCourse(responseData.body)
-        // console.log('Actividades:', responseData.body)
-        // uso del localStorage
-        // localStorage.setItem('actividades', JSON.stringify(responseData.body))
+        getStructure(responseData.body)
+        console.log(responseData.body)
       })
   }
 
@@ -73,13 +74,13 @@ export function Subjects() {
     fetchActividades()
   }, [])
 
-  const handleActivityClick = (task) => {
-    setCourse(task.Course)
-    setDescriptions(task.Descriptions)
-    setSimulator(task.Simulator)
-    setTask(task.Task)
-    navigate('/info-activities')
-  }
+  // const handleActivityClick = (task) => {
+  //   setCourse(task.Course)
+  //   setDescriptions(task.Descriptions)
+  //   setSimulator(task.Simulator)
+  //   setTask(task.Task)
+  //   navigate('/info-activities')
+  // }
 
   return (
     <div className='body-subjects'>
@@ -115,11 +116,10 @@ export function Subjects() {
             <NuevaMateria key={index} name={course.Name} />
           ))}
         </section>
-
         <aside className='aside-subject'>
           <h2 className='aside-title'>Actividades</h2>
           {taskCourse.map((task, index) => (
-            <NuevaActividad key={index} titulo={task.Task} materia={task.Course} onClick={handleActivityClick}/>
+            <NuevaActividad key={index} titulo={task.Task} materia={task.Course} index={index} />
           ))}
         </aside>
       </main>
