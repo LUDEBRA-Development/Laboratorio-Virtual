@@ -16,12 +16,16 @@ import { Activities } from './pages/actividades/Activities'
 import { Ingreso } from './pages/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/PruebaImagen'
 import { ActivitiesOverview } from './pages/activitiesOverview/ActivitiesOverview'
+import { MateriasOverview } from './pages/materiasoverview/MateriasOverview'
 import { useInfoTasksStore } from './store/infoTasksStore'
+import { useInfoSubjectsStore } from './store/infoSubjectsStore'
 // import { InfoActivities } from './pages/activitiesOverview/InfoActivities'
 
 function App() {
 
   const useStructure = useInfoTasksStore(state => state.structure)
+
+  const useStructureSubjects = useInfoSubjectsStore(state => state.structure)
 
   return (
     <AuthProvider>
@@ -31,12 +35,13 @@ function App() {
         <Route path='/fetch' element={<Apifetch />} />
         <Route path='/imagen' element={<PruebaImagen />} />
         <Route element={<PrivateRoute />}>
-          <Route path='/materias' element={<Subjects />} />
+          <Route path='/materias/' element={<Subjects  />} />
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/actividades' element={<Activities />} />
           <Route path='/dielectric' element={<Dielectric />} />
           <Route path='/ingreso' element={<Ingreso />} /> 
           <Route path='/Activitiesoverview/:index' element={<ActivitiesOverview data={useStructure} />} />
+          <Route path='/Materiasoverview/:index' element={<MateriasOverview data={useStructureSubjects} />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

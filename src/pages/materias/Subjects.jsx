@@ -9,7 +9,7 @@ import { defaultUrlPath } from '../../models/GlobalVars'
 import { NuevaActividad } from '../../components/materias/NuevaActividad'
 import { useInfoUsersStore } from '../../store/infoUsersStore'
 import { useInfoTasksStore } from '../../store/infoTasksStore'
-// import { GetActivities } from '../activitiesoverview/GetActivities'
+import { useInfoSubjectsStore } from '../../store/infoSubjectsStore'
 
 export function Subjects() {
   const navigate = useNavigate()
@@ -17,30 +17,33 @@ export function Subjects() {
   const [dataSuccess, setDataSuccess] = useState([])
   const [taskCourse, setTaskCourse] = useState([])
 
-  // Esto es del Zustand
-  const useEmailValue = useInfoUsersStore(state => state.email) // Esto se muestra
-  const profilePicValue = useInfoUsersStore(state => state.profilePic) // Esto se muestra
-  const userNameValue = useInfoUsersStore(state => state.userName) // Esto se muestra
-  const userToken = useInfoUsersStore(state => state.token) // Esto se muestra
+  // Estado global de Zustand
+  const useEmailValue = useInfoUsersStore(state => state.email)
+  const profilePicValue = useInfoUsersStore(state => state.profilePic)
+  const userNameValue = useInfoUsersStore(state => state.userName)
+  const userToken = useInfoUsersStore(state => state.token)
 
   const { getStructure } = useInfoTasksStore()
+  const { getStructureSubjects } = useInfoSubjectsStore()
 
   const fetchData = () => {
     fetch(`${defaultUrlPath}/users/info/courses/${useEmailValue}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userToken}`,
-      },
+        Authorization: `Bearer ${userToken}`
+      }
     })
       .then(response => {
         if (!response.ok) {
-          throw new Error(console.log('La respuesta no fue satisfactoria'))
+          throw new Error('La respuesta no fue satisfactoria')
         }
         return response.json()
       })
       .then(responseData => {
         setDataSuccess(responseData.body)
+        getStructureSubjects(responseData.body)
+        console.log(responseData.body)
       })
       .catch(error => {
         console.error('Error:', error)
@@ -52,14 +55,13 @@ export function Subjects() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userToken}`,
-      },
+        Authorization: `Bearer ${userToken}`
+      }
     })
       .then(response => response.json())
       .then(responseData => {
         setTaskCourse(responseData.body)
         getStructure(responseData.body)
-        console.log(responseData.body)
       })
   }
 
@@ -99,7 +101,7 @@ export function Subjects() {
       <main className='main-subject'>
         <section className='section-subject'>
           {dataSuccess.map((course, index) => (
-            <NuevaMateria key={index} name={course.Name} />
+            <NuevaMateria key={index} name={course.Name} index={index} />
           ))}
         </section>
         <aside className='aside-subject'>
