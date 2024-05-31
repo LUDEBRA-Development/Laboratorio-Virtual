@@ -31,15 +31,10 @@ export function Subjects() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userToken}`
-      }
+        Authorization: `Bearer ${userToken}`,
+      },
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('La respuesta no fue satisfactoria')
-        }
-        return response.json()
-      })
+      .then(response => response.json())
       .then(responseData => {
         setDataSuccess(responseData.body)
         getStructureSubjects(responseData.body)
@@ -55,8 +50,8 @@ export function Subjects() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userToken}`
-      }
+        Authorization: `Bearer ${userToken}`,
+      },
     })
       .then(response => response.json())
       .then(responseData => {
