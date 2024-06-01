@@ -1,6 +1,10 @@
 # Laboratorio Web
 
 
+
+<p style="text-align: center; font-size: 60px; font-weight: bold;">Estado del proyecto: 40%</p>
+
+
 ### Solucion de Errores
 1. Antes de abrir el proyecto, asegurese de que todas las dependencias del proyecto esten instaladas en su computadora.
 Para instalar las dependencias de node, ejecute en la terminal la siguiente linea de comandos:

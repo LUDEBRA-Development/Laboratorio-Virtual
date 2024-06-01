@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import './IndexPage.css'
-import { Header } from '../../components/overview/Header'
-import { Footer } from '../../components/overview/Footer'
-import { HomeSlider } from '../../components/overview/HomeSlider'
-import { Selectors } from '../../components/overview/Selectors'
-import { InformationImage } from '../../components/overview/InformationImage'
-import { CookiesPopUp } from '../cookies/CookiesPopUp'
-import { Preloader } from '../../pages/preloader/Preloader'
+import { Header } from '../../../components/overview/Header'
+import { Footer } from '../../../components/overview/Footer'
+import { HomeSlider } from '../../../components/overview/HomeSlider'
+import { Selectors } from '../../../components/overview/Selectors'
+import { InformationImage } from '../../../components/overview/InformationImage'
+import { CookiesPopUp } from '../../General/cookies/CookiesPopUp'
+import { Preloader } from '../../General/preloader/Preloader'
 
 export function IndexPage() {
   const [loading, setLoading] = useState(true)

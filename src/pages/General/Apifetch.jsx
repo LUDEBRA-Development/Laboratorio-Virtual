@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { defaultUrlPath } from '../models/GlobalVars'
+import { defaultUrlPath } from '../../models/GlobalVars'
+import axios from 'axios'
 
 export function Apifetch() {
   const [data, setData] = useState(null)
@@ -7,16 +8,10 @@ export function Apifetch() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    let url = `${defaultUrlPath}/users`
-
-    fetch(url)
+    axios
+      .get(`${defaultUrlPath}/users`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al realizar la solicitud')
-        }
-        return response.json()
-      })
-      .then(data => {
+        const data = response.data
         setData(data)
         setLoading(false)
       })

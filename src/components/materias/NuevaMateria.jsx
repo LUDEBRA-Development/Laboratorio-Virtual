@@ -28,7 +28,7 @@ export function NuevaMateria(props) {
   }, [])
 
   return (
-    <div className='materia-subject' onClick={() => navigate(`/Materiasoverview/${props.index}`)}>
+    <div className='materia-subject' onClick={() => navigate(`/Materiasoverview/${props.id}`)}>
       <div className='materia-subject' >
       <div className='materia-subject'>
         <div className='materia-image'>

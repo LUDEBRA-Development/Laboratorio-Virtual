@@ -4,7 +4,6 @@ export function CookiesPopUp() {
   const handleClick = () => {
     localStorage.setItem('cookiesconfirmation', 'none')
     document.getElementById('cookiesBody').style.display = 'none'
-    console.log('Se oculto esa monda')
   }
   return (
     <div className='cookies-body' id='cookiesBody' style={{ display: localStorage.getItem('cookiesconfirmation') }}>

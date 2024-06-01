@@ -1,5 +1,5 @@
 .body-login {
-    background-image: url('../../assets/login-test-background.jpg');
+    background-image: url('../../../assets/login-test-background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -122,20 +122,6 @@
 .login-inputs a:hover {
     text-decoration: underline;
     color: #343434;
-}
-
-.recuerdame {
-    font-size: 16px;
-    display: flex;
-    color: white;
-    gap: 10px;
-    margin-right: 190px;
-    margin-bottom: 15px;
-}
-
-.recuerdame input {
-    width: 18px;
-    height: 18px;
 }
 
 

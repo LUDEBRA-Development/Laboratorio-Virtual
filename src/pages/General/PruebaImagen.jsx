@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { defaultUrlPath } from '../models/GlobalVars'
+import { defaultUrlPath } from '../../models/GlobalVars'
+import axios from 'axios'
 
 export function PruebaImagen() {
   const [image, setImage] = useState(null)
@@ -21,13 +22,14 @@ export function PruebaImagen() {
     formData.append('image', image)
 
     try {
-      const response = await fetch(`${defaultUrlPath}/api/file`, {
-        method: 'POST',
-        body: formData,
+      const response = await axios.post(`${defaultUrlPath}/api/file`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       })
 
-      if (response.ok) {
-        const responseData = await response.json()
+      if (response.status === 200) {
+        const responseData = response.data
         console.log(responseData)
         alert('Image uploaded successfully!')
         // Realiza cualquier acción adicional después de subir la imagen
