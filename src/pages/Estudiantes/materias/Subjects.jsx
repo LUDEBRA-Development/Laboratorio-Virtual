@@ -20,7 +20,7 @@ export function Subjects() {
   const [taskCourse, setTaskCourse] = useState([])
 
   // Estado global de Zustand
-  const useEmailValue = useInfoUsersStore(state => state.email)
+  // const useEmailValue = useInfoUsersStore(state => state.email)
   const profilePicValue = useInfoUsersStore(state => state.profilePic)
   const userNameValue = useInfoUsersStore(state => state.userName)
   const userToken = useInfoUsersStore(state => state.token)
@@ -30,7 +30,7 @@ export function Subjects() {
 
   const fetchData = () => {
     axios
-      .get(`${defaultUrlPath}/users/info/courses/${useEmailValue}`, {
+      .get(`${defaultUrlPath}/users/info/courses`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`,
@@ -48,7 +48,7 @@ export function Subjects() {
 
   const fetchActividades = () => {
     axios
-      .get(`${defaultUrlPath}/users/info/task/${useEmailValue}`, {
+      .get(`${defaultUrlPath}/tasks`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`,
@@ -80,8 +80,9 @@ export function Subjects() {
 
   return (
     <div>
-      {localStorage.getItem('site') !== '3' ? (
-        navigate('/login')
+      {localStorage.getItem('site') !== '2' ? (
+        navigate('/login'),
+        alert('Oops! You Cannot Access This Page')
       ) : loading ? (
         <Preloader />
       ) : (
@@ -121,7 +122,7 @@ export function Subjects() {
             <aside className='aside-subject'>
               <h2 className='aside-title'>Actividades</h2>
               {taskCourse.map((task, index) => (
-                <NuevaActividad key={index} titulo={task.Task} materia={task.Course} index={index} />
+                <NuevaActividad key={index} titulo={task.Name} materia={task.Course}  expiracion={task.Expiration_date} index={index} />
               ))}
             </aside>
           </main>
