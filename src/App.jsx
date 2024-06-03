@@ -21,6 +21,7 @@ import './App.css'
 import { useInfoTasksStore } from './store/infoTasksStore'
 import { useInfoSubjectsStore } from './store/infoSubjectsStore'
 import { CreateTask } from './pages/Docentes/addActivities/CreateTask'
+import { UpdateUser } from './pages/General/updateUser/UpdateUser'
 
 function App() {
   const useStructure = useInfoTasksStore(state => state.structure)
@@ -42,6 +43,7 @@ function App() {
           <Route path='/Activitiesoverview/:index' element={<ActivitiesOverview data={useStructure} />} />
           <Route path='/Materiasoverview/:id' element={<MateriasOverview datos={structureSubjects} />} />
           <Route path='/newTask' element={<CreateTask />} />
+          <Route path='/updateUser' element={<UpdateUser />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

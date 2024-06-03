@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useInfoNewTask } from '../../../store/infoNewTaskStore'
 import { defaultUrlPath } from '../../../models/GlobalVars'

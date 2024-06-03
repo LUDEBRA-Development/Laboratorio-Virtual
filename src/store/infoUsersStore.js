@@ -8,6 +8,7 @@ export const useInfoUsersStore = create(
       email: '',
       profilePic: '',
       userName: '',
+      lastName: '',
       getUserToken: value =>
         set(() => ({
           token: value,
@@ -23,6 +24,10 @@ export const useInfoUsersStore = create(
       getUserNameStore: value =>
         set(() => ({
           userName: value,
+        })),
+      getUserSecondNameStore: value =>
+        set(() => ({
+          lastName: value,
         })),
     }),
     {

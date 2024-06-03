@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('site') || '')
   const navigate = useNavigate()
 
-  const { getProfilePicStore, getUserNameStore, getUserToken } = useInfoUsersStore()
+  const { getProfilePicStore, getUserNameStore, getUserToken, getUserSecondNameStore } = useInfoUsersStore()
 
   const loginPost = async data => {
     const validacion = {
@@ -41,6 +41,8 @@ export const AuthProvider = ({ children }) => {
     setUsuarioValido(true)
     getProfilePicStore(tokenPayload.Imagen)
     getUserNameStore(tokenPayload.First_Name)
+    getUserSecondNameStore(tokenPayload.Last_Name)
+    console.log(tokenPayload)
     getUserToken(token)
     loginAction(tokenPayload)
 

@@ -103,7 +103,7 @@ export function Subjects() {
                 </li>
               </ul>
               <div className='profile-subject' style={{ backgroundImage: `url(${profilePicValue})` }}></div>
-              <p className='profile-username-subject'>{userNameValue}</p>
+              <p className='profile-username-subject' onClick={() => navigate('/updateUser')}>{userNameValue}</p>
             </div>
             <button className='boton-subject' onClick={() => auth.logOut()}>
               Logout
