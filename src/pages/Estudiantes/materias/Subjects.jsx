@@ -80,9 +80,8 @@ export function Subjects() {
 
   return (
     <div>
-      {localStorage.getItem('site') !== '2' ? (
-        navigate('/login'),
-        alert('Oops! You Cannot Access This Page')
+      {localStorage.getItem('site') !== '3' ? (
+        (navigate('/login'), alert('Oops! You Cannot Access This Page'))
       ) : loading ? (
         <Preloader />
       ) : (
@@ -122,7 +121,13 @@ export function Subjects() {
             <aside className='aside-subject'>
               <h2 className='aside-title'>Actividades</h2>
               {taskCourse.map((task, index) => (
-                <NuevaActividad key={index} titulo={task.Name} materia={task.Course}  expiracion={task.Expiration_date} index={index} />
+                <NuevaActividad
+                  key={index}
+                  titulo={task.Name}
+                  materia={task.Course}
+                  expiracion={task.Expiration_date}
+                  index={index}
+                />
               ))}
             </aside>
           </main>

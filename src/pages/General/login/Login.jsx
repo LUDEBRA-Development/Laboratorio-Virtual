@@ -22,14 +22,12 @@ export function Login() {
     password: '',
   })
 
-  const handleSubmitEvent = e => {
+  const handleSubmitEvent = async e => {
     e.preventDefault()
     if (input.email !== '' && input.password !== '') {
       try {
-        // Prueba Zustand
         getEmailStore(input.email)
-
-        auth.loginPost(input)
+        await auth.loginPost(input)
       } catch (error) {
         setMensaje(error.message)
       }

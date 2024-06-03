@@ -4,8 +4,14 @@ import Electromagnetismo from '../../assets/electromagnetismo.png'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+
+
+
+
+
 export function NuevaMateria(props) {
   const nombreCurso = props.name
+  
   const [imagen, setImagen] = useState('')
 
   const navigate = useNavigate()

@@ -8,9 +8,6 @@ export function MateriasOverview({ datos }) {
   const itemIndex = id
   const item = datos[itemIndex]
   const navigate = useNavigate()
-  const idCourse = parseInt(id) + 1
-
-  const { getIdCourse } = useInfoNewTask()
 
   if (!item) {
     return (
@@ -19,11 +16,13 @@ export function MateriasOverview({ datos }) {
       </div>
     )
   }
-
+  
+  const { getIdCourse } = useInfoNewTask()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getIdCourse(idCourse)
+    getIdCourse(item?.Id_course)
+    console.log(item?.Id_course)
     const timer = setTimeout(() => {
       setLoading(false)
     }, 500)
@@ -36,7 +35,6 @@ export function MateriasOverview({ datos }) {
         <Preloader />
       ) : (
         <div>
-          {console.log(idCourse)}
           <h2>Detalles del Item {itemIndex}</h2>
           <pre>{JSON.stringify(item, null, 2)}</pre>
           <p>{item?.Name}</p>
