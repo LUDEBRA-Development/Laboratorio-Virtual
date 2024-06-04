@@ -22,6 +22,7 @@ import { useInfoTasksStore } from './store/infoTasksStore'
 import { useInfoSubjectsStore } from './store/infoSubjectsStore'
 import { CreateTask } from './pages/Docentes/addActivities/CreateTask'
 import { UpdateUser } from './pages/General/updateUser/UpdateUser'
+import { HealtCheck } from './pages/General/healtcheck/HealtCheck'
 
 function App() {
   const useStructure = useInfoTasksStore(state => state.structure)
@@ -30,20 +31,29 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
+        {/* Rutas Generales de la Aplicación */}
         <Route path='/' element={<IndexPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/fetch' element={<Apifetch />} />
         <Route path='/imagen' element={<PruebaImagen />} />
+        <Route path='/healtcheck' element={<HealtCheck />} />
         <Route element={<PrivateRoute />}>
+          {/* Rutas Estudiantes */}
           <Route path='/materias/' element={<Subjects />} />
-          <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/actividades' element={<Activities />} />
-          <Route path='/dielectric' element={<Dielectric />} />
-          <Route path='/ingreso' element={<Ingreso />} />
           <Route path='/Activitiesoverview/:index' element={<ActivitiesOverview data={useStructure} />} />
           <Route path='/Materiasoverview/:id' element={<MateriasOverview datos={structureSubjects} />} />
+          {/* Rutas Docentes */}
           <Route path='/newTask' element={<CreateTask />} />
+          {/* Rutas Administradores */}
+
+          {/* Rutas UsuariosExternos */}
+
+          {/* Rutas Generales */}
           <Route path='/updateUser' element={<UpdateUser />} />
+          <Route path='/catalogo' element={<Catalogo />} />
+          <Route path='/dielectric' element={<Dielectric />} />
+          <Route path='/ingreso' element={<Ingreso />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
