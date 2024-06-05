@@ -8,7 +8,6 @@ import { IndexPage } from './pages/General/overview/IndexPage'
 import { AuthProvider } from './pages/General/login/AuthProvider'
 import PrivateRoute from './pages/General/login/PrivateRoute'
 import { Catalogo } from './pages/General/catalogo/Catalogo'
-import { Apifetch } from './pages/General/Apifetch'
 import { Subjects } from './pages/Estudiantes/materias/Subjects'
 import { Activities } from './pages/Estudiantes/actividades/Activities'
 import { Ingreso } from './pages/Administradores/IngresoUsuarios/Ingreso'
@@ -34,7 +33,6 @@ function App() {
         {/* Rutas Generales de la Aplicación */}
         <Route path='/' element={<IndexPage />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/fetch' element={<Apifetch />} />
         <Route path='/imagen' element={<PruebaImagen />} />
         <Route path='/healtcheck' element={<HealtCheck />} />
         <Route element={<PrivateRoute />}>

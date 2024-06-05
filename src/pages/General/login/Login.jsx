@@ -69,11 +69,12 @@ export function Login() {
           </header>
           <form className='main-login' onSubmit={handleSubmitEvent}>
             <div className='login-container'>
-              <h2>Inicia sesión</h2>
+              <h2>Iniciar Sesion</h2>
               <div className='login-inputs'>
+                {/* <ion-icon name='mail-outline'></ion-icon> */}
                 <input
                   type='email'
-                  placeholder='Email'
+                  // placeholder='Email'
                   id='user-name'
                   name='email'
                   onChange={handleInput}
@@ -81,9 +82,13 @@ export function Login() {
                   aria-invalid='false'
                   required
                 />
+                <label>Email</label>
+              </div>
+              <div className='login-inputs'>
+                {/* <ion-icon id='icon' onclick='SeePassword()' name='eye-off-outline'></ion-icon> */}
                 <input
                   type='password'
-                  placeholder='Contraseña'
+                  // placeholder='Contraseña'
                   id='password'
                   name='password'
                   aria-describedby='user-password'
@@ -91,11 +96,28 @@ export function Login() {
                   onChange={handleInput}
                   required
                 />
-                <button className='btn-iniciar-sesion' onClick={mensajeSesion}>
-                  {inicioMensaje}
-                </button>
-                <a href='#'>¿Olvidaste la contraseña?</a>
+                <label>Password</label>
               </div>
+
+              <button className='btn-iniciar-sesion' onClick={mensajeSesion}>
+                {inicioMensaje}
+              </button>
+
+              <div className='register'>
+                <p>
+                  Dont have a account? <a href='#'>Register</a>
+                </p>
+              </div>
+
+              {/* <a href='#'>¿Olvidaste la contraseña?</a> */}
+              {/* <button className='btn-iniciar-sesion' id='button-submit' type='submit'>
+                Login
+              </button>
+              <div className='register'>
+                <p>
+                  Dont have a account? <a href='../Register Page/Register.php'>Register</a>
+                </p>
+              </div> */}
             </div>
           </form>
           <FooterLogin />

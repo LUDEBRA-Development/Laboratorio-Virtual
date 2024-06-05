@@ -42,17 +42,11 @@ export const AuthProvider = ({ children }) => {
     getProfilePicStore(tokenPayload.Imagen)
     getUserNameStore(tokenPayload.First_Name)
     getUserSecondNameStore(tokenPayload.Last_Name)
-    console.log(tokenPayload)
     getUserToken(token)
     loginAction(tokenPayload)
-
-    if (tokenPayload) {
-      console.log('Cargando Credenciales de Usuario')
-    }
   }
 
   function loginAction(payload) {
-    console.log('Usuario validado correctamente')
     const { rol, email_User } = payload
     const commonActions = () => {
       setUser(email_User)
