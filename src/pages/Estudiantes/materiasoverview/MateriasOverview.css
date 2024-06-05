@@ -1,0 +1,19 @@
+.private-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.private-container {
+    height: 10%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}

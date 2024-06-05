@@ -16,7 +16,8 @@
 .header-login {
     height: 100px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.9); 
+    background-color: rgba(0, 0, 0, 0.1); 
+    /* backdrop-filter: blur(20px); */
     margin-bottom: 80px;
     display: flex;
     justify-content: center;
