@@ -6,6 +6,7 @@ import { defaultUrlPath } from '../../../models/GlobalVars'
 import { useInfoUsersStore } from '../../../store/infoUsersStore'
 import { PrivateTask } from '../privateTask/PrivateTask'
 import './MateriasOverview.css'
+import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
 
 export function MateriasOverview({ datos }) {
   const { id } = useParams()
@@ -38,7 +39,6 @@ export function MateriasOverview({ datos }) {
       .then(response => response.json())
       .then(responseData => {
         const responseDat = responseData
-        console.log(responseDat.body)
         setPrivateAct(responseDat.body)
       })
   }
@@ -46,7 +46,6 @@ export function MateriasOverview({ datos }) {
   useEffect(() => {
     materiasFetch()
     getIdCourse(item?.Id_course)
-    console.log(item?.Id_course)
     const timer = setTimeout(() => {
       setLoading(false)
     }, 500)
@@ -59,6 +58,11 @@ export function MateriasOverview({ datos }) {
         <Preloader />
       ) : (
         <div>
+          <HeaderSubjects />
+          <div className='body-title-subOver'>
+            <h3>{item.Name}</h3>
+          </div>
+
           <h2>Detalles del Item {itemIndex}</h2>
           <pre>{JSON.stringify(item, null, 2)}</pre>
           <p>{item?.Name}</p>
@@ -67,11 +71,7 @@ export function MateriasOverview({ datos }) {
             <h2>Actividades</h2>
             <div className='private-container'>
               {privateAct.map((task, index) => (
-                <PrivateTask key={index} 
-                  titulo={task.Name}
-                  expiracion={task.Expiration_date}
-                  index={index}
-                />
+                <PrivateTask key={index} titulo={task.Name} expiracion={task.Expiration_date} index={index} />
               ))}
             </div>
           </div>

@@ -20,15 +20,13 @@ export function NuevaActividad(props) {
     // Convertir la cadena a un objeto Date
     const date = new Date(mysqlDatetime)
     // Extraer solo la parte de la fecha
-    const year = date.getFullYear()
     const month = String(date.getMonth() + 1).padStart(2, '0') // Los meses empiezan desde 0
     const day = String(date.getDate()).padStart(2, '0')
     // Extraer la parte de la hora
     const hours = String(date.getHours()).padStart(2, '0')
     const minutes = String(date.getMinutes()).padStart(2, '0')
-    const seconds = String(date.getSeconds()).padStart(2, '0')
-    setFormattedDate(`${day}/${month}/${year}`)
-    setFormattedTime(`${hours}:${minutes}:${seconds}`)
+    setFormattedDate(`${day}/${month}`)
+    setFormattedTime(`${hours}:${minutes}`)
   }
 
   function iconoActividad(nombre) {
@@ -58,7 +56,7 @@ export function NuevaActividad(props) {
       <div className='activity-description'>
         <h4 className='activity-title'>{props.titulo}</h4>
         <p className='activity-text'>{props.materia}</p>
-        <p>Fecha Entrega: {`${formattedDate} - ${formattedTime}`}</p>
+        <p>Fecha Entrega: {`${formattedDate}, ${formattedTime}`}</p>
       </div>
     </div>
   )
