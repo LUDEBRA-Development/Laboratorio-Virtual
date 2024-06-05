@@ -105,19 +105,9 @@ export function Login() {
 
               <div className='register'>
                 <p>
-                  Dont have a account? <a href='#'>Register</a>
+                  No tienes una cuenta? <a href='#'>Registrate</a>
                 </p>
               </div>
-
-              {/* <a href='#'>¿Olvidaste la contraseña?</a> */}
-              {/* <button className='btn-iniciar-sesion' id='button-submit' type='submit'>
-                Login
-              </button>
-              <div className='register'>
-                <p>
-                  Dont have a account? <a href='../Register Page/Register.php'>Register</a>
-                </p>
-              </div> */}
             </div>
           </form>
           <FooterLogin />
