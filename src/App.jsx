@@ -22,6 +22,7 @@ import { useInfoSubjectsStore } from './store/infoSubjectsStore'
 import { CreateTask } from './pages/Docentes/addActivities/CreateTask'
 import { UpdateUser } from './pages/General/updateUser/UpdateUser'
 import { HealtCheck } from './pages/General/healtcheck/HealtCheck'
+import { PruebaFetch } from './pages/General/PruebaFetch'
 
 function App() {
   const useStructure = useInfoTasksStore(state => state.structure)
@@ -44,7 +45,7 @@ function App() {
           {/* Rutas Docentes */}
           <Route path='/newTask' element={<CreateTask />} />
           {/* Rutas Administradores */}
-
+          <Route path='/test' element={<PruebaFetch />} />
           {/* Rutas UsuariosExternos */}
 
           {/* Rutas Generales */}
