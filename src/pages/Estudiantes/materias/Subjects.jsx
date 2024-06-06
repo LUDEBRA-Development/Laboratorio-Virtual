@@ -42,17 +42,19 @@ export function Subjects() {
   }
 
   const fetchActividades = () => {
-    axios
-      .get(`${defaultUrlPath}/tasks`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
-      .then(response => {
-        const responseData = response.data
-        setTaskCourse(responseData.body)
-        getStructure(responseData.body)
+    fetch(`${defaultUrlPath}/users/info/tasks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userToken}`,
+      },
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        const responseDat = responseData
+        setTaskCourse(responseDat.body)
+        console.log(responseDat.body)
+        getStructure(responseDat.body)
       })
       .catch(error => {
         console.error('Error:', error)

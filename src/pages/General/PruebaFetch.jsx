@@ -8,9 +8,9 @@ export function PruebaFetch() {
   useEffect(() => {
     const values = {
       Id_course: '1',
-      Id_task: 3,
+      Id_task: '3',
     }
-    fetch(`${defaultUrlPath}/users/info/task`, {
+    fetch(`${defaultUrlPath}/users/info/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
