@@ -105,7 +105,7 @@ export function Login() {
 
               <div className='register'>
                 <p>
-                  No tienes una cuenta? <a href='#'>Registrate</a>
+                  No tienes una cuenta? <a onClick={() => navigate('/register')}>Registrate</a>
                 </p>
               </div>
             </div>

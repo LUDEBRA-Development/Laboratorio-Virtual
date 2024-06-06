@@ -14,6 +14,7 @@ import { Ingreso } from './pages/Administradores/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/General/PruebaImagen'
 import { ActivitiesOverview } from './pages/Estudiantes/activitiesOverview/ActivitiesOverview'
 import { MateriasOverview } from './pages/Estudiantes/materiasoverview/MateriasOverview'
+import { Register } from './pages/General/register/Register'
 //? CSS Imports
 import './App.css'
 //? Store Imports
@@ -34,6 +35,7 @@ function App() {
         {/* Rutas Generales de la Aplicación */}
         <Route path='/' element={<IndexPage />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route path='/imagen' element={<PruebaImagen />} />
         <Route path='/healtcheck' element={<HealtCheck />} />
         <Route element={<PrivateRoute />}>

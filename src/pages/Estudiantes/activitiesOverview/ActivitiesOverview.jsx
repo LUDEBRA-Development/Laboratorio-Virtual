@@ -84,6 +84,7 @@ export function ActivitiesOverview({ data }) {
     }
   }
 
+
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
