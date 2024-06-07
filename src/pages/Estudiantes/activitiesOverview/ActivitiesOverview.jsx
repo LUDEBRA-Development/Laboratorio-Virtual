@@ -85,6 +85,7 @@ export function ActivitiesOverview({ data }) {
   }
 
 
+
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -96,6 +97,24 @@ export function ActivitiesOverview({ data }) {
     setLoading(false)
     return () => clearInterval(timer)
   }, [])
+
+  const renderFiles = () => {
+    if(!item.files || item.files.length === 0) {
+      return <p>No hay archivos adjuntos</p>
+  }
+
+    return (
+      <ul>
+        {item.files.map((file, index) => (
+          <li key={index}>
+            <a href={file.Url_file} target="_blank" rel="noopener noreferrer">
+              {file.Url_file}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
 
   return (
     <div>
@@ -138,6 +157,10 @@ export function ActivitiesOverview({ data }) {
                 </tr>
               </tbody>
             </table>
+          </div>
+          <h3>Archivos</h3>
+          <div className='files-list'>
+            {renderFiles()}
           </div>
         </div>
       )}
