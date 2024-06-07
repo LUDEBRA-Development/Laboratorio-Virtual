@@ -103,7 +103,7 @@ export function Login() {
                 {inicioMensaje}
               </button>
 
-              <div className='register'>
+              <div className='register-login'>
                 <p>
                   No tienes una cuenta? <a onClick={() => navigate('/register')}>Registrate</a>
                 </p>

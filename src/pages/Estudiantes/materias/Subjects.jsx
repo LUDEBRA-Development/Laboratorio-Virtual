@@ -95,15 +95,19 @@ export function Subjects() {
             </section>
             <aside className='aside-subject'>
               <h2 className='aside-title'>Actividades</h2>
-              {taskCourse.map((task, index) => (
-                <NuevaActividad
-                  key={index}
-                  titulo={task.Name}
-                  materia={task.Course}
-                  expiracion={task.Expiration_date}
-                  index={index}
-                />
-              ))}
+              {taskCourse === null ? (
+                <p className='aside-title'>No hay actividades</p>
+              ) : (
+                taskCourse.map((task, index) => (
+                  <NuevaActividad
+                    key={index}
+                    titulo={task.Name}
+                    materia={task.Course}
+                    expiracion={task.Expiration_date}
+                    index={index}
+                  />
+                ))
+              )}
             </aside>
           </main>
           <FooterLogin />

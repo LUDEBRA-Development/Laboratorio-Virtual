@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './Register.css'
 import { defaultUrlPath } from '../../../models/GlobalVars'
 import { useNavigate } from 'react-router-dom'
+import { TooltipWrapper } from '../../../components/tooltip/TooltipWrapper'
 
 export function Register() {
   const [email, setEmail] = useState('')
@@ -38,20 +39,20 @@ export function Register() {
           setVerificationSent(true)
           response.json()
         }
-      }
-      )
+      })
       .catch(error => {
         console.error('Error al enviar el código de verificación:', error)
       })
-      // .then(response => response.json())
-      // .then(data => {
-      //   console.log('Código de verificación enviado:', data)
-      //   setVerificationSent(true)
-      //   alert('Se ha enviado un código de verificación a tu  correo electrónico. Por favor, ingrésalo para confirmar.')
-      // })
-      // .catch(error => {
-      //   console.error('Error al enviar el código de verificación:', error)
-      // })
+
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log('Código de verificación enviado:', data)
+    //   setVerificationSent(true)
+    //   alert('Se ha enviado un código de verificación a tu  correo electrónico. Por favor, ingrésalo para confirmar.')
+    // })
+    // .catch(error => {
+    //   console.error('Error al enviar el código de verificación:', error)
+    // })
   }
 
   const handleVerification = e => {
@@ -63,7 +64,6 @@ export function Register() {
       },
       body: JSON.stringify(dataUser),
     })
-
       .then(response => {
         if (response.ok) {
           alert('¡Tu cuenta ha sido creada con exito!')
@@ -71,20 +71,19 @@ export function Register() {
           navigate('/login')
           response.json()
         }
-      }
-      )
+      })
       .catch(error => {
         console.error('Error al crear usuario:', error)
       })
 
-      // .then(response => response.json())
-      // .then(data => {
-      //   alert('Usuario creado con exito', data)
-      //   navigate('/login')
-      // })
-      // .catch(error => {
-      //   console.error('Error al crear usuario:', error)
-      // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   alert('Usuario creado con exito', data)
+    //   navigate('/login')
+    // })
+    // .catch(error => {
+    //   console.error('Error al crear usuario:', error)
+    // })
   }
 
   if (registered) {
@@ -93,43 +92,45 @@ export function Register() {
 
   if (verificationSent) {
     return (
-      <form onSubmit={handleVerification}>
-        <label>
-          Código de Validación:
-          <input type='text' value={verificationCode} onChange={e => setVerificationCode(e.target.value)} required />
-        </label>
-        <button type='submit'>Verificar</button>
-      </form>
+      <div className='register-container'>
+        <div className='register-box'>
+          <form onSubmit={handleVerification}>
+            <label>
+              Código de Validación:
+              <input
+                type='text'
+                value={verificationCode}
+                onChange={e => setVerificationCode(e.target.value)}
+                required
+              />
+            </label>
+            <button type='submit'>Verificar</button>
+          </form>
+        </div>
+      </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Correo Electrónico:
-        <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />
-      </label>
-      <label>
-        Primer Nombre:
-        <input type='text' value={first_Name} onChange={e => setFirstName(e.target.value)} required />
-      </label>
-      <label>
-        Primer Apellido:
-        <input type='text' value={last_Name} onChange={e => setLastName(e.target.value)} required />
-      </label>
-      <label>
-        contraseña:
-        <input type='password' value={password} onChange={e => setPassword(e.target.value)} required />
-      </label>
-      <label>
-        Codigo de estudiante:
-        <input type="checkbox" /> 
-      </label>
-      <label>
-        Código:
-        <input type='text' value={code} onChange={e => setCode(e.target.value)} required />
-      </label>
-      <button type='submit'>Continuar</button>
-    </form>
+    <div className='register-container'>
+      <div className='register-box'>
+        <h3>Registro</h3>
+        <form onSubmit={handleSubmit}>
+          <label>Correo Electronico</label>
+          <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />
+          <label>Primer Nombre:</label>
+          <input type='text' value={first_Name} onChange={e => setFirstName(e.target.value)} required />
+          <label>Primer Apellido:</label>
+          <input type='text' value={last_Name} onChange={e => setLastName(e.target.value)} required />
+          <label>Contraseña:</label>
+          <input type='password' value={password} onChange={e => setPassword(e.target.value)} required />
+          <TooltipWrapper text={'Si Cuentas con un Codigo de Materia, ingresalo'}>
+            <label>*Código de Materia:</label>
+          </TooltipWrapper>
+          <input type='text' value={code} onChange={e => setCode(e.target.value)} />
+          <button type='submit'>Continuar</button>
+        </form>
+      </div>
+    </div>
   )
 }

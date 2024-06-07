@@ -17,10 +17,10 @@
     height: 100px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1); 
-    /* backdrop-filter: blur(20px); */
     margin-bottom: 80px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center;  */
+    justify-content: left; 
     align-items: center;
 } 
 
@@ -28,7 +28,7 @@
     position: absolute;
     width: 150px;
     height: 150px;
-    margin-right: 1200px;
+    /* margin-right: 1200px; */
 }
 
 .login-logo:hover {
@@ -95,6 +95,7 @@ input:valid ~ label {
     border: none;
     border-radius: 5px;
     background-color: #23CAEE;
+    transition: all ease-in-out .3s;
     color: white;
     font-size: 16px;
     margin-bottom: -3px;
@@ -105,21 +106,22 @@ input:valid ~ label {
     cursor: pointer;
 }
 
-.register {
+.register-login {
     font-size: .9em;
     color: white;
     text-align: center;
     margin: 25px 0 10px;
 }
 
-.register p a {
+.register-login p a {
     text-decoration: none;
     color: white;
     font-weight: 600;
 }
 
-.register p a:hover {
+.register-login p a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 
