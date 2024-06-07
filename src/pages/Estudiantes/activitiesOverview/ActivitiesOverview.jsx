@@ -84,8 +84,6 @@ export function ActivitiesOverview({ data }) {
     }
   }
 
-
-
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -99,15 +97,15 @@ export function ActivitiesOverview({ data }) {
   }, [])
 
   const renderFiles = () => {
-    if(!item.files || item.files.length === 0) {
+    if (!item.files || item.files.length === 0) {
       return <p>No hay archivos adjuntos</p>
-  }
+    }
 
     return (
       <ul>
         {item.files.map((file, index) => (
           <li key={index}>
-            <a href={file.Url_file} target="_blank" rel="noopener noreferrer">
+            <a href={file.Url_file} target='_blank' rel='noopener noreferrer'>
               {file.Url_file}
             </a>
           </li>
@@ -130,6 +128,10 @@ export function ActivitiesOverview({ data }) {
           <h2>{item?.Name}</h2>
           <p>Apertura: {`${formattedDate} - ${formattedTime}`}</p>
           <p>Vencimiento: {`${formattedDateExp} - ${formattedTimeExp}`}</p>
+          <hr />
+          <p>{item?.Description}</p>
+          <h4>Archivos</h4>
+          <div className='files-list'>{renderFiles()}</div>
 
           <h3>Estado de la Entrega</h3>
           <div className='task-table-container'>
@@ -157,10 +159,6 @@ export function ActivitiesOverview({ data }) {
                 </tr>
               </tbody>
             </table>
-          </div>
-          <h3>Archivos</h3>
-          <div className='files-list'>
-            {renderFiles()}
           </div>
         </div>
       )}
