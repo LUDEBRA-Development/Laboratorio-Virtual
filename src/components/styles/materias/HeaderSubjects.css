@@ -4,16 +4,16 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
-    justify-content: space-around;
+    justify-content: space-between;
+    /* justify-content: space-around; */
     align-items: center;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     border-top: solid 5px #23CAEE;
     background-color: white;
 }
 
 /* Añadi todo esto */
-.header-subject h2 {
+/* .header-subject h2 {
     height: 80px;
     position: relative;
     display: flex;
@@ -21,7 +21,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-}
+} */
 
 .logo-subject {
     width: 80px;
