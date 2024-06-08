@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Preloader } from '../../General/preloader/Preloader'
 import './ActivitiesOverview.css'
 import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
 
 export function ActivitiesOverview({ data }) {
+  const navigate = useNavigate()
   const { index } = useParams()
   const itemIndex = index
   const item = data[itemIndex]
@@ -159,6 +160,14 @@ export function ActivitiesOverview({ data }) {
                 </tr>
               </tbody>
             </table>
+
+            {localStorage.getItem('site') === '2' ? (
+              <>
+                <button onClick={() => navigate('/updateTask')}>Actualizar Tarea</button>
+              </>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       )}

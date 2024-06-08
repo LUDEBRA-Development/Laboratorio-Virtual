@@ -60,6 +60,10 @@ export const AuthProvider = ({ children }) => {
         navigate('/catalogo')
         break
       case '2':
+        commonActions()
+        console.log(rol)
+        navigate('/docentes')
+        break
       case '3':
         commonActions()
         navigate('/materias')

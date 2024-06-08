@@ -27,13 +27,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: space-evenly; */
     justify-content: end;
     gap: 20px;
     margin-left: 600px;
-    /* width: 460px; */
     width: 40%;
-    border: solid 1px black;
     height: 100%;
 }
 

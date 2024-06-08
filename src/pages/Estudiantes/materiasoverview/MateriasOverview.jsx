@@ -63,10 +63,18 @@ export function MateriasOverview({ datos }) {
             <h3>{item.Name}</h3>
           </div>
 
-          <h2>Detalles del Item {itemIndex}</h2>
+          {/* <h2>Detalles del Item {itemIndex}</h2>
           <pre>{JSON.stringify(item, null, 2)}</pre>
-          <p>{item?.Name}</p>
-          <button onClick={() => navigate('/newTask')}>Crear Nueva Tarea</button>
+          <p>{item?.Name}</p> */}
+
+          {localStorage.getItem('site') === '2' ? (
+            <>
+              <button onClick={() => navigate('/newTask')}>Crear Nueva Tarea</button>
+            </>
+          ) : (
+            ''
+          )}
+
           <div className='private-center'>
             <h2>Actividades</h2>
             <div className='private-container'>

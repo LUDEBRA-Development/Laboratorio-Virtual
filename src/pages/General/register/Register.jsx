@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Register.css'
 import { defaultUrlPath } from '../../../models/GlobalVars'
 import { useNavigate } from 'react-router-dom'
 import { TooltipWrapper } from '../../../components/tooltip/TooltipWrapper'
+import { Preloader } from '../preloader/Preloader'
 
 export function Register() {
   const [email, setEmail] = useState('')
@@ -111,26 +112,41 @@ export function Register() {
     )
   }
 
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <div className='register-container'>
-      <div className='register-box'>
-        <h3>Registro</h3>
-        <form onSubmit={handleSubmit}>
-          <label>Correo Electronico</label>
-          <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />
-          <label>Primer Nombre:</label>
-          <input type='text' value={first_Name} onChange={e => setFirstName(e.target.value)} required />
-          <label>Primer Apellido:</label>
-          <input type='text' value={last_Name} onChange={e => setLastName(e.target.value)} required />
-          <label>Contraseña:</label>
-          <input type='password' value={password} onChange={e => setPassword(e.target.value)} required />
-          <TooltipWrapper text={'Si Cuentas con un Codigo de Materia, ingresalo'}>
-            <label>*Código de Materia:</label>
-          </TooltipWrapper>
-          <input type='text' value={code} onChange={e => setCode(e.target.value)} />
-          <button type='submit'>Continuar</button>
-        </form>
-      </div>
+    <div>
+      {loading ? (
+        <Preloader />
+      ) : (
+        <div className='register-container'>
+          <div className='register-box'>
+            <h3>Registro</h3>
+            <form onSubmit={handleSubmit}>
+              <label>Correo Electronico</label>
+              <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />
+              <label>Primer Nombre:</label>
+              <input type='text' value={first_Name} onChange={e => setFirstName(e.target.value)} required />
+              <label>Primer Apellido:</label>
+              <input type='text' value={last_Name} onChange={e => setLastName(e.target.value)} required />
+              <label>Contraseña:</label>
+              <input type='password' value={password} onChange={e => setPassword(e.target.value)} required />
+              <TooltipWrapper text={'Si Cuentas con un Codigo de Materia, ingresalo'}>
+                <label>*Código de Materia:</label>
+              </TooltipWrapper>
+              <input type='text' value={code} onChange={e => setCode(e.target.value)} />
+              <button type='submit'>Continuar</button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

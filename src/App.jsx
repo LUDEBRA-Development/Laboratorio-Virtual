@@ -24,6 +24,8 @@ import { CreateTask } from './pages/Docentes/addActivities/CreateTask'
 import { UpdateUser } from './pages/General/updateUser/UpdateUser'
 import { HealtCheck } from './pages/General/healtcheck/HealtCheck'
 import { PruebaFetch } from './pages/General/PruebaFetch'
+import { DocSubOverview } from './pages/Docentes/materiasDocentes/DocSubOverview'
+import { UpdateActivities } from './pages/Docentes/updateActivities/UpdateActivities'
 
 function App() {
   const useStructure = useInfoTasksStore(state => state.structure)
@@ -45,7 +47,9 @@ function App() {
           <Route path='/Activitiesoverview/:index' element={<ActivitiesOverview data={useStructure} />} />
           <Route path='/Materiasoverview/:id' element={<MateriasOverview datos={structureSubjects} />} />
           {/* Rutas Docentes */}
+          <Route path='/docentes' element={<DocSubOverview />} />
           <Route path='/newTask' element={<CreateTask />} />
+          <Route path='/updateTask' element={<UpdateActivities />} />
           {/* Rutas Administradores */}
           <Route path='/test' element={<PruebaFetch />} />
           {/* Rutas UsuariosExternos */}
