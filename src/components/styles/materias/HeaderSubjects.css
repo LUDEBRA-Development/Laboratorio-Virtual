@@ -27,7 +27,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    justify-content: end;
     gap: 20px;
     margin-left: 600px;
     /* width: 460px; */
