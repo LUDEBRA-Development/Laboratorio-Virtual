@@ -2,7 +2,7 @@
 
 
 
-<p style="text-align: center; font-size: 60px; font-weight: bold;">Estado del proyecto: 40%</p>
+<p style="text-align: center; font-size: 60px; font-weight: bold;">Estado del proyecto: 80%</p>
 
 
 ### Solucion de Errores
