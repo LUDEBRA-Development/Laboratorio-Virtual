@@ -3,38 +3,32 @@ import '../styles/materias/NuevaActividad.css'
 import Ondas from '../../assets/ondas.png'
 import Electromagnetismo from '../../assets/electromagnetismo.png'
 import { useNavigate } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
 
 export function NuevaActividad(props) {
-  const iconoCurso = props.materia
+  const { materia, expiracion, titulo, index } = props
   const [imagen, setImagen] = useState('')
-  const navigate = useNavigate()
-
-  const mysqlDatetime = props.expiracion
-
   const [formattedDate, setFormattedDate] = useState('')
   const [formattedTime, setFormattedTime] = useState('')
+  const navigate = useNavigate()
 
-
-  function formatearFecha() {
-    // Convertir la cadena a un objeto Date
-    const date = new Date(mysqlDatetime)
-    // Extraer solo la parte de la fecha
-    const month = String(date.getMonth() + 1).padStart(2, '0') // Los meses empiezan desde 0
+  // Formatear la fecha y la hora
+  const formatearFecha = () => {
+    const date = new Date(expiracion)
+    const month = String(date.getMonth() + 1).padStart(2, '0')
     const day = String(date.getDate()).padStart(2, '0')
-    // Extraer la parte de la hora
     const hours = String(date.getHours()).padStart(2, '0')
     const minutes = String(date.getMinutes()).padStart(2, '0')
     setFormattedDate(`${day}/${month}`)
     setFormattedTime(`${hours}:${minutes}`)
   }
 
-  function iconoActividad(nombre) {
+  // Asignar la imagen según la materia
+  const iconoActividad = nombre => {
     switch (nombre) {
       case 'Electromagnetismo':
         setImagen(Electromagnetismo)
         break
-      case 'Ondas': // matematicas
+      case 'Ondas':
         setImagen(Ondas)
         break
       case 'Matematicas':
@@ -46,16 +40,16 @@ export function NuevaActividad(props) {
   }
 
   useEffect(() => {
-    iconoActividad(iconoCurso)
+    iconoActividad(materia)
     formatearFecha()
-  }, [])
+  }, [materia, expiracion])
 
   return (
-    <div className='aside-activity' onClick={() => navigate(`/Activitiesoverview/${props.index}`)}>
-      <img src={imagen} className='activity-image' />
+    <div className='aside-activity' onClick={() => navigate(`/Activitiesoverview/${index}`)}>
+      <img src={imagen} className='activity-image' alt={`${materia} icon`} />
       <div className='activity-description'>
-        <h4 className='activity-title'>{props.titulo}</h4>
-        <p className='activity-text'>{props.materia}</p>
+        <h4 className='activity-title'>{titulo}</h4>
+        <p className='activity-text'>{materia}</p>
         <p>Fecha Entrega: {`${formattedDate}, ${formattedTime}`}</p>
       </div>
     </div>

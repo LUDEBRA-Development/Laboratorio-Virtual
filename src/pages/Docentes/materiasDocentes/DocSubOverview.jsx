@@ -53,7 +53,6 @@ export function DocSubOverview() {
       .then(responseData => {
         const responseDat = responseData
         setTaskCourse(responseDat.body)
-        console.log(responseDat.body)
         getStructure(responseDat.body)
       })
       .catch(error => {

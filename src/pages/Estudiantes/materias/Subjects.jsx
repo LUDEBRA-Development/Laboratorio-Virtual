@@ -1,72 +1,69 @@
 import { useEffect, useState } from 'react'
 import './Subjects.css'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
 import { FooterLogin } from '../../../components/login/FooterLogin'
 import { NuevaMateria } from '../../../components/materias/NuevaMateria'
-import { defaultUrlPath } from '../../../models/GlobalVars'
 import { NuevaActividad } from '../../../components/materias/NuevaActividad'
+import { Preloader } from '../../General/preloader/Preloader'
+import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+
+import { defaultUrlPath } from '../../../models/GlobalVars'
 import { useInfoUsersStore } from '../../../store/infoUsersStore'
 import { useInfoTasksStore } from '../../../store/infoTasksStore'
 import { useInfoSubjectsStore } from '../../../store/infoSubjectsStore'
-import { Preloader } from '../../General/preloader/Preloader'
-import axios from 'axios'
-import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
 
 export function Subjects() {
   const navigate = useNavigate()
   const [dataSuccess, setDataSuccess] = useState([])
   const [taskCourse, setTaskCourse] = useState([])
+  const [loading, setLoading] = useState(true)
 
   // Estado global de Zustand
   const userToken = useInfoUsersStore(state => state.token)
-
   const { getStructure } = useInfoTasksStore()
   const { getStructureSubjects } = useInfoSubjectsStore()
 
-  const fetchData = () => {
-    axios
-      .get(`${defaultUrlPath}/users/info/courses`, {
+  // Fetch data for courses
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${defaultUrlPath}/users/info/courses`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`,
         },
       })
-      .then(response => {
-        const responseData = response.data
-        setDataSuccess(responseData.body)
-        getStructureSubjects(responseData.body)
-      })
-      .catch(error => {
-        console.error('Error:', error)
-      })
+      const responseData = response.data
+      setDataSuccess(responseData.body)
+      getStructureSubjects(responseData.body)
+    } catch (error) {
+      console.error('Error:', error)
+    }
   }
 
-  const fetchActividades = () => {
-    fetch(`${defaultUrlPath}/users/info/tasks`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userToken}`,
-      },
-    })
-      .then(response => response.json())
-      .then(responseData => {
-        const responseDat = responseData
-        setTaskCourse(responseDat.body)
-        console.log(responseDat.body)
-        getStructure(responseDat.body)
+  // Fetch data for tasks
+  const fetchActividades = async () => {
+    try {
+      const response = await fetch(`${defaultUrlPath}/users/info/tasks`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`,
+        },
       })
-      .catch(error => {
-        console.error('Error:', error)
-      })
+      const responseData = await response.json()
+      setTaskCourse(responseData.body)
+      getStructure(responseData.body)
+    } catch (error) {
+      console.error('Error:', error)
+    }
   }
 
   useEffect(() => {
     fetchData()
     fetchActividades()
   }, [])
-
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,11 +72,15 @@ export function Subjects() {
     return () => clearTimeout(timer)
   }, [])
 
+  if (localStorage.getItem('site') !== '3') {
+    navigate('/login')
+    alert('Oops! You Cannot Access This Page')
+    return null
+  }
+
   return (
     <div>
-      {localStorage.getItem('site') !== '3' ? (
-        (navigate('/login'), alert('Oops! You Cannot Access This Page'))
-      ) : loading ? (
+      {loading ? (
         <Preloader />
       ) : (
         <div className='body-subjects'>
@@ -95,7 +96,7 @@ export function Subjects() {
             </section>
             <aside className='aside-subject'>
               <h2 className='aside-title'>Actividades</h2>
-              {taskCourse === null ? (
+              {taskCourse.length === 0 ? (
                 <p className='aside-title'>No hay actividades</p>
               ) : (
                 taskCourse.map((task, index) => (

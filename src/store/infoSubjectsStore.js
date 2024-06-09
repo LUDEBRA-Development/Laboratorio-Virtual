@@ -1,9 +1,15 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-export const useInfoSubjectsStore = create(set => ({
-  structureSubjects: [],
-  getStructureSubjects: value =>
-    set(state => ({
-      structureSubjects: value,
-    })),
-}))
+export const useInfoSubjectsStore = create(
+  persist(
+    set => ({
+      structureSubjects: [],
+      getStructureSubjects: value =>
+        set(state => ({
+          structureSubjects: value,
+        })),
+    }),
+    { name: 'infoSubjects', getStorage: () => localStorage },
+  ),
+)

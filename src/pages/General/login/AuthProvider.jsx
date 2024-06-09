@@ -83,6 +83,8 @@ export const AuthProvider = ({ children }) => {
     setUser(null)
     setToken('')
     localStorage.removeItem('site')
+    localStorage.removeItem('infoSubjects')
+    localStorage.removeItem('infoTasks')
     sessionStorage.removeItem('user-storage')
     localStorage.removeItem('cookiesconfirmation')
     navigate('/login')

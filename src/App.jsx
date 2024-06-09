@@ -9,7 +9,6 @@ import { AuthProvider } from './pages/General/login/AuthProvider'
 import PrivateRoute from './pages/General/login/PrivateRoute'
 import { Catalogo } from './pages/General/catalogo/Catalogo'
 import { Subjects } from './pages/Estudiantes/materias/Subjects'
-import { Activities } from './pages/Estudiantes/actividades/Activities'
 import { Ingreso } from './pages/Administradores/IngresoUsuarios/Ingreso'
 import { PruebaImagen } from './pages/General/PruebaImagen'
 import { ActivitiesOverview } from './pages/Estudiantes/activitiesOverview/ActivitiesOverview'
@@ -42,8 +41,7 @@ function App() {
         <Route path='/healtcheck' element={<HealtCheck />} />
         <Route element={<PrivateRoute />}>
           {/* Rutas Estudiantes */}
-          <Route path='/materias/' element={<Subjects />} />
-          <Route path='/actividades' element={<Activities />} />
+          <Route path='/materias' element={<Subjects />} />
           <Route path='/Activitiesoverview/:index' element={<ActivitiesOverview data={useStructure} />} />
           <Route path='/Materiasoverview/:id' element={<MateriasOverview datos={structureSubjects} />} />
           {/* Rutas Docentes */}

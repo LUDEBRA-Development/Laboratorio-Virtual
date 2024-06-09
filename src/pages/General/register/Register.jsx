@@ -45,15 +45,6 @@ export function Register() {
         console.error('Error al enviar el código de verificación:', error)
       })
 
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log('Código de verificación enviado:', data)
-    //   setVerificationSent(true)
-    //   alert('Se ha enviado un código de verificación a tu  correo electrónico. Por favor, ingrésalo para confirmar.')
-    // })
-    // .catch(error => {
-    //   console.error('Error al enviar el código de verificación:', error)
-    // })
   }
 
   const handleVerification = e => {
@@ -77,14 +68,6 @@ export function Register() {
         console.error('Error al crear usuario:', error)
       })
 
-    // .then(response => response.json())
-    // .then(data => {
-    //   alert('Usuario creado con exito', data)
-    //   navigate('/login')
-    // })
-    // .catch(error => {
-    //   console.error('Error al crear usuario:', error)
-    // })
   }
 
   if (registered) {

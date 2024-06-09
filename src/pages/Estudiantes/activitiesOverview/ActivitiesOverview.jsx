@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Preloader } from '../../General/preloader/Preloader'
 import './ActivitiesOverview.css'
 import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+import { useUpdateTask } from '../../../store/infoUpdateTaskStore'
 
 export function ActivitiesOverview({ data }) {
   const navigate = useNavigate()
@@ -10,49 +11,63 @@ export function ActivitiesOverview({ data }) {
   const itemIndex = index
   const item = data[itemIndex]
 
-  if (!item) {
-    return (
-      <div>
-        <h2>Item no encontrado</h2>
-      </div>
-    )
-  }
-
-  const mysqlDatetime = item.Creation_date
-  const mysqlDatetimeExp = item.Expiration_date
-
   const [formattedDate, setFormattedDate] = useState('')
   const [formattedTime, setFormattedTime] = useState('')
   const [formattedDateExp, setFormattedDateExp] = useState('')
   const [formattedTimeExp, setFormattedTimeExp] = useState('')
   const [timeRemaining, setTimeRemaining] = useState('')
+  const [statusTask, setStatusTask] = useState('')
+  const [nombreMat, setNombreMat] = useState('')
+  const [loading, setLoading] = useState(true)
 
-  function formatearFecha() {
-    const date = new Date(mysqlDatetime)
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
-    const hours = String(date.getHours()).padStart(2, '0')
-    const minutes = String(date.getMinutes()).padStart(2, '0')
-    setFormattedDate(`${day}/${month}/${year}`)
-    setFormattedTime(`${hours}:${minutes}`)
+  const { getIdTask } = useUpdateTask()
+
+  useEffect(() => {
+    if (!item) {
+      return
+    }
+
+    const mysqlDatetime = item.Creation_date
+    const mysqlDatetimeExp = item.Expiration_date
+
+    getIdTask(item.Id_task)
+    formatDates(mysqlDatetime, mysqlDatetimeExp)
+    updateNombreMateria(item.Id_course)
+    updateEstadoTarea(item.statu)
+    calcularTiempoRestante(mysqlDatetimeExp)
+
+    const timer = setInterval(() => calcularTiempoRestante(mysqlDatetimeExp), 60000)
+
+    setLoading(false)
+    return () => clearInterval(timer)
+  }, [item])
+
+  const formatDates = (creationDate, expirationDate) => {
+    setFormattedDate(formatDate(creationDate))
+    setFormattedTime(formatTime(creationDate))
+    setFormattedDateExp(formatDate(expirationDate))
+    setFormattedTimeExp(formatTime(expirationDate))
   }
 
-  function formatearFechaExp() {
-    const date = new Date(mysqlDatetimeExp)
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
+  const formatDate = datetime => {
+    const date = new Date(datetime)
     const day = String(date.getDate()).padStart(2, '0')
-    const hours = String(date.getHours()).padStart(2, '0')
-    const minutes = String(date.getMinutes()).padStart(2, '0')
-    setFormattedDateExp(`${day}/${month}/${year}`)
-    setFormattedTimeExp(`${hours}:${minutes}`)
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const year = date.getFullYear()
+    return `${day}/${month}/${year}`
   }
 
-  function calcularTiempoRestante() {
+  const formatTime = datetime => {
+    const date = new Date(datetime)
+    const hours = String(date.getHours()).padStart(2, '0')
+    const minutes = String(date.getMinutes()).padStart(2, '0')
+    return `${hours}:${minutes}`
+  }
+
+  const calcularTiempoRestante = expirationDate => {
     const now = new Date()
-    const expirationDate = new Date(mysqlDatetimeExp)
-    const difference = expirationDate - now
+    const expiration = new Date(expirationDate)
+    const difference = expiration - now
 
     if (difference <= 0) {
       setTimeRemaining('0 días 0 horas')
@@ -64,38 +79,20 @@ export function ActivitiesOverview({ data }) {
     setTimeRemaining(`${days} días ${hours} horas`)
   }
 
-  const [statusTask, setStatusTask] = useState('')
-  function estadoTarea() {
-    switch (item.statu) {
-      case 1:
-        setStatusTask('Asignada')
-        break
-      case 2:
-        setStatusTask('Enviada')
-        break
-      case 3:
-        setStatusTask('Calificada')
-        break
-      case 4:
-        setStatusTask('Vencida')
-        break
-      default:
-        setStatusTask('Sin Enviar')
-        break
-    }
+  const updateEstadoTarea = statu => {
+    const estados = ['Sin Enviar', 'Asignada', 'Enviada', 'Calificada', 'Vencida']
+    setStatusTask(estados[statu] || 'Sin Enviar')
   }
 
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    formatearFecha()
-    formatearFechaExp()
-    estadoTarea()
-    calcularTiempoRestante()
-    const timer = setInterval(calcularTiempoRestante, 60000)
-    setLoading(false)
-    return () => clearInterval(timer)
-  }, [])
+  const updateNombreMateria = idCourse => {
+    const materias = {
+      1: 'Matemáticas',
+      2: 'Ondas',
+      3: 'Electromagnetismo',
+      4: 'Español',
+    }
+    setNombreMat(materias[idCourse] || '')
+  }
 
   const renderFiles = () => {
     if (!item.files || item.files.length === 0) {
@@ -115,6 +112,14 @@ export function ActivitiesOverview({ data }) {
     )
   }
 
+  if (!item) {
+    return (
+      <div>
+        <h2>Item no encontrado</h2>
+      </div>
+    )
+  }
+
   return (
     <div>
       {loading ? (
@@ -123,9 +128,8 @@ export function ActivitiesOverview({ data }) {
         <div>
           <HeaderSubjects />
           <div className='body-title-taskOver'>
-            <h3>{item.Course}</h3>
+            <h3>{nombreMat}</h3>
           </div>
-          {/* <h1>{item?.Course}</h1> */}
           <h2>{item?.Name}</h2>
           <p>Apertura: {`${formattedDate} - ${formattedTime}`}</p>
           <p>Vencimiento: {`${formattedDateExp} - ${formattedTimeExp}`}</p>
@@ -143,7 +147,7 @@ export function ActivitiesOverview({ data }) {
                   <td className='status-task-table'>{statusTask}</td>
                 </tr>
                 <tr>
-                  <td className='info-task-table'>Calificacion</td>
+                  <td className='info-task-table'>Calificación</td>
                   <td className='status-task-table'>{item?.Qualification_date}</td>
                 </tr>
                 <tr>
@@ -161,13 +165,9 @@ export function ActivitiesOverview({ data }) {
               </tbody>
             </table>
 
-            {localStorage.getItem('site') === '2' ? (
-              <>
-                <button onClick={() => navigate('/updateTask')}>Actualizar Tarea</button>
-              </>
-            ) : (
-              ''
-            )}
+            <button onClick={() => navigate('/updateTask')}>
+              {localStorage.getItem('site') === '2' ? 'Actualizar Actividad' : 'Entregar Actividad'}
+            </button>
           </div>
         </div>
       )}

@@ -17,11 +17,8 @@ import dielectricoVidrio from '../../assets/pages/labs/dielectrico/Dielectrico-d
 import dielectricoVacio from '../../assets/pages/labs/dielectrico/Dielectrico-demo-Transparente.png'
 
 export function Dielectric() {
-  // Estado para manejar el valor del slider
   const [sliderValue, setSliderValue] = useState(50)
-  const valorSlider1 = parseFloat(sliderValue)
   const [sliderVoltage, setSliderVoltage] = useState(50)
-
   const [baldosaSuperior, setBaldosaSuperior] = useState(130)
   const [baldosaInferior, setBaldosaInferior] = useState(250)
   const [topLineaVerticalSuperior2, setTopLineaVerticalSuperior2] = useState(50)
@@ -30,8 +27,11 @@ export function Dielectric() {
   const [leftLineaVerticalInferior2, setLetLineaVerticalInferior2] = useState(350)
   const [heightLineaVerticalSuperior2, setHeightLineaVerticalSuperior2] = useState(200)
   const [heightLineaVerticalInferior2, setHeightLineaVerticalInferior2] = useState(200)
-
   const [flipBatery, setFlipBatery] = useState(bateria)
+  const [dielectricSelection, setDielectricSelection] = useState(dielectricoPapel)
+  const [capacitance, setCapacitance] = useState(0)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const capacitanceRef = useRef(null)
 
   const handleSliderChange = event => {
     const newValue = event.target.value
@@ -51,13 +51,11 @@ export function Dielectric() {
   const convertDistance = valorSlider => {
     const slider = 100
     const milimeters = 5
-    let distance = (valorSlider * milimeters) / slider
-    return distance + milimeters
+    return (valorSlider * milimeters) / slider + milimeters
   }
 
-  const bateriaEstilo = document.getElementById('bateria')
-
   const changeBaterryPosition = value => {
+    const bateriaEstilo = document.getElementById('bateria')
     if (value < 50) {
       setFlipBatery(bateriaNegativo)
       bateriaEstilo.style.width = '150px'
@@ -73,8 +71,7 @@ export function Dielectric() {
     }
   }
 
-  // Función para cambiar la posición de la baldosa superior según el valor del slider
-  function changePositionBaldosaSuperior(value) {
+  const changePositionBaldosaSuperior = value => {
     if (value <= 49) {
       setBaldosaSuperior(130)
     } else if (value <= 79) {
@@ -84,8 +81,7 @@ export function Dielectric() {
     }
   }
 
-  // Función para cambiar la posición de la baldosa inferior según el valor del slider
-  function changePositionBaldosaInferior(value) {
+  const changePositionBaldosaInferior = value => {
     if (value <= 49) {
       setBaldosaInferior(250)
     } else if (value <= 79) {
@@ -127,8 +123,6 @@ export function Dielectric() {
     }
   }
 
-  // Estado para manejar el tipo de dieléctrico
-  const [dielectricSelection, setDielectricSelection] = useState(dielectricoPapel)
   const handleDielectricoChange = event => {
     const selection = event.target.value
     switch (selection) {
@@ -184,11 +178,6 @@ export function Dielectric() {
     return (dielectric * 8.8541878176e-12 * 0.0002) / distance
   }
 
-  // Convertir distancia y calcular capacitancia
-  const Distancia = convertDistance(valorSlider1) + ' mm'
-  const [capacitance, setCapacitance] = useState(0)
-  const capacitanceRef = useRef(null)
-
   useEffect(() => {
     const dielectricConstant =
       dielectricSelection === dielectricoPapel
@@ -201,17 +190,14 @@ export function Dielectric() {
         ? 3
         : 1
 
-    const distance = convertDistance(valorSlider1) / 1000 // convertir mm a metros
+    const distance = convertDistance(sliderValue) / 1000 // convertir mm a metros
     const calculatedCapacitance = CalculateCapacitance(distance, dielectricConstant)
     setCapacitance(calculatedCapacitance)
 
     if (capacitanceRef.current) {
       capacitanceRef.current.value = subindexNotationFormat(calculatedCapacitance)
     }
-  }, [valorSlider1, dielectricSelection])
-
-  // Esto es lo que hizo Deimis para que los resultados aparecieran con lo del mouse
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  }, [sliderValue, dielectricSelection])
 
   const handleMouseDown = event => {
     const { clientX, clientY } = event
@@ -266,7 +252,6 @@ export function Dielectric() {
             style={{ top: `${baldosaInferior}px` }}
           />
           <img src={dielectricSelection} alt='#' className='dielectrico-demo wrapper' />{' '}
-          {/* Prueba del draggable en el dielectrico */}
           <img
             src={baldoza}
             alt='#'
@@ -306,7 +291,13 @@ export function Dielectric() {
           onChange={handleSliderChange}
         />
 
-        <input id='separacion' type='text' className='separacion' value={Distancia} readOnly />
+        <input
+          id='separacion'
+          type='text'
+          className='separacion'
+          value={`${convertDistance(sliderValue)} mm`}
+          readOnly
+        />
 
         <label htmlFor='materialDielectricoSelector'>
           <div className='material-dielectrico-simulador'>
