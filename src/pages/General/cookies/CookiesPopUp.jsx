@@ -8,10 +8,9 @@ export function CookiesPopUp() {
   return (
     <div className='cookies-body' id='cookiesBody' style={{ display: localStorage.getItem('cookiesconfirmation') }}>
       <div className='cookies-container'>
-        <h3>Este sitio utiliza cookies</h3>
+        <span>By using the <strong>Ludebra Labs</strong> website you agree to our use of cookies. For more details see our cookies policy</span>
         <div className='selector-cookies'>
-          <button onClick={handleClick}>Aceptar Cookies</button>
-          <button onClick={handleClick}>Rechazar Cookies</button>
+          <button onClick={handleClick}>I agree</button>
         </div>
       </div>
     </div>

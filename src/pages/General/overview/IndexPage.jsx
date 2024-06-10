@@ -23,19 +23,25 @@ export function IndexPage() {
       {loading ? (
         <Preloader />
       ) : (
-        <div className='body-index'>
+        <div className='view-html'>
           <CookiesPopUp />
           <Header />
-
-          <section>
-            <main>
-              <HomeSlider />
-              <Selectors />
-              <InformationImage />
-            </main>
-          </section>
-
-          <Footer />
+          <div className='view-body'>
+            <div className='view-section1'>
+              <div className='view-text'>Labs</div>
+            </div>
+            <div className='view-section2'>
+              <section>
+                <main>
+                  <HomeSlider />
+                  <InformationImage />
+                  <Selectors />
+                </main>
+              </section>
+              <div className='view-text'></div>
+            </div>
+            <Footer />
+          </div>
         </div>
       )}
     </div>

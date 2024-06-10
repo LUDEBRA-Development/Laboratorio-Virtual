@@ -91,7 +91,9 @@
     background: transparent;
     position: fixed;
     margin-right: 980px;
+    /* margin-right: 1220px; */
     margin-top: 16px;
+    /* margin-bottom: 120px; */
     width: 125px;
     height: 10px;
     writing-mode: bt-lr; 

@@ -25,6 +25,7 @@ import { HealtCheck } from './pages/General/healtcheck/HealtCheck'
 import { PruebaFetch } from './pages/General/PruebaFetch'
 import { DocSubOverview } from './pages/Docentes/materiasDocentes/DocSubOverview'
 import { UpdateActivities } from './pages/Docentes/updateActivities/UpdateActivities'
+import { View } from './pages/Test/View'
 
 function App() {
   const useStructure = useInfoTasksStore(state => state.structure)
@@ -39,6 +40,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/imagen' element={<PruebaImagen />} />
         <Route path='/healtcheck' element={<HealtCheck />} />
+        <Route path='/view' element={<View />} />
         <Route element={<PrivateRoute />}>
           {/* Rutas Estudiantes */}
           <Route path='/materias' element={<Subjects />} />

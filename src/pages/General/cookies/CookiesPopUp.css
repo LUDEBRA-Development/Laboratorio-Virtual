@@ -2,25 +2,22 @@
     position: fixed;
     z-index: 1000;
     width: 100%;
-    height: 150px;
+    height: 80px;
     bottom: 0;
-    background-color: rgba(247, 153, 29, 0.9);
+    background-color: rgba(247, 153, 29, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
 
 .cookies-container {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     gap: 10px;
 }
-
 
 .selector-cookies {
     display: flex;
@@ -32,10 +29,10 @@
 
 .selector-cookies button {
     font-weight: bold;
-    width: 150px;
-    height: 50px;
+    width: 100px;
+    height: 30px;
     border: none;
-    border-radius: 50px;
+    border-radius: 5px;
     background-color: #7ed9ee;
     color: black;
 }
@@ -43,6 +40,5 @@
 .selector-cookies button:hover {
     cursor: pointer;
     background-color: #0b97b6;
-    transform: scale(1.1);
     transition: all ease-in-out 0.2s;
 }

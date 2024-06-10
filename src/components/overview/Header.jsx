@@ -11,9 +11,14 @@ export function Header() {
         <header className='header-index'>
           <img src={logolabs} className='logo-overview' />
           <h2 className='ludebra-title'>LUDEBRA LABS</h2>
-          <button className='boton' onClick={() => navigate('login')}>
-            Iniciar Sesion
-          </button>
+          <div className='button-container-header'>
+            <button className='btn-index boton-header-index-login' onClick={() => navigate('/login')}>
+              Log In
+            </button>
+            <button className='btn-index boton-header-index-register' onClick={() => navigate('/register')}>
+              Sign Up
+            </button>
+          </div>
         </header>
       </section>
     </div>

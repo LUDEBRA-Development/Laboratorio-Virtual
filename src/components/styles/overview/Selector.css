@@ -14,17 +14,19 @@
     flex-direction: column;
     border: none;
     border-radius: 100%;
-    background-color: gray;
+    background-color: white;
     color: black;
     font-weight: bold;
     width: 150px;
     height: 150px;
     margin-left: 20px;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.5s;
     gap: 5px;
 }
 
 .selector:hover {
+    background-color: rgb(163, 156, 156);
+    color: white;
     cursor: pointer;
     transform: scale(1.1);
 } 

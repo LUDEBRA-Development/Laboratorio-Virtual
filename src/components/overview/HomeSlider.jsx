@@ -1,4 +1,4 @@
-import homeImage from '../../assets/Pnk_m1_blur_darked.jpg'
+import { CardSlider } from '../../pages/Test/CardSlider'
 import '../styles/overview/HomeSlider.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,12 +7,14 @@ export function HomeSlider() {
   return (
     <div>
       <div className='text-container'>
-        <h2 className='texto-slider'>Simulaciones interactivas de Electromagnetismo</h2>
+        <h2 className='texto-slider'>Simulaciones Interactivas de Electromagnetismo</h2>
+        <CardSlider />
         <button className='boton-slider' onClick={() => navigate('login')}>
-          Explora Nuestras Simulaciones
+          Explora Las Simulaciones
         </button>
       </div>
-      <img src={homeImage} alt='#' className='home-slider'></img>
+      <div className='home-slider'></div>
+      {/* <img src={homeImage} alt='#' className='home-slider'></img> */}
     </div>
   )
 }
