@@ -36,7 +36,7 @@ export function HeaderSubjects() {
           </p>
         </TooltipWrapper>
       </div>
-      <button className='boton-subject' onClick={() => auth.logOut()}>
+      <button className='btn-sub boton-subject' onClick={() => auth.logOut()}>
         Logout
       </button>
     </header>

@@ -111,7 +111,7 @@ export function Register() {
       ) : (
         <div className='register-container'>
           <div className='register-box'>
-            <h3>Registro</h3>
+            <h2>Registro</h2>
             <form onSubmit={handleSubmit}>
               <label>Correo Electronico</label>
               <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />

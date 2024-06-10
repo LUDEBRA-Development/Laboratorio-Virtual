@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    border-top: solid 5px #23CAEE;
+    border-top: solid 5px black;
     background-color: white;
 }
 
@@ -66,20 +66,45 @@
     cursor: pointer;
 }
 
-.boton-subject {
-    margin-right: 40px;
-    margin-left: 20px; /* Añadi este valor */
-    width: 120px;
-    height: 40px;
-    color: white;
-    background-color: #23CAEE;
-    border: none;
-    border-radius: 10px;
+.btn-sub {
+    background: none;
+  border: 2px solid black;
+  font-family: "montserrat",sans-serif;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  min-width: 100px;
+  margin: 10px;
+  cursor: pointer;
+  transition: color 0.4s linear;
+  position: relative;
+  z-index: 1;
+  color: black;
+   margin-right: 40px;
+    margin-left: 20px; 
 }
 
-.boton-subject:hover {
-    cursor: pointer;
-    background-color: #0b97b6;
-    transform: scale(1.1);
-    transition: all ease-in-out 0.2s;
+.btn-sub:hover {
+    color: white;
+}
+
+.btn-sub::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+}
+
+.boton-subject::before {
+    transform: scaleX(0);
+}
+
+.boton-subject:hover::before {
+    transform: scaleX(1);
 }

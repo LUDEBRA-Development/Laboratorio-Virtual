@@ -3,7 +3,8 @@ import './Subjects.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-import { FooterLogin } from '../../../components/login/FooterLogin'
+// import { FooterLogin } from '../../../components/login/FooterLogin'
+import { Footer } from '../../../components/overview/Footer'
 import { NuevaMateria } from '../../../components/materias/NuevaMateria'
 import { NuevaActividad } from '../../../components/materias/NuevaActividad'
 import { Preloader } from '../../General/preloader/Preloader'
@@ -106,12 +107,14 @@ export function Subjects() {
                     materia={task.Course}
                     expiracion={task.Expiration_date}
                     index={index}
+                    idMateria={task.Id_course}
                   />
                 ))
               )}
             </aside>
           </main>
-          <FooterLogin />
+          {/* <FooterLogin /> */}
+          <Footer />
         </div>
       )}
     </div>

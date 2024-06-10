@@ -63,8 +63,6 @@ export function MateriasOverview({ datos }) {
             <h3>{item.Name}</h3>
           </div>
 
-        
-
           {localStorage.getItem('site') === '2' ? (
             <>
               <button onClick={() => navigate('/newTask')}>Crear Nueva Tarea</button>
@@ -74,7 +72,7 @@ export function MateriasOverview({ datos }) {
           )}
 
           <div className='private-center'>
-            <h2>Actividades</h2>
+            <h2>Actividades Del Curso</h2>
             <div className='private-container'>
               {privateAct.map((task, index) => (
                 <PrivateTask key={index} titulo={task.Name} expiracion={task.Expiration_date} index={index} />

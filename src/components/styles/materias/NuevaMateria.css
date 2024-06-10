@@ -1,14 +1,13 @@
 .materia-subject {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     justify-content: center;
     align-items: center;
     width: 300px;
-    height: 100px;
-    border: solid 1px gray;
+    height: 200px;
     border-radius: 20px;
-    background-color: rgb(243, 235, 235);
+    
 }
 
 .materia-subject:hover {
@@ -19,28 +18,26 @@
 }
 
 .materia-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    margin-left: 10px;
-}
-
-.materia-image img {
-    width: 50px;
-    height: 50px;
+    height: 60%;
 }
 
 .materia-text {
-    width: 70%;
-    color: black;
+    width: 100%;
+    height: 50%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
 }
 
 .materia-hr {
-    height: 80%;
+    width: 90%;
     color: black;
+    height: 2px;
+    border: none;
+    background-color: black;
 }

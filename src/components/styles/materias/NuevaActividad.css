@@ -1,12 +1,14 @@
 .aside-activity {
-    background-color: #23CAEE;
+    /* background-color: #23CAEE; */
+    background-color: transparent;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    border: solid 1px #0b97b6;
+    gap: 15px;
+    /* border: solid 1px #0b97b6; */
+    border: none;
     border-radius: 10px;
 }
 
@@ -20,22 +22,22 @@
     width: 70%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+}
+
+.activity-description:hover {
+    cursor: pointer;
+    color: #505050;
+}
+
+.activity-description p {
+    display: flex;
+    font-size: 12px;
 }
 
 .activity-title {
     display: flex;
     flex-direction: column;    
     justify-content: center;
-    text-overflow: ellipsis;
-}
-
-.activity-text {
-    display: flex;
-    flex-direction: column;    
-    justify-content: center;
-    align-items: center;
     text-overflow: ellipsis;
 }
 

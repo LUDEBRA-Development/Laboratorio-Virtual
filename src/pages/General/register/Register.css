@@ -21,9 +21,10 @@
     color: #fff;
 }
 
-.register-box h3 {
+.register-box h2 {
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 40px;
 }
 
 .register-box form {

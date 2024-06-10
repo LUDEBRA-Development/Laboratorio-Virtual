@@ -5,10 +5,11 @@ import Electromagnetismo from '../../assets/electromagnetismo.png'
 import { useNavigate } from 'react-router-dom'
 
 export function NuevaActividad(props) {
-  const { materia, expiracion, titulo, index } = props
+  const { materia, expiracion, titulo, index, idMateria } = props
   const [imagen, setImagen] = useState('')
   const [formattedDate, setFormattedDate] = useState('')
   const [formattedTime, setFormattedTime] = useState('')
+  const [nombreMateria, setNombreMateria] = useState('')
   const navigate = useNavigate()
 
   // Formatear la fecha y la hora
@@ -39,7 +40,18 @@ export function NuevaActividad(props) {
     }
   }
 
+  const updateNombreMateria = idCourse => {
+    const materias = {
+      1: 'Matemáticas',
+      2: 'Ondas',
+      3: 'Electromagnetismo',
+      4: 'Español',
+    }
+    setNombreMateria(materias[idCourse] || '')
+  }
+
   useEffect(() => {
+    updateNombreMateria(idMateria)
     iconoActividad(materia)
     formatearFecha()
   }, [materia, expiracion])
@@ -48,8 +60,8 @@ export function NuevaActividad(props) {
     <div className='aside-activity' onClick={() => navigate(`/Activitiesoverview/${index}`)}>
       <img src={imagen} className='activity-image' alt={`${materia} icon`} />
       <div className='activity-description'>
-        <h4 className='activity-title'>{titulo}</h4>
-        <p className='activity-text'>{materia}</p>
+        <h3 className='activity-title'>{titulo}</h3>
+        <p className='activity-text'>{nombreMateria}</p>
         <p>Fecha Entrega: {`${formattedDate}, ${formattedTime}`}</p>
       </div>
     </div>
