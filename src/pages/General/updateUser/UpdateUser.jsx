@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import './UpdateUser.css'
 import { useInfoUsersStore } from '../../../store/infoUsersStore'
 import { defaultUrlPath } from '../../../models/GlobalVars'
+import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+import { Footer } from '../../../components/overview/Footer'
 
 export function UpdateUser() {
   const userToken = useInfoUsersStore(state => state.token)
@@ -105,66 +107,72 @@ export function UpdateUser() {
   }
 
   return (
-    <div className='updateuser-container'>
-      <h2 className='updateuser-title'>Actualizar Información de Usuario</h2>
-      <form onSubmit={handleSubmit}>
-        <div className='updateuser-form-group'>
-          <label className='updateuser-label'>Nombre:</label>
-          <input
-            type='text'
-            name='First_Name'
-            value={userInfo.First_Name}
-            onChange={handleInputChange}
-            className='updateuser-input'
-          />
-        </div>
-        <div className='form-group'>
-          <label className='updateuser-label'>Apellido:</label>
-          <input
-            type='text'
-            name='Second_Name'
-            value={userInfo.Second_Name}
-            onChange={handleInputChange}
-            className='updateuser-input'
-          />
-        </div>
-        <div className='form-group'>
-          <label className='updateuser-label'>Email:</label>
-          <input
-            type='email'
-            name='Email'
-            value={userInfo.Email}
-            onChange={handleInputChange}
-            className='updateuser-input'
-          />
-        </div>
-        {isEmailChanged && !isCodeSent && (
-          <div className='updateuser-form-group'>
-            <button className='updateuser-button' type='button' onClick={handleSendVerificationCode}>
-              Enviar Código de Verificación
+    <div>
+      <HeaderSubjects />
+      <div className='allupdate-container'>
+        <div className='updateuser-container'>
+          <h2 className='updateuser-title'>Actualizar Información de Usuario</h2>
+          <form onSubmit={handleSubmit}>
+            <div className='updateuser-form-group'>
+              <label className='updateuser-label'>Nombre:</label>
+              <input
+                type='text'
+                name='First_Name'
+                value={userInfo.First_Name}
+                onChange={handleInputChange}
+                className='updateuser-input'
+              />
+            </div>
+            <div className='form-group'>
+              <label className='updateuser-label'>Apellido:</label>
+              <input
+                type='text'
+                name='Second_Name'
+                value={userInfo.Second_Name}
+                onChange={handleInputChange}
+                className='updateuser-input'
+              />
+            </div>
+            <div className='form-group'>
+              <label className='updateuser-label'>Email:</label>
+              <input
+                type='email'
+                name='Email'
+                value={userInfo.Email}
+                onChange={handleInputChange}
+                className='updateuser-input'
+              />
+            </div>
+            {isEmailChanged && !isCodeSent && (
+              <div className='updateuser-form-group'>
+                <button className='updateuser-button' type='button' onClick={handleSendVerificationCode}>
+                  Enviar Código de Verificación
+                </button>
+              </div>
+            )}
+            {isCodeSent && (
+              <div className='updateuser-form-group'>
+                <label className='updateuser-label'>Código de Verificación:</label>
+                <input
+                  className='updateuser-input'
+                  type='text'
+                  name='verificationCode'
+                  value={verificationCode}
+                  onChange={e => setVerificationCode(e.target.value)}
+                />
+              </div>
+            )}
+            <div className='updateuser-form-group'>
+              <label className='updateuser-label'>Foto de perfil:</label>
+              <input type='file' name='file' onChange={handleFileChange} className='updateuser-input' />
+            </div>
+            <button className='updateuser-button' type='submit'>
+              Actualizar
             </button>
-          </div>
-        )}
-        {isCodeSent && (
-          <div className='updateuser-form-group'>
-            <label className='updateuser-label'>Código de Verificación:</label>
-            <input
-              className='updateuser-input'
-              type='text'
-              name='verificationCode'
-              value={verificationCode}
-              onChange={e => setVerificationCode(e.target.value)}
-            />
-          </div>
-        )}
-        <div className='updateuser-form-group'>
-          <label className='updateuser-label'>Foto de perfil:</label>
-          <input type='file' name='file' onChange={handleFileChange} className='updateuser-input' />
+          </form>
         </div>
-        <button className='updateuser-button' type='submit'>
-          Actualizar
-        </button>
-      </form>
+      </div>
+      <Footer />
     </div>
   )
 }

@@ -1,3 +1,12 @@
+.title-private {
+    background-color: gray;
+    height: 70px;
+    /* width: 30%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .private-center {
     display: flex;
     justify-content: center;
@@ -16,6 +25,7 @@
     padding: 20px;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 250px;
 }
 
 .body-title-subOver {

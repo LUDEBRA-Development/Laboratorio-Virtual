@@ -44,7 +44,6 @@ export function Register() {
       .catch(error => {
         console.error('Error al enviar el código de verificación:', error)
       })
-
   }
 
   const handleVerification = e => {
@@ -67,7 +66,6 @@ export function Register() {
       .catch(error => {
         console.error('Error al crear usuario:', error)
       })
-
   }
 
   if (registered) {
@@ -109,24 +107,26 @@ export function Register() {
       {loading ? (
         <Preloader />
       ) : (
-        <div className='register-container'>
-          <div className='register-box'>
-            <h2>Registro</h2>
-            <form onSubmit={handleSubmit}>
-              <label>Correo Electronico</label>
-              <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />
-              <label>Primer Nombre:</label>
-              <input type='text' value={first_Name} onChange={e => setFirstName(e.target.value)} required />
-              <label>Primer Apellido:</label>
-              <input type='text' value={last_Name} onChange={e => setLastName(e.target.value)} required />
-              <label>Contraseña:</label>
-              <input type='password' value={password} onChange={e => setPassword(e.target.value)} required />
-              <TooltipWrapper text={'Si Cuentas con un Codigo de Materia, ingresalo'}>
-                <label>*Código de Materia:</label>
-              </TooltipWrapper>
-              <input type='text' value={code} onChange={e => setCode(e.target.value)} />
-              <button type='submit'>Continuar</button>
-            </form>
+        <div>
+          <div className='register-container'>
+            <div className='register-box'>
+              <h2>Registro</h2>
+              <form onSubmit={handleSubmit}>
+                <label>Correo Electronico</label>
+                <input type='email' value={email} onChange={e => setEmail(e.target.value)} required />
+                <label>Primer Nombre:</label>
+                <input type='text' value={first_Name} onChange={e => setFirstName(e.target.value)} required />
+                <label>Primer Apellido:</label>
+                <input type='text' value={last_Name} onChange={e => setLastName(e.target.value)} required />
+                <label>Contraseña:</label>
+                <input type='password' value={password} onChange={e => setPassword(e.target.value)} required />
+                <TooltipWrapper text={'Si Cuentas con un Codigo de Materia, ingresalo'}>
+                  <label>*Código de Materia:</label>
+                </TooltipWrapper>
+                <input type='text' value={code} onChange={e => setCode(e.target.value)} />
+                <button type='submit'>Continuar</button>
+              </form>
+            </div>
           </div>
         </div>
       )}

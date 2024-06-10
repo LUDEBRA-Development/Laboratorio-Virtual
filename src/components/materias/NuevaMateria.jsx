@@ -5,6 +5,7 @@ import '../styles/materias/NuevaMateria.css'
 // import Electromagnetismo from '../../assets/electromagnetismo.png'
 import Electromagnetismo from '../../assets/Subjects/Gradient1.jpg'
 import Ondas from '../../assets/Subjects/Gradient2.jpg'
+import Gradient3 from '../../assets/Subjects/Gradient3.jpg'
 
 export function NuevaMateria({ name, id }) {
   const [imagen, setImagen] = useState('')
@@ -17,8 +18,10 @@ export function NuevaMateria({ name, id }) {
         setImagen(Electromagnetismo)
         break
       case 'Ondas':
-      default:
         setImagen(Ondas)
+        break
+      default:
+        setImagen(Gradient3)
     }
   }
 

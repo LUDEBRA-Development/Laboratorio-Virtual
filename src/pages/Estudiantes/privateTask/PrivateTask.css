@@ -6,13 +6,15 @@
     align-items: center;
     width: 300px;
     height: 100px;
-    /* border: solid 1px gray; */
     border-radius: 20px;
-    /* background-color: rgb(243, 235, 235); */
-    background-color: rgb(245, 222, 222);
+    background-color: black;
+    color: white;
+    border: solid 1px black;
 }
 
 .private-aside-activity:hover {
+    color: black;
+    background-color: white;
     cursor: pointer;
     transform: scale(1.05);
     transition: all ease-in-out 0.2s;
@@ -27,6 +29,7 @@
 }
 
 .private-activity-title {
+    font-weight: bold;
     display: flex;
     flex-direction: column;    
     justify-content: center;

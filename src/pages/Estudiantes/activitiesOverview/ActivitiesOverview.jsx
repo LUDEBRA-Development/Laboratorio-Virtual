@@ -4,6 +4,7 @@ import { Preloader } from '../../General/preloader/Preloader'
 import './ActivitiesOverview.css'
 import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
 import { useUpdateTask } from '../../../store/infoUpdateTaskStore'
+import { Footer } from '../../../components/overview/Footer'
 
 export function ActivitiesOverview({ data }) {
   const navigate = useNavigate()
@@ -130,45 +131,48 @@ export function ActivitiesOverview({ data }) {
           <div className='body-title-taskOver'>
             <h3>{nombreMat}</h3>
           </div>
-          <h2>{item?.Name}</h2>
-          <p>Apertura: {`${formattedDate} - ${formattedTime}`}</p>
-          <p>Vencimiento: {`${formattedDateExp} - ${formattedTimeExp}`}</p>
-          <hr />
-          <p>{item?.Description}</p>
-          <h4>Archivos</h4>
-          <div className='files-list'>{renderFiles()}</div>
+          <div className='taskpriv-container'>
+            <h1>{item?.Name}</h1>
+            <p>Apertura: {`${formattedDate} - ${formattedTime}`}</p>
+            <p>Vencimiento: {`${formattedDateExp} - ${formattedTimeExp}`}</p>
+            <hr />
+            <p>{item?.Description}</p>
+            <h3>Archivos</h3>
+            <div className='files-list'>{renderFiles()}</div>
 
-          <h3>Estado de la Entrega</h3>
-          <div className='task-table-container'>
-            <table className='task-table'>
-              <tbody>
-                <tr>
-                  <td className='info-task-table'>Estado de la Entrega</td>
-                  <td className='status-task-table'>{statusTask}</td>
-                </tr>
-                <tr>
-                  <td className='info-task-table'>Calificación</td>
-                  <td className='status-task-table'>{item?.Qualification_date}</td>
-                </tr>
-                <tr>
-                  <td className='info-task-table'>Tiempo Restante</td>
-                  <td className='status-task-table'>{timeRemaining}</td>
-                </tr>
-                <tr>
-                  <td className='info-task-table'>Simulador</td>
-                  <td className='status-task-table'>{item?.Simulator}</td>
-                </tr>
-                <tr>
-                  <td className='info-task-table'>Comentarios</td>
-                  <td className='status-task-table'>{item?.Feedback_comments}</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Estado de la Entrega</h3>
+            <div className='task-table-container'>
+              <table className='task-table'>
+                <tbody>
+                  <tr>
+                    <td className='info-task-table'>Estado de la Entrega</td>
+                    <td className='status-task-table'>{statusTask}</td>
+                  </tr>
+                  <tr>
+                    <td className='info-task-table'>Calificación</td>
+                    <td className='status-task-table'>{item?.Qualification_date}</td>
+                  </tr>
+                  <tr>
+                    <td className='info-task-table'>Tiempo Restante</td>
+                    <td className='status-task-table'>{timeRemaining}</td>
+                  </tr>
+                  <tr>
+                    <td className='info-task-table'>Simulador</td>
+                    <td className='status-task-table'>{item?.Simulator}</td>
+                  </tr>
+                  <tr>
+                    <td className='info-task-table'>Comentarios</td>
+                    <td className='status-task-table'>{item?.Feedback_comments}</td>
+                  </tr>
+                </tbody>
+              </table>
 
-            <button onClick={() => navigate('/updateTask')}>
-              {localStorage.getItem('site') === '2' ? 'Actualizar Actividad' : 'Entregar Actividad'}
-            </button>
+              <button onClick={() => navigate('/updateTask')} className='btn-activity'>
+                {localStorage.getItem('site') === '2' ? 'Actualizar Actividad' : 'Entregar Actividad'}
+              </button>
+            </div>
           </div>
+          <Footer />
         </div>
       )}
     </div>

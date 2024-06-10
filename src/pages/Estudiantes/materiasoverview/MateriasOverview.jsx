@@ -7,6 +7,7 @@ import { useInfoUsersStore } from '../../../store/infoUsersStore'
 import { PrivateTask } from '../privateTask/PrivateTask'
 import './MateriasOverview.css'
 import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+import { Footer } from '../../../components/overview/Footer'
 
 export function MateriasOverview({ datos }) {
   const { id } = useParams()
@@ -71,14 +72,15 @@ export function MateriasOverview({ datos }) {
             ''
           )}
 
+          <h2 className='title-private'>Actividades Del Curso</h2>
           <div className='private-center'>
-            <h2>Actividades Del Curso</h2>
             <div className='private-container'>
               {privateAct.map((task, index) => (
                 <PrivateTask key={index} titulo={task.Name} expiracion={task.Expiration_date} index={index} />
               ))}
             </div>
           </div>
+          <Footer />
         </div>
       )}
     </div>
