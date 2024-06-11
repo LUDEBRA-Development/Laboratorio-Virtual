@@ -72,7 +72,7 @@ export function CreateTask() {
       <HeaderSubjects />
       <div className='create-task-container'>
         <div className='create-task-form'>
-          <h1>Create Task</h1>
+          <h1>Crear Tarea</h1>
           <form action='' onSubmit={handleSubmitEvent}>
             <p>Name</p>
             <input type='text' name='nameTask' onChange={handleInput} required />

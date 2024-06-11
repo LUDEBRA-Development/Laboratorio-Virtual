@@ -33,7 +33,8 @@
 }
 
 .boton-slider {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     width: 350px;
     height: 50px;
     border: 2px solid white;
