@@ -11,6 +11,7 @@ import { useInfoSubjectsStore } from '../../../store/infoSubjectsStore'
 import { Preloader } from '../../General/preloader/Preloader'
 import axios from 'axios'
 import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+import { Footer } from '../../../components/overview/Footer'
 
 export function DocSubOverview() {
   const navigate = useNavigate()
@@ -109,7 +110,7 @@ export function DocSubOverview() {
               )}
             </aside>
           </main>
-          <FooterLogin />
+          <Footer />
         </div>
       )}
     </div>

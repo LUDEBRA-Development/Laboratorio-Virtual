@@ -52,13 +52,13 @@ function App() {
           <Route path='/updateTask' element={<UpdateActivities />} />
           {/* Rutas Administradores */}
           <Route path='/test' element={<PruebaFetch />} />
+          <Route path='/ingreso' element={<Ingreso />} />
           {/* Rutas UsuariosExternos */}
 
           {/* Rutas Generales */}
           <Route path='/updateUser' element={<UpdateUser />} />
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/dielectric' element={<Dielectric />} />
-          <Route path='/ingreso' element={<Ingreso />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

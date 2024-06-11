@@ -20,6 +20,7 @@ export function ActivitiesOverview({ data }) {
   const [statusTask, setStatusTask] = useState('')
   const [nombreMat, setNombreMat] = useState('')
   const [loading, setLoading] = useState(true)
+  const [loading2, setLoading2] = useState(true)
 
   const { getIdTask } = useUpdateTask()
 
@@ -121,9 +122,16 @@ export function ActivitiesOverview({ data }) {
     )
   }
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading2(false)
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div>
-      {loading ? (
+      {loading2 ? (
         <Preloader />
       ) : (
         <div>

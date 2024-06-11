@@ -9,6 +9,7 @@ export function PrivateTask(props) {
 
   const [formattedDate, setFormattedDate] = useState('')
   const [formattedTime, setFormattedTime] = useState('')
+  
 
   function formatearFecha() {
     // Convertir la cadena a un objeto Date

@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { useInfoNewTask } from '../../../store/infoNewTaskStore'
 import { defaultUrlPath } from '../../../models/GlobalVars'
 import { useInfoUsersStore } from '../../../store/infoUsersStore'
+import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+import { Footer } from '../../../components/overview/Footer'
+import './CreateTask.css'
 
 export function CreateTask() {
   const [taskValues, setTaskValues] = useState(null)
@@ -66,17 +69,23 @@ export function CreateTask() {
 
   return (
     <div>
-      <h1>Create Task</h1>
-      <form action='' onSubmit={handleSubmitEvent}>
-        <p>Name</p>
-        <input type='text' name='nameTask' onChange={handleInput} required />
-        <p>Descripcion De la Actividad</p>
-        <input type='text' name='descripcionTask' onChange={handleInput} required />
-        <p>Tiempo de la actividad</p>
-        <input type='datetime-local' name='dateTask' onChange={handleInput} required />
-        <button type='submit'>Crear</button>
-      </form>
-      {mensaje && <p>{mensaje}</p>}
+      <HeaderSubjects />
+      <div className='create-task-container'>
+        <div className='create-task-form'>
+          <h1>Create Task</h1>
+          <form action='' onSubmit={handleSubmitEvent}>
+            <p>Name</p>
+            <input type='text' name='nameTask' onChange={handleInput} required />
+            <p>Descripcion De la Actividad</p>
+            <input type='text' name='descripcionTask' onChange={handleInput} required />
+            <p>Tiempo de la actividad</p>
+            <input type='datetime-local' name='dateTask' onChange={handleInput} required />
+            <button type='submit'>Crear</button>
+          </form>
+          {mensaje && <p>{mensaje}</p>}
+        </div>
+      </div>
+      <Footer />
     </div>
   )
 }

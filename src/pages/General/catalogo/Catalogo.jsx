@@ -4,6 +4,8 @@ import CapacitanciaMiniatura from '../../../assets/Capacitancia-miniatura.png'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Preloader } from '../preloader/Preloader'
+import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
+import { Footer } from '../../../components/overview/Footer'
 
 export function Catalogo() {
   const navigate = useNavigate()
@@ -26,32 +28,38 @@ export function Catalogo() {
       {loading ? (
         <Preloader />
       ) : (
-        <div className='body-catalogo'>
-          <h1 className='body-catalogo-title'>Catalogo de Simuladores</h1>
-          <div className='catalogo-container'>
-            <div className='catalogo-item'>
-              <img
-                src={CapacitanciaMiniatura}
-                alt='Capacitancia'
-                className='catalogo-image'
-                onClick={handleButtonClick}
-              />
-              <h1 className='catalogo-title' onClick={handleButtonClick}>
-                Capacitancia
-              </h1>
-            </div>
-            <div className='catalogo-item'>
-              <img
-                src={DielectricoMiniatura}
-                alt='Dielectrico'
-                className='catalogo-image'
-                onClick={() => navigate('/dielectric')}
-              />
-              <h1 className='catalogo-title' onClick={() => navigate('/dielectric')}>
-                Dielectrico
-              </h1>
+        <div>
+          <HeaderSubjects />
+          <div className='body-catalogo'>
+          <div className='body-title-subOver'>
+            <h3>Catalogo de Simuladores</h3>
+          </div>
+            <div className='catalogo-container'>
+              <div className='catalogo-item'>
+                <img
+                  src={CapacitanciaMiniatura}
+                  alt='Capacitancia'
+                  className='catalogo-image'
+                  onClick={handleButtonClick}
+                />
+                <p className='catalogo-title' onClick={handleButtonClick}>
+                  Capacitancia
+                </p>
+              </div>
+              <div className='catalogo-item'>
+                <img
+                  src={DielectricoMiniatura}
+                  alt='Dielectrico'
+                  className='catalogo-image'
+                  onClick={() => navigate('/dielectric')}
+                />
+                <p className='catalogo-title' onClick={() => navigate('/dielectric')}>
+                  Dielectrico
+                </p>
+              </div>
             </div>
           </div>
+          <Footer />
         </div>
       )}
     </div>

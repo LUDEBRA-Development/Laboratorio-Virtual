@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     switch (rol) {
       case '1':
         commonActions()
-        navigate('/catalogo')
+        navigate('/ingreso')
         break
       case '2':
         commonActions()

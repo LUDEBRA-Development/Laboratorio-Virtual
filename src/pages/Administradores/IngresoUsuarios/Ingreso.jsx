@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { defaultUrlPath } from '../../../models/GlobalVars'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import './Ingreso.css'
+import { AdminHeader } from '../../../components/Admin/AdminHeader'
+import { Footer } from '../../../components/overview/Footer'
+import { Preloader } from '../../General/preloader/Preloader'
 
 export function Ingreso() {
   const navigate = useNavigate()
@@ -57,18 +61,46 @@ export function Ingreso() {
     }))
   }
 
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div>
       {localStorage.getItem('site') !== '1' ? (
         navigate('/login')
       ) : (
-        <form onSubmit={handleSubmitEvent}>
-          <input placeholder='Ingresa Primer Nombre' type='text' name='primerNombre' onChange={handleInput} />
-          <input placeholder='Ingresa Segundo Nombre' type='text' name='segundoNombre' onChange={handleInput} />
-          <input placeholder='Ingresa email' type='email' name='email' onChange={handleInput} />
-          <input placeholder='Ingresa Contraseña' type='password' name='contraseña' onChange={handleInput} />
-          <button>Ingresar</button>
-        </form>
+        <div>
+          {loading ? (
+            <Preloader />
+          ) : (
+            <div>
+              <AdminHeader />
+              <div className='ingreso-container'>
+                <div className='ingreso-form'>
+                  <form onSubmit={handleSubmitEvent}>
+                    <h2>Registro de Usuarios</h2>
+                    <label>Primer Nombre: </label>
+                    <input placeholder='John' type='text' name='primerNombre' onChange={handleInput} />
+                    <label>Apellido: </label>
+                    <input placeholder='Doe' type='text' name='segundoNombre' onChange={handleInput} />
+                    <label>Email: </label>
+                    <input placeholder='JohnDoe@acme.com' type='email' name='email' onChange={handleInput} />
+                    <label>Contraseña: </label>
+                    <input placeholder='*********' type='password' name='contraseña' onChange={handleInput} />
+                    <button>Ingresar</button>
+                  </form>
+                </div>
+              </div>
+              <Footer />
+            </div>
+          )}
+        </div>
       )}
     </div>
   )
