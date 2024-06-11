@@ -26,6 +26,7 @@ import { PruebaFetch } from './pages/General/PruebaFetch'
 import { DocSubOverview } from './pages/Docentes/materiasDocentes/DocSubOverview'
 import { UpdateActivities } from './pages/Docentes/updateActivities/UpdateActivities'
 import { View } from './pages/Test/View'
+import { Qualifications } from './pages/Docentes/qualifications/Qualifications'
 
 function App() {
   const useStructure = useInfoTasksStore(state => state.structure)
@@ -50,6 +51,7 @@ function App() {
           <Route path='/docentes' element={<DocSubOverview />} />
           <Route path='/newTask' element={<CreateTask />} />
           <Route path='/updateTask' element={<UpdateActivities />} />
+          <Route path='/calificaciones' element={<Qualifications />} />
           {/* Rutas Administradores */}
           <Route path='/test' element={<PruebaFetch />} />
           <Route path='/ingreso' element={<Ingreso />} />

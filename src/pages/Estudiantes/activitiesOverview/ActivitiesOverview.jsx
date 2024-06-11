@@ -178,6 +178,13 @@ export function ActivitiesOverview({ data }) {
               <button onClick={() => navigate('/updateTask')} className='btn-activity'>
                 {localStorage.getItem('site') === '2' ? 'Actualizar Actividad' : 'Entregar Actividad'}
               </button>
+
+              {localStorage.getItem('site') === '2' ? (
+                <button onClick={() => navigate('/calificaciones')} className='btn-activity2'>
+                  Calificar Actividad
+                </button>
+              ) : ( ''
+              )}
             </div>
           </div>
           <Footer />

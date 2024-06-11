@@ -61,7 +61,6 @@ export const AuthProvider = ({ children }) => {
         break
       case '2':
         commonActions()
-        console.log(rol)
         navigate('/docentes')
         break
       case '3':
@@ -69,7 +68,6 @@ export const AuthProvider = ({ children }) => {
         navigate('/materias')
         break
       case '4':
-        console.log(rol)
         commonActions()
         navigate('/catalogo')
         break
