@@ -67,20 +67,24 @@ export function MateriasOverview({ datos }) {
           <h2 className='title-private'>Actividades Del Curso</h2>
           <div className='private-center'>
             <div className='private-container'>
-              {privateAct.map((task, index) => (
-                <PrivateTask key={index} titulo={task.Name} expiracion={task.Expiration_date} index={index} />
-              ))}
+              {privateAct.length === 0 ? (
+                <p>No hay tareas aún</p>
+              ) : (
+                privateAct.map((task, index) => (
+                  <PrivateTask key={index} titulo={task.Name} expiracion={task.Expiration_date} index={index} />
+                ))
+              )}
             </div>
-          {localStorage.getItem('site') === '2' ? (
-            <>
-              <button onClick={() => navigate('/newTask')} className='btn-newTask'>
-                Crear Nueva Tarea
-              </button>
-            </>
-          ) : (
-            ''
-          )}
-          <div className='espaciado-tarea'></div>
+            {localStorage.getItem('site') === '2' ? (
+              <>
+                <button onClick={() => navigate('/newTask')} className='btn-newTask'>
+                  Crear Nueva Tarea
+                </button>
+              </>
+            ) : (
+              ''
+            )}
+            <div className='espaciado-tarea'></div>
           </div>
           <Footer />
         </div>

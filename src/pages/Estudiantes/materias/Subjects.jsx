@@ -55,6 +55,7 @@ export function Subjects() {
       })
       const responseData = await response.json()
       setTaskCourse(responseData.body)
+      console.log(responseData.body)
       getStructure(responseData.body)
     } catch (error) {
       console.error('Error:', error)
