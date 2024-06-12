@@ -40,7 +40,12 @@ export function MateriasOverview({ datos }) {
       .then(response => response.json())
       .then(responseData => {
         const responseDat = responseData
-        setPrivateAct(responseDat.body)
+        if (!Array.isArray(responseDat.body)) {
+          setPrivateAct([])
+        } else {
+          setPrivateAct(responseDat.body)
+        }
+        // setPrivateAct(responseDat.body)
       })
   }
 
