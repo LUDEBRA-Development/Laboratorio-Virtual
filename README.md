@@ -2,7 +2,7 @@
 
 
 
-<p style="text-align: center; font-size: 60px; font-weight: bold;">Estado del proyecto: 90%</p>
+<p style="text-align: center; font-size: 60px; font-weight: bold;">Estado del proyecto: 95%</p>
 
 
 ### Solucion de Errores
@@ -20,3 +20,8 @@ Para solucionar este problema, ejecute en la terminal la siguiente linea de coma
 ```
     npm i vite@latest -D
 ```
+# Equipo de desarrollo
+
+-  Deimis Henao
+-  Luis Vega
+-  Brayan Caro
