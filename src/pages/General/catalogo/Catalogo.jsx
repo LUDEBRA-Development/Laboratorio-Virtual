@@ -11,7 +11,8 @@ export function Catalogo() {
   const navigate = useNavigate()
 
   const handleButtonClick = () => {
-    window.open('https://calculadoradecapacitancia.netlify.app/index.html')
+    // window.open('https://calculadoradecapacitancia.netlify.app/index.html')
+    window.location.href = 'https://calculadoradecapacitancia.netlify.app/index.html' // Esto es una prueba
   }
 
   const [loading, setLoading] = useState(true)
@@ -31,9 +32,9 @@ export function Catalogo() {
         <div>
           <HeaderSubjects />
           <div className='body-catalogo'>
-          <div className='body-title-subOver'>
-            <h3>Catalogo de Simuladores</h3>
-          </div>
+            <div className='body-title-subOver'>
+              <h3>Catalogo de Simuladores</h3>
+            </div>
             <div className='catalogo-container'>
               <div className='catalogo-item'>
                 <img

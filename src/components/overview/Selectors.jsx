@@ -7,25 +7,25 @@ import quimicaIcon from '../../assets/icons/quimica-icon.png'
 export function Selectors() {
   return (
     <div className='container-selectors'>
-      <div className='selector'>
+      <div className='selector' id='selector1'>
         <p>Fisica</p>
         <i>
           <img className='selector-icon' src={fisicaIcon} alt='#' />
         </i>
       </div>
-      <div className='selector'>
+      <div className='selector' id='selector2'>
         <p>Matematica</p>
         <i>
           <img className='selector-icon' src={matematicaIcon} alt='#' />
         </i>
       </div>
-      <div className='selector'>
+      <div className='selector' id='selector3'>
         <p>Ingenieria</p>
         <i>
           <img className='selector-icon' src={ingenieriaIcon} alt='#' />
         </i>
       </div>
-      <div className='selector'>
+      <div className='selector' id='selector4'>
         <p>Quimica</p>
         <i>
           <img className='selector-icon' src={quimicaIcon} alt='#' />
