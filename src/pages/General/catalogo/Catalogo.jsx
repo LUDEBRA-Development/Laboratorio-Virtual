@@ -12,7 +12,6 @@ export function Catalogo() {
 
   const handleButtonClick = () => {
     window.open('https://calculadoradecapacitancia.netlify.app/index.html')
-    // window.location.href = 'https://calculadoradecapacitancia.netlify.app/index.html' // Esto es una prueba
   }
 
   const [loading, setLoading] = useState(true)

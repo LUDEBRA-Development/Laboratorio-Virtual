@@ -62,3 +62,23 @@
 
 
 
+::-webkit-scrollbar {
+    width: 3px; /* Width of the scrollbar */
+    height: 1px; /* Height of the scrollbar for horizontal scrolling */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: white; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounding corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb when hovered */
+}
+
+
+

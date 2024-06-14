@@ -51,6 +51,19 @@ export function Login() {
     }
   }
 
+  const password = document.getElementById('password')
+  let icon = document.getElementById('icon')
+
+  function seePassword() {
+    if (password.type === 'text') {
+      icon.name = 'eye-off-outline'
+      password.type = 'password'
+    } else {
+      icon.name = 'eye-outline'
+      password.type = 'text'
+    }
+  }
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
@@ -71,7 +84,7 @@ export function Login() {
             <div className='login-container'>
               <h2>Iniciar Sesion</h2>
               <div className='login-inputs'>
-                {/* <ion-icon name='mail-outline'></ion-icon> */}
+                <ion-icon name='mail-outline'></ion-icon>
                 <input
                   type='email'
                   // placeholder='Email'
@@ -85,7 +98,7 @@ export function Login() {
                 <label>Email</label>
               </div>
               <div className='login-inputs'>
-                {/* <ion-icon id='icon' onclick='SeePassword()' name='eye-off-outline'></ion-icon> */}
+                <ion-icon id='icon' onClick={seePassword} name='eye-off-outline'></ion-icon>
                 <input
                   type='password'
                   // placeholder='Contraseña'

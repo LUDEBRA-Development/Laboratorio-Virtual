@@ -38,6 +38,7 @@
     color: white;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .information-footer-over ul li a:hover {

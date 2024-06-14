@@ -25,7 +25,8 @@
 
 .texto-slider {
     /* color: black; */
-    color: rgb(161,161,161);
+    /* color: rgb(161,161,161); */
+    color: white;
     margin-top: 80px;
     /* position: absolute; */
     text-align: center;

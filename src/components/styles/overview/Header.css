@@ -7,8 +7,10 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    border-bottom: solid 5px rgb(161,161,161);
+    /* border-bottom: solid 5px rgb(161,161,161); */
+    border-bottom: solid 5px white;
     background-color: black;
+    z-index: 1000;
 }
 
 .header-index h2 {
@@ -26,6 +28,7 @@
     position: absolute;
     margin-left: 120px;
 }
+
 .btn-index {
   background: none;
   border: 2px solid white;

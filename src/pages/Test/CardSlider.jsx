@@ -4,7 +4,7 @@ export function CardSlider() {
   return (
     <div className='card-wrapper'>
       <div className='card-container'>
-        <input type='radio' name='slide' id='c1' checked className='card-input' />
+        <input type='radio' name='slide' id='c1' defaultChecked className='card-input' />
         <label htmlFor='c1' className='card-card'>
           <div className='card-row'>
             <div className='card-icon'>1</div>

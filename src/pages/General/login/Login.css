@@ -19,7 +19,6 @@
     background-color: rgba(0, 0, 0, 0.1); 
     margin-bottom: 80px;
     display: flex;
-    /* justify-content: center;  */
     justify-content: left; 
     align-items: center;
 } 
@@ -28,7 +27,6 @@
     position: absolute;
     width: 150px;
     height: 150px;
-    /* margin-right: 1200px; */
 }
 
 .login-logo:hover {
@@ -39,7 +37,6 @@
     position: relative;
     width: 400px;
     height: 470px;
-    /* background-color: rgba(71, 91, 172, 0.7); */
     border: none;
     border-radius: 20px;
     backdrop-filter: blur(20px);
@@ -124,6 +121,13 @@ input:valid ~ label {
     cursor: pointer;
 }
 
+.login-inputs ion-icon {
+    position: absolute;
+    right: 8px;
+    color: white;
+    font-size: 1.2em;
+    top: 20px;
+}
 
 
 

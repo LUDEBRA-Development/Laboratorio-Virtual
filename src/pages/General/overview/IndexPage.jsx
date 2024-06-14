@@ -25,8 +25,8 @@ export function IndexPage() {
       ) : (
         <div className='view-html'>
           <CookiesPopUp />
-          <Header />
           <div className='view-body'>
+            <Header />
             <div className='view-section1'>
               <div className='view-text'>Labs</div>
             </div>
