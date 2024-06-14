@@ -14,26 +14,34 @@ export function FooterLogin() {
           <div className='information-footer-login'>
             <ul>
               <li>
-                <a href=''>Sobre Nosotros</a>
+                <a onClick={() => window.open('https://github.com/LUDEBRA-Development', '_blank')}>Sobre Nosotros</a>
               </li>
               <li>
-                <a href=''>Equipo de Desarrollo</a>
+                <a>Equipo de Desarrollo</a>
               </li>
               <li>
-                <a href=''>Docs</a>
+                <a>Docs</a>
               </li>
             </ul>
           </div>
           <div className='information-footer-login'>
             <ul>
               <li>
-                <a href=''>Repositorio</a>
+                <a onClick={() => window.open('https://github.com/LUDEBRA-Development/Laboratorio-Virtual', '_blank')}>
+                  Repositorio
+                </a>
               </li>
               <li>
-                <a href=''>Ayuda</a>
+                <a>Ayuda</a>
               </li>
               <li>
-                <a href=''>CLI & API</a>
+                <a
+                  onClick={() =>
+                    window.open('https://github.com/LUDEBRA-Development/Laboratorio-Virtual-Backend', '_blank')
+                  }
+                >
+                  CLI & API
+                </a>
               </li>
             </ul>
           </div>

@@ -27,13 +27,21 @@ export function Footer() {
           <div className='information-footer-over'>
             <ul>
               <li>
-                <a onClick={() => window.open('https://github.com/LUDEBRA-Development/Laboratorio-Virtual', '_blank')}>Repositorio</a>
+                <a onClick={() => window.open('https://github.com/LUDEBRA-Development/Laboratorio-Virtual', '_blank')}>
+                  Repositorio
+                </a>
               </li>
               <li>
                 <a>Ayuda</a>
               </li>
               <li>
-                <a onClick={() => window.open('https://github.com/LUDEBRA-Development/Laboratorio-Virtual-Backend', '_blank')}>CLI & API</a>
+                <a
+                  onClick={() =>
+                    window.open('https://github.com/LUDEBRA-Development/Laboratorio-Virtual-Backend', '_blank')
+                  }
+                >
+                  CLI & API
+                </a>
               </li>
             </ul>
           </div>
