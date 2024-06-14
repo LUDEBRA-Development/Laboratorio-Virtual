@@ -37,27 +37,13 @@ export function Catalogo() {
               <h3>Catalogo de Simuladores</h3>
             </div>
             <div className='catalogo-container'>
-              <div className='catalogo-item'>
-                <img
-                  src={CapacitanciaMiniatura}
-                  alt='Capacitancia'
-                  className='catalogo-image'
-                  onClick={handleButtonClick}
-                />
-                <p className='catalogo-title' onClick={handleButtonClick}>
-                  Capacitancia
-                </p>
+              <div className='catalogo-item' onClick={handleButtonClick}>
+                <img src={CapacitanciaMiniatura} alt='Capacitancia' className='catalogo-image' />
+                <p className='catalogo-title'>Capacitancia</p>
               </div>
-              <div className='catalogo-item'>
-                <img
-                  src={DielectricoMiniatura}
-                  alt='Dielectrico'
-                  className='catalogo-image'
-                  onClick={() => navigate('/dielectric')}
-                />
-                <p className='catalogo-title' onClick={() => navigate('/dielectric')}>
-                  Dielectrico
-                </p>
+              <div className='catalogo-item' onClick={() => navigate('/dielectric')}>
+                <img src={DielectricoMiniatura} alt='Dielectrico' className='catalogo-image' />
+                <p className='catalogo-title'>Dielectrico</p>
               </div>
             </div>
           </div>

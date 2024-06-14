@@ -23,7 +23,7 @@ export function HeaderSubjects() {
         </ul>
         <ul>
           <li>
-            <a href='' onClick={() => navigate('/catalogo')}>
+            <a onClick={() => navigate('/catalogo')}>
               Simuladores
             </a>
           </li>
