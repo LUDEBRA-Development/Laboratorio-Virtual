@@ -41,6 +41,7 @@
 .ul-container-subjects li a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 .ul-container-subjects li a:hover {

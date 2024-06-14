@@ -18,14 +18,16 @@ export function HeaderSubjects() {
       <div className='ul-container-subjects'>
         <ul>
           <li>
-            <a href=''>Mis Cursos</a>
+            <a
+              onClick={localStorage.getItem('site') === '3' ? () => navigate('/materias') : () => navigate('/docentes')}
+            >
+              Mis Cursos
+            </a>
           </li>
         </ul>
         <ul>
           <li>
-            <a onClick={() => navigate('/catalogo')}>
-              Simuladores
-            </a>
+            <a onClick={() => navigate('/catalogo')}>Simuladores</a>
           </li>
         </ul>
         <div className='profile-subject' style={{ backgroundImage: `url(${profilePicValue})` }}></div>
