@@ -7,6 +7,7 @@ import { Selectors } from '../../../components/overview/Selectors'
 import { InformationImage } from '../../../components/overview/InformationImage'
 import { CookiesPopUp } from '../../General/cookies/CookiesPopUp'
 import { Preloader } from '../../General/preloader/Preloader'
+import { View } from '../../OvComponents/View'
 
 export function IndexPage() {
   const [loading, setLoading] = useState(true)
@@ -35,6 +36,7 @@ export function IndexPage() {
                 <main>
                   <HomeSlider />
                   <InformationImage />
+                  <View />
                   <Selectors />
                 </main>
               </section>

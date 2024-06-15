@@ -14,7 +14,7 @@
     flex-direction: column;
     border: none;
     border-radius: 100%;
-    background-color: #A1A1A1;
+    background-color: #262626;
     color: white;
     font-weight: bold;
     width: 150px;
@@ -28,7 +28,6 @@
 }
 
 .selector:hover {
-    /* background-color: rgb(163, 156, 156); */
     color: black;
     cursor: pointer;
     transform: scale(1.1);

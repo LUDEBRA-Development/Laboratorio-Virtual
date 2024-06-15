@@ -1,4 +1,4 @@
-import { CardSlider } from '../../pages/Test/CardSlider'
+import { CardSlider } from '../../pages/OvComponents/CardSlider'
 import '../styles/overview/HomeSlider.css'
 import { useNavigate } from 'react-router-dom'
 
