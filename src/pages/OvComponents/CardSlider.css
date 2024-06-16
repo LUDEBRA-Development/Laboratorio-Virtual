@@ -1,4 +1,3 @@
-
 .card-wrapper {
     width: 100%;
     height: 100vh;
@@ -73,6 +72,7 @@
 
 .card-input:checked + label {
     width: 600px;
+    filter: grayscale(0);
 }
 
 .card-input:checked + label .card-description {
@@ -82,10 +82,13 @@
 
 .card-card[for="c1"] {
     background-image: url('../../assets/landing/1.png');
+    filter: grayscale(100%);
 }
 .card-card[for="c2"] {
     background-image: url('../../assets/landing/2.png');
+    filter: grayscale(100%);
 }
 .card-card[for="c3"] {
     background-image: url('../../assets/landing/3.png');
+    filter: grayscale(100%);
 }

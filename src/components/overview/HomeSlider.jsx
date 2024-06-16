@@ -7,11 +7,14 @@ export function HomeSlider() {
   return (
     <div>
       <div className='text-container'>
+      <div className='text-slider-format'>
+
         <h2 className='texto-slider'>Simulaciones Interactivas de Electromagnetismo</h2>
-        <CardSlider />
         <button className='boton-slider' onClick={() => navigate('login')}>
           Explora Las Simulaciones
         </button>
+      </div>
+        <CardSlider />
       </div>
       <div className='home-slider'></div>
       {/* <img src={homeImage} alt='#' className='home-slider'></img> */}
