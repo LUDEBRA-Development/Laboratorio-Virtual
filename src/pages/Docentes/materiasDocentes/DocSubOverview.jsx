@@ -95,7 +95,7 @@ export function DocSubOverview() {
             </section>
             <aside className='aside-subject'>
               <h2 className='aside-title'>Actividades</h2>
-              {taskCourse === null ? (
+              {taskCourse.length === 0 ? (
                 <p className='aside-title'>No hay actividades</p>
               ) : (
                 taskCourse.map((task, index) => (
@@ -105,6 +105,7 @@ export function DocSubOverview() {
                     materia={task.Course}
                     expiracion={task.Expiration_date}
                     index={index}
+                    idMateria={task.Id_course}
                   />
                 ))
               )}
