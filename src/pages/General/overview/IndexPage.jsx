@@ -35,9 +35,9 @@ export function IndexPage() {
               <section>
                 <main>
                   <HomeSlider />
-                  {/* <InformationImage /> */}
+                  <InformationImage />
                   <View />
-                  {/* <Selectors /> */}
+                  <Selectors />
                 </main>
               </section>
               <div className='view-text'></div>
