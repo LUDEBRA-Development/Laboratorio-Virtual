@@ -158,7 +158,7 @@ export function ActivitiesOverview({ data }) {
                   </tr>
                   <tr>
                     <td className='info-task-table'>Calificación</td>
-                    <td className='status-task-table'>{item?.Qualification_date}</td>
+                    <td className='status-task-table'>{item.infoUsers.Qualification}</td>
                   </tr>
                   <tr>
                     <td className='info-task-table'>Tiempo Restante</td>
@@ -180,7 +180,7 @@ export function ActivitiesOverview({ data }) {
               </button>
 
               {localStorage.getItem('site') === '2' ? (
-                <button onClick={() => navigate('/calificaciones')} className='btn-activity2'>
+                <button onClick={() => navigate(`/calificaciones/${index}`)} className='btn-activity2'>
                   Calificar Actividad
                 </button>
               ) : ( ''

@@ -115,7 +115,7 @@ export function UpdateActivities() {
                     />
                     <p>Comentarios:</p>
                     <input type='text' name='Feedback_comments' onChange={handleInputChange(setInputDoc)} />
-                    <button type='submit'>Actualizar Actividad</button>
+                    <button type='submit'>Entregar Actividad</button>
                   </form>
                 </div>
               </div>

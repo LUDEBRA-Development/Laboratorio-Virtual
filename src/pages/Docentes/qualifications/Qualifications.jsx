@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useUpdateTask } from '../../../store/infoUpdateTaskStore'
 import { useInfoUsersStore } from '../../../store/infoUsersStore'
 import './Qualifications.css'
@@ -7,25 +8,41 @@ import { HeaderSubjects } from '../../../components/materias/HeaderSubjects'
 import { Footer } from '../../../components/overview/Footer'
 import { defaultUrlPath } from '../../../models/GlobalVars'
 
-export function Qualifications() {
-  // Estados
+export function Qualifications({ data }) {
+  const { index } = useParams()
+  const itemIndex = index
+  const item = data[itemIndex]
+  const [email, setEmail] = useState('')
   const [taskQuaValues, setTaskQuaValues] = useState(null)
   const [mensaje, setMensaje] = useState('')
   const [loading, setLoading] = useState(true)
-
   const userToken = useInfoUsersStore(state => state.token)
   const taskId = useUpdateTask(state => state.idTask)
-
   const [inputQua, setInputQua] = useState({
-    Qualification: '',
+    Qualification: 0,
     Id_task: taskId,
     Feedback_comments: 'Calificada',
   })
 
-  // Función para actualizar la tarea
-  async function updateTask() {
+  const renderFiles = () => {
+    if (!item.infoUsers || item.infoUsers.length === 0) {
+      return <p>No hay archivos adjuntos</p>
+    }
+
+    return (
+      <ul>
+        {item.infoUsers.map((file, index) => (
+          <li key={index}>
+            <a onClick={() => setEmail(file.email_User)}>{file.email_User}</a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  const updateTask = async () => {
     try {
-      const response = await fetch(`${defaultUrlPath}/userTasks/danna@gmail.com`, {
+      const response = await fetch(`${defaultUrlPath}/userTasks/${email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,28 +50,24 @@ export function Qualifications() {
         },
         body: JSON.stringify(taskQuaValues),
       })
-      console.log(taskQuaValues)
 
       if (!response.ok) {
         throw new Error('Error en la solicitud')
       }
 
       const data = await response.json()
-      console.log(data)
       alert('Actividad actualizada con éxito')
     } catch (error) {
       setMensaje(error.message)
     }
   }
 
-  // Efecto para manejar la actualización de la tarea cuando taskQuaValues cambia
   useEffect(() => {
     if (taskQuaValues) {
-      updateTask(taskQuaValues)
+      updateTask()
     }
   }, [taskQuaValues])
 
-  // Manejo de envío de formulario
   const handleSubmit = e => {
     e.preventDefault()
     const { Qualification, Id_task, Feedback_comments } = inputQua
@@ -63,19 +76,18 @@ export function Qualifications() {
       setTaskQuaValues({
         Qualification: parseFloat(Qualification),
         Id_task,
-        Feedback_comments
+        Feedback_comments,
       })
     }
   }
 
-  // Manejo de cambio de entrada
-  const handleInputChange = setter => e => {
+  const handleInputChange = e => {
     const { name, value } = e.target
-    setter(prev => ({ ...prev, [name]: value }))
+    setInputQua(prev => ({ ...prev, [name]: value }))
   }
 
-  // Efecto para mostrar el preloader
   useEffect(() => {
+    renderFiles()
     const timer = setTimeout(() => {
       setLoading(false)
     }, 1000)
@@ -83,7 +95,6 @@ export function Qualifications() {
     return () => clearTimeout(timer)
   }, [])
 
-  // Renderizado del componente
   return (
     <div>
       {loading ? (
@@ -96,7 +107,7 @@ export function Qualifications() {
               <h1>Calificar Actividad</h1>
               <form onSubmit={handleSubmit}>
                 <p>Calificación:</p>
-                <input type='text' name='Qualification' onChange={handleInputChange(setInputQua)} required />
+                <input type='text' name='Qualification' onChange={handleInputChange} required />
                 <button type='submit'>Calificar Actividad</button>
               </form>
               {mensaje && <p>{mensaje}</p>}

@@ -49,7 +49,7 @@ function App() {
           <Route path='/docentes' element={<DocSubOverview />} />
           <Route path='/newTask' element={<CreateTask />} />
           <Route path='/updateTask' element={<UpdateActivities />} />
-          <Route path='/calificaciones' element={<Qualifications />} />
+          <Route path='/calificaciones/:index' element={<Qualifications data={useStructure} />} />
           {/* Rutas Administradores */}
           <Route path='/test' element={<PruebaFetch />} />
           <Route path='/ingreso' element={<Ingreso />} />
